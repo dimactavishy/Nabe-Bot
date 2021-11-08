@@ -19,7 +19,6 @@
     "discord.js": "^12.5.3",
     "dotenv": "^10.0.0",
     "fast-xml-parser": "^3.20.3",
-    "ffmpeg-static": "^4.4.0",
     "fs": "^0.0.1-security",
     "mal-scraper": "^2.11.3",
     "minecraft-server-util": "^3.6.1",
