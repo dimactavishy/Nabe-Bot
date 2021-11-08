@@ -1,6 +1,10 @@
 {
   "name": "nabe-bot",
   "version": "1.5.0",
+  "engines": {
+    "node": "16.11.1",
+    "npm": "8.0.0"
+  },
   "description": "Bot by Joko Sukino",
   "main": "nabe.js",
   "scripts": {
