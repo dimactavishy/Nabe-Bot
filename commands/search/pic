@@ -1,0 +1,52 @@
+var Scraper = require('images-scraper');
+var options = {
+  safe: true
+};
+
+const google = new Scraper({
+  puppeteer: {
+    headless: true,
+  },
+});
+
+const Color = `RANDOM`;
+
+module.exports = {
+  name: 'pic',
+  cooldown: 30,
+  description: "image scraper",
+  async execute(client, message, args, Discord) {
+    const image_query = args.join(' ');
+    if (!message.content.includes('help')){
+    if (!image_query) return message.channel.send("i'm very sorry, but i cannot find what you are looking for.")
+
+    const picloadEmbed = new Discord.MessageEmbed()
+      .setDescription(`Generating...`)
+      .setTimestamp()
+
+    let Msg = await message.channel.send(picloadEmbed);
+
+    let Replaced = image_query.replace(/ +/g, " ");
+
+    const image_results = await google.scrape(image_query, 20);
+    const random_image = image_results[Math.floor(Math.random() * image_results.length)];
+    const picEmbed = new Discord.MessageEmbed()
+      .setColor(Color || "RANDOM")
+      .setTitle('You want me to look for an image?')
+      .setDescription("Here's what i have found according to what you have specified. I hope this result satisfies you.")
+      .setThumbnail('https://media.discordapp.net/attachments/898563395807232061/899534056356724756/sketch-1634535999710.png?width=499&height=499')
+      .setImage(random_image.url)
+      .setFooter('Egg-Shaped Battle Maid', 'https://images-ext-2.discordapp.net/external/l7-PY5Kkvta4_p-sOE0ftwQCmJ9iAe72eMPSTczuWi0/%3Fsize%3D512/https/cdn.discordapp.com/avatars/897674562265817088/e36ef03370367a4b3cd51b864e9df392.png?width=499&height=499')
+      .setTimestamp();
+
+    message.channel.send(picEmbed);
+    await Msg.delete();
+    }
+    if (message.content.includes('help')) {
+      const helpEmbed = new Discord.MessageEmbed()
+          .addField('Returns an image based on your query.', '`nabe pic <query>`')
+          .setFooter('Example: nabe pic indomie')
+      message.channel.send(helpEmbed)
+  }
+  }
+}
