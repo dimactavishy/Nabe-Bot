@@ -104,7 +104,7 @@ fs.readdir("./commands/search", (err, files) => {
 })
 
 client.on('ready', () => {
-  client.user.setActivity('"nabe" is my prefix.', { type: 'PLAYING' })
+  client.user.setActivity(`nabe help in ${client.guilds.cache.size} servers`, { type: 'PLAYING' })
 })
 
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0
