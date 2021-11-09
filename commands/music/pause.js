@@ -11,7 +11,7 @@ module.exports = {
     const serverQueue = message.client.queue.get(message.guild.id);
     if (serverQueue && serverQueue.playing) {
       serverQueue.playing = false;
-      serverQueue.connection.dispatcher.pause();
+      serverQueue.connection.dispatcher.pause(true);
       let xd = new MessageEmbed()
       .setDescription("⏸ I will now pause the music for you.")
       .setColor("YELLOW")
