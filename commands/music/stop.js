@@ -14,7 +14,7 @@ module.exports = {
     const serverQueue = message.client.queue.get(message.guild.id);
     if (!serverQueue)return message.reply("you have not ordered me to play anything yet.").then(msg => { msg.delete({ timeout: 5000 }) });
     serverQueue.songs = [];
-    serverQueue.connection.dispatcher.end("I'll gladly play music for you again, master!");
+    serverQueue.connection.dispatcher.destroy("I'll gladly play music for you again, master!");
     message.react("✅")
   },
 };
