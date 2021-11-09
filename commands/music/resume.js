@@ -11,7 +11,9 @@ module.exports = {
     const serverQueue = message.client.queue.get(message.guild.id);
     if (serverQueue && !serverQueue.playing) {
       serverQueue.playing = true;
-      serverQueue.connection.dispatcher.resume(true);
+      serverQueue.connection.dispatcher.resume();
+      serverQueue.connection.dispatcher.pause(true);
+      serverQueue.connection.dispatcher.resume();
       let xd = new MessageEmbed()
       .setDescription("▶ I will now resume the music for you.")
       .setColor("YELLOW")
