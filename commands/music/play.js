@@ -32,7 +32,7 @@ module.exports = {
       id: songInfo.videoId,
       title: Util.escapeMarkdown(songInfo.title),
       views: String(songInfo.views).padStart(10, ' '),
-      url: songInfo.url, {filter: 'audioonly'},
+      url: songInfo.url,
       ago: songInfo.ago,
       duration: songInfo.duration.toString(),
       img: songInfo.image,
@@ -77,7 +77,7 @@ module.exports = {
       }
 
       const dispatcher = queue.connection
-        .play(ytdl(song.url))
+        .play(ytdl(song.url, {filter: 'audioonly'}))
         .on("finish", () => {
           queue.songs.shift();
           play(queue.songs[0]);
