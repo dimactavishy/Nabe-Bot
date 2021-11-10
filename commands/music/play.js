@@ -32,12 +32,11 @@ module.exports = {
       id: songInfo.videoId,
       title: Util.escapeMarkdown(songInfo.title),
       views: String(songInfo.views).padStart(10, ' '),
-      url: songInfo.url,
+      url: songInfo.url, {filter: 'audioonly'},
       ago: songInfo.ago,
       duration: songInfo.duration.toString(),
       img: songInfo.image,
       req: message.author,
-      {filter: 'audioonly'}
     };
 
     if (serverQueue) {
