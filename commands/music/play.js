@@ -37,7 +37,7 @@ module.exports = {
       duration: songInfo.duration.toString(),
       img: songInfo.image,
       req: message.author,
-      filter: 'audioonly'
+      {filter: 'audioonly'}
     };
 
     if (serverQueue) {
