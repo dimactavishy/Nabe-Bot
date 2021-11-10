@@ -9,11 +9,12 @@ module.exports = {
   },
 
   execute: async function (client, message, args) {
-    const voiceChannel = message.member.voice.channel;
- 
-        if(!voiceChannel) return message.reply("you have to be in a voice channel first to order me to stop.").then(msg => { msg.delete({ timeout: 5000 }) });
-        await voiceChannel.leave();
-        await message.channel.send("I'll gladly play music for you again, master!")
+    const channel = message.member.voice.channel
+    if (!channel)return message.reply("i'm sorry but you need to be in a voice channel to play music!").then(msg => { msg.delete({ timeout: 5000 }) });
+    const serverQueue = message.client.queue.get(message.guild.id);
+    if (!serverQueue)return message.reply("you have not ordered me to play anything yet.").then(msg => { msg.delete({ timeout: 5000 }) });
+    serverQueue.songs = [];
+    serverQueue.connection.dispatcher.end("I'll gladly play music for you again, master!");
     message.react("✅")
   }
 };
