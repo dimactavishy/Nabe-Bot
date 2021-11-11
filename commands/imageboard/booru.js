@@ -12,7 +12,7 @@ module.exports = {
             const hornyEmbed = new Discord.MessageEmbed()
                 .setTitle('Potential Lewd Warning')
                 .setDescription('**The `nabe booru` command has a potential to return a NSFW image.\n**'
-                               + 'Please use this command in a NSFW channel just to be safe.\n'
+                               + 'Please use this command in a NSFW channel just to be safe.\n\n'
                                + '_If you really want to use booru on a SFW channel, use `nabe boorusafe` instead._'
                                )
                 .setImage('https://static.wikia.nocookie.net/isekai-quartet/images/9/9c/Narberal_Gamma.png/revision/latest?cb=20200313155041')
