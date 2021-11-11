@@ -20,7 +20,7 @@ module.exports = {
 
                     for (let post of posts) {
                         const booruEmbed = new Discord.MessageEmbed()
-                            .setColor('GREEN')
+                            .setColor('YELLOW')
                             .setTitle("Here's an image for you, master.")
                             .setDescription("I hope this result satisfies you.")
                             .addField('Provided by Gelbooru.com', `[Booru Page](${post.postView})`)
