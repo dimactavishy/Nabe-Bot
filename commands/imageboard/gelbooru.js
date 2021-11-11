@@ -2,7 +2,7 @@ const Booru = require('booru')
 const Color = `RANDOM`;
 module.exports = {
     info: {
-        name: "gbooru",
+        name: "gelbooru",
         description: "gbooru image scraper",
         cooldown: 30,
     },
