@@ -2,7 +2,7 @@ const Booru = require('booru')
 const Color = `RANDOM`;
 module.exports = {
     info: {
-        name: "booru",
+        name: "boorusafe",
         description: "booru image scraper",
         cooldown: 30,
     },
@@ -34,8 +34,8 @@ module.exports = {
                 })
         if (message.content.includes('help')) {
             const helpEmbed = new Discord.MessageEmbed()
-                .addField('Returns an image from safebooru', '`nabe booru <optional query>`')
-                .setFooter('Example: nabe booru narberal_gamma')
+                .addField('Returns an image from safebooru', '`nabe boorusafe <optional query>`')
+                .setFooter('Example: nabe boorusafe narberal_gamma')
             message.channel.send(helpEmbed)
         }
     }
