@@ -9,7 +9,7 @@ module.exports = {
     async execute(client, message, args, Discord) {
         const image_query = args.join(' ');
         if (!message.content.includes('help'))
-            const hornyEmbed = new Discord.MessageEmbed()
+            let hornyEmbed = new Discord.MessageEmbed()
                 .setTitle('Potential Lewd Warning')
                 .setDescription('The `nabe booru` command has a potential to return a NSFW image, please use this command in a NSFW channel just to be safe.\n'
                                + 'If you really want to use booru on a SFW channel, use `nabe boorusafe` instead.'
