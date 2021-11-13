@@ -27,7 +27,6 @@ module.exports = {
                         message.channel.send(notfoundEmbed)
                     }
                     const postRandom = post[Math.floor(Math.random() * post.length)];
-                    for (let post of posts) {
                         const booruEmbed = new Discord.MessageEmbed()
                             .setTitle('P-Pervert!')
                             .setColor('#FFC0CB')
@@ -39,7 +38,6 @@ module.exports = {
                             .setTimestamp();
 
                          return message.channel.send(booruEmbed);
-                    }
                 })
             }
         }
