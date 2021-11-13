@@ -41,6 +41,7 @@ module.exports = {
                          return message.channel.send(booruEmbed);
                     }
                 })
+            }
         }
         if (message.content.includes('help')) {
             const helpEmbed = new Discord.MessageEmbed()
