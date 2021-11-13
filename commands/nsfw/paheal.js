@@ -26,7 +26,7 @@ module.exports = {
                             .setFooter("Are you sure you didn't do a typo?")
                         message.channel.send(notfoundEmbed)
                     }
-                    const postRandom = Booru.search[Math.floor(Math.random() * Booru.search.length)];
+                    const postRandom = post[Math.floor(Math.random() * post.length)];
                     for (let post of posts) {
                         const booruEmbed = new Discord.MessageEmbed()
                             .setTitle('P-Pervert!')
