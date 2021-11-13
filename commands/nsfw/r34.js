@@ -22,7 +22,7 @@ module.exports = {
                 .setTimestamp()
 
             let Msg = await message.channel.send(heloadEmbed);
-            Booru.search('rule34.xxx', image_query, { limit: 1 })
+            Booru.search('rule34.xxx', image_query, { limit: 10 })
                 .then(posts => {
                     if (posts.length === 0) {
                         const notfoundEmbed = new Discord.MessageEmbed()
