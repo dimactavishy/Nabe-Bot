@@ -37,7 +37,7 @@ module.exports = {
 
                         return message.channel.send(booruEmbed);
             }
-                })
+                
                 await Msg.delete();
         }
     }
