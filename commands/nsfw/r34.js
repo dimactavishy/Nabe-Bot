@@ -23,6 +23,7 @@ module.exports = {
 
             let Msg = await message.channel.send(heloadEmbed);
             Booru.search('rule34.xxx', image_query, { limit: 10 })
+            const post_random = posts[Math.floor(Math.random() * posts.length)]
                 .then(posts => {
                     if (posts.length === 0) {
                         const notfoundEmbed = new Discord.MessageEmbed()
@@ -32,7 +33,6 @@ module.exports = {
                     }
 
                     for (let post of posts) {
-                        const post_random = posts[Math.floor(Math.random() * posts.length)];
                         const booruEmbed = new Discord.MessageEmbed()
                             .setTitle('P-Pervert!')
                             .setColor('#FFC0CB')
