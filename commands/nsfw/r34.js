@@ -22,17 +22,9 @@ module.exports = {
                 .setTimestamp()
 
             let Msg = await message.channel.send(heloadEmbed);
-            Booru.search('rule34.xxx', image_query, { limit: 10 })
-            const post_random = posts[Math.floor(Math.random() * posts.length)]
-                .then(posts => {
-                    if (posts.length === 0) {
-                        const notfoundEmbed = new Discord.MessageEmbed()
-                            .setDescription("Sorry, i found no results for what you're looking for.")
-                            .setFooter("Are you sure you didn't do a typo?")
-                        message.channel.send(notfoundEmbed)
-                    }
-
-                    for (let post of posts) {
+            async function booruSearch(site, tags, limit = 1) {
+            const posts = await Booru.search(rule34.xxx, 'maid', {limit})
+            const post_random = posts[Math.floor(Math.random() * posts.length)]            
                         const booruEmbed = new Discord.MessageEmbed()
                             .setTitle('P-Pervert!')
                             .setColor('#FFC0CB')
@@ -43,8 +35,8 @@ module.exports = {
                             .setFooter('Egg-Shaped Battle Maid', 'https://images-ext-2.discordapp.net/external/l7-PY5Kkvta4_p-sOE0ftwQCmJ9iAe72eMPSTczuWi0/%3Fsize%3D512/https/cdn.discordapp.com/avatars/897674562265817088/e36ef03370367a4b3cd51b864e9df392.png?width=499&height=499')
                             .setTimestamp();
 
-                        message.channel.send(booruEmbed);
-                    }
+                        return message.channel.send(booruEmbed);
+            }
                 })
                 await Msg.delete();
         }
