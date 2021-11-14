@@ -7,9 +7,9 @@ module.exports = {
         const picEmbed = new Discord.MessageEmbed()
         .setDescription("`pic` is disabled!")
             .setTimestamp()
-        }
     
         message.channel.send(picEmbed);
+}
         if (message.content.includes('help')) {
             const helpEmbed = new Discord.MessageEmbed()
                 .addField("If you're seeing this, 'pic' is currently disabled.", '`nabe pic <query>`')
