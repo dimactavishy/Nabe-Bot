@@ -21,15 +21,15 @@ module.exports = {
                 .setTimestamp();
             if (!message.channel.nsfw) return message.channel.send(hornyEmbed);
 
-           Booru.search('rule34.paheal.net', tag_query, { limit: 100, random: false })
+           Booru.search('rule34.paheal.net', tag_query, { limit: 10, random: false })
            .then(posts => {
              if (posts.length === 0) {
              console.log('No images found.')
            }
-               const randomPost = posts[Math.floor(Math.random() * posts.length)];
-               for (let post of posts) {
-                randomPost = Math.floor(Math.random() * posts.length);
-                message.channel.send(randomPost.fileUrl);
+             let postR = post.fileURL
+             const random = Math.floor(Math.random() * Math.floor(answers.length));
+             for (let post of posts) {
+                message.channel.send(postR.[random].fileUrl);
                }
             })
         }
