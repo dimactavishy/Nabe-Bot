@@ -21,7 +21,7 @@ module.exports = {
                 .setTimestamp();
             if (!message.channel.nsfw) return message.channel.send(hornyEmbed);
 
-           Booru.search('rule34.xxx', tag_query, { limit: 10, random: false })
+           Booru.search('rule34.paheal.net', tag_query, { limit: 2, random: false })
            .then(posts => {
              if (posts.length === 0) {
              console.log('No images found.')
