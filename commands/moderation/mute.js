@@ -6,6 +6,7 @@ module.exports = {
         
         const target = message.mentions.users.first();
         if (!message.content.includes('help'))
+        if (message.member.hasPermission('KICK_MEMBERS')) {
         if (target) {
             let mainRole = message.guild.roles.cache.find(role => role.name === 'Verified');
             let muteRole = message.guild.roles.cache.find(role => role.name === 'Muted');
@@ -28,6 +29,9 @@ module.exports = {
             }, ms(args[1]));
         } else {
             message.reply("Mention the person whom you want to silence, and i will do so to them.").then(msg => { msg.delete({ timeout: 5000 }) });
+        }
+        }else {
+            message.reply("i'm sorry, but you do not have the authority to kick members.").then(msg => { msg.delete({ timeout: 5000 }) });
         }
         if (message.content.includes('help')) {
             const helpEmbed = new Discord.MessageEmbed()
