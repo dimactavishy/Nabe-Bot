@@ -28,7 +28,7 @@ module.exports = {
                         message.channel.send(notfoundEmbed)
                     }
                     const picNum = posts[Math.floor(Math.random() * posts.length)];
-                    const randomPost = posts.post[picNum].$.file_url;
+                    const randomPost = posts[picNum].$.file_url;
                     for (let post of posts) {
                         const booruEmbed = new Discord.MessageEmbed()
                             .setColor('YELLOW')
