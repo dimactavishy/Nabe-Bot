@@ -3,10 +3,9 @@ module.exports = {
     description: "command bobok",
     execute(client, message, args, Discord) {
         
-        let role = message.guild.roles.cache.find(r => r.name === "dimac", "egg");
-        if (message.member.roles.cache.some(r => r.name === "dimac")) {
+        if(message.author.id === '291847323217297418') {
             message.reply('bobok yang nyenyak, master.');
-        } else if (message.member.roles.cache.some(r => r.name === "egg")) {
+        } if(message.author.id === '466787710955290634') {
             message.channel.send('omg telur bisa bobok');
         } else {
             message.reply('lu bau');
