@@ -21,7 +21,7 @@ module.exports = {
                 .setTimestamp();
             if (!message.channel.nsfw) return message.channel.send(hornyEmbed);
 
-           Booru.search(site, tags, { limit: 1, random: false })
+           Booru.search(site, tags, { limit: 15, random: false })
            .then(posts => {
              if (posts.length === 0) {
              console.log('No images found.')
