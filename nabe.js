@@ -131,6 +131,7 @@ client.on("guildCreate", guild => {
     })
   const channels = guild.channels.cache.filter(channel => channel.type == "text");
   const setupEmbed = new Discord.MessageEmbed()
+  .setColor('#610349')
   .setTitle('Thank you for inviting me to your guild.')
   .setDescription("This one will work as hard as she could to improve master's and his peer's experience on this guild.\n"
                   +"**Added 3 Roles for moderation and commands.**\n"
