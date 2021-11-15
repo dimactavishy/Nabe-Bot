@@ -98,7 +98,8 @@ module.exports = {
             .setTitle('Imageboard Commands')
             .setDescription('These are the commands under the imageboard category that i currently know of.\n\n'
                 + '**Use the commands as `nabe <command>`**\n\n'
-                + '**booru** - Returns an image from Safebooru. Tags are optional.\n'
+                + '**booru** - Returns an image from Gelbooru. Tags are optional.\n'
+                + '**boorusafe** - Returns an image from Safebooru. Tags are optional.\n'
                 + '**baka** - Returns a "baka" image/GIF.\n'
                 + '**slap** - Returns a slapping image/GIF.\n'
                 + '**tickle** - Returns a tickling image/GIF.\n'
@@ -128,6 +129,8 @@ module.exports = {
             .setTitle('NSFW Commands')
             .setDescription('These are the commands under the NSFW category that i currently know of.\n\n'
                 + '**Use the commands as `nabe <command>`**\n\n'
+                + '**paheal** - Returns an image from Rule34.paheal. Tags are optional.\n'    
+                + '**r34** - Returns an image from Rule34.xxx. Tags are optional.\n'       
                 + '**hentai** - Returns random hentai image.\n'
                 + '**ahegao** - Returns an ahegao image.\n'
                 + '**hkitsune** - Returns a lewd foxgirl image/GIF.\n'
