@@ -103,9 +103,56 @@ fs.readdir("./commands/search", (err, files) => {
   require(`./handlers/${handler}`)(client, Discord)
 })
 
-client.on('ready', () => {
-  client.user.setActivity(`nabe help in ${client.guilds.cache.size} servers`, { type: 'PLAYING' })
-})
+const activities = [
+  'my prefix is "nabe" or "n!"',
+  "help, support, info, and invite.",
+  `serving in ${client.guilds.cache.size} servers.`,
+  "imageboard, nsfw, and music commands."
+];
+
+client.on("ready", () => {
+  setInterval(() => {
+    const randomIndex = Math.floor(Math.random() * (activities.length - 1) + 1);
+    const newActivity = activities[randomIndex];
+
+    client.user.setActivity(newActivity);
+  }, 10000);
+});
+
+client.on("guildCreate", guild => {
+  guild.roles.create({
+    data: {
+      name: 'Verified',
+      color: '#808080',
+    },
+    reason: 'For verification',
+    })
+  guild.roles.create({
+    data: {
+      name: 'Muted',
+      color: '#000000',
+    },
+    reason: 'For mute',
+    })
+  guild.roles.create({
+    data: {
+      name: 'Wibu',
+      color: '#FF1493',
+    },
+    reason: 'For wibu',
+    })
+  const channels = guild.channels.cache.filter(channel => channel.type == "text");
+   channels.first().send("**Thank you for inviting me to your guild.**\n"
+                  +"This one will work as hard as she could to improve master's and his peer's experience on this guild.\n"
+                  +"**Added 3 Roles for moderation and commands.**\n"
+                  +"`Verified`\n"
+                  +"`Muted`\n"
+                  +"`Wibu`\n"
+                  + "Feel free to change these role's settings, **but please do not delete or rename them unless you already have an identically named role.**"
+                  + "_My prefix is `nabe` or `n!`. Pleased to be working with you!_",
+                  {files: ["https://cdn.discordapp.com/attachments/898563395807232061/909676455326253076/ysp1y2idard41_1.png"]});
+ ).catch(e => console.log(e));
+});
 
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0
 client.login(process.env.DISCORD_TOKEN);
