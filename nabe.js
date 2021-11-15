@@ -150,8 +150,7 @@ client.on("guildCreate", guild => {
                   +"`Wibu`\n"
                   + "Feel free to change these role's settings, **but please do not delete or rename them unless you already have an identically named role.**"
                   + "_My prefix is `nabe` or `n!`. Pleased to be working with you!_",
-                  {files: ["https://cdn.discordapp.com/attachments/898563395807232061/909676455326253076/ysp1y2idard41_1.png"]});
- ).catch(e => console.log(e));
+                  {files: ["https://cdn.discordapp.com/attachments/898563395807232061/909676455326253076/ysp1y2idard41_1.png"]}).catch(e => console.log(e));
 });
 
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0
