@@ -26,9 +26,9 @@ module.exports = {
              if (posts.length === 0) {
              console.log('No images found.')
            }  
-             const random = posts[Math.floor(Math.random() * posts.length)];
+             const randomPost = posts[Math.floor(Math.random() * posts.length)];
              for (let post of posts) {
-                message.channel.send(random.fileURl);
+                message.channel.send(randomPost.fileUrl);
                }
             })
         }
