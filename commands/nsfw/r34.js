@@ -23,6 +23,9 @@ module.exports = {
 
             async function booruSearch(site, tags, limit = 12) {
                 const posts = await Booru.search('rule34.xxx', image_query, { limit })
+                if (posts.length === 0) {
+                  console.log('No images found.')
+                }
 
                 const randomPost = posts[Math.floor(Math.random() * posts.length)];
 
@@ -30,9 +33,9 @@ module.exports = {
                     .setColor('YELLOW')
                     .setTitle("Here's an image for you, master.")
                     .setDescription("I hope this result satisfies you.")
-                    .addField('Provided by Rule34.xxx', `[Booru Page](${randomPost.postView})`)
+                    .addField('Provided by Rule34.xxx', `[Booru Page](${randomPost[0].postView})`)
                     .setThumbnail('https://media.discordapp.net/attachments/898563395807232061/899534056356724756/sketch-1634535999710.png?width=499&height=499')
-                    .setImage(randomPost.fileUrl)
+                    .setImage(randomPost[0].fileUrl)
                     .setFooter('Egg-Shaped Battle Maid', 'https://images-ext-2.discordapp.net/external/l7-PY5Kkvta4_p-sOE0ftwQCmJ9iAe72eMPSTczuWi0/%3Fsize%3D512/https/cdn.discordapp.com/avatars/897674562265817088/e36ef03370367a4b3cd51b864e9df392.png?width=499&height=499')
                     .setTimestamp();
 
