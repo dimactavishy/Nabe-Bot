@@ -78,7 +78,6 @@ module.exports = async (Discord, client, message) => {
                   + "Feel free to change these role's settings, **but please do not delete or rename them unless you already have an identically named role.**"
   .setImage('https://cdn.discordapp.com/attachments/898563395807232061/909676455326253076/ysp1y2idard41_1.png')
   .setFooter("My prefix is `nabe` or `n!`. Pleased to be working with you!")
-  .setTimestamp()
   channels.first().send(setupEmbed).catch(e => console.log(e));
 });
   };
