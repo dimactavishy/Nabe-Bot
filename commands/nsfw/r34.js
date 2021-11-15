@@ -31,7 +31,7 @@ module.exports = {
                 console.log(randomPost.fileUrl);
                }
             })
-        
+        }
         if (message.content.includes('help')) {
             const helpEmbed = new Discord.MessageEmbed()
                 .addField('Returns an image from gelbooru', '`nabe booru <optional query>`')
@@ -40,5 +40,5 @@ module.exports = {
         }
     }
 
-}
+
 
