@@ -28,7 +28,7 @@ module.exports = {
            }
              const random = Math.floor(Math.random() * Math.floor(posts.length));
              for (let post of posts) {
-                message.channel.send(post[random]);
+                message.channel.send(post.fileURL[random]);
                }
             })
         }
