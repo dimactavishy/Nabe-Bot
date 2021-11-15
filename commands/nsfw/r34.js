@@ -21,7 +21,7 @@ module.exports = {
                 .setTimestamp();
             if (!message.channel.nsfw) return message.channel.send(hornyEmbed);
 
-            async function booruSearch(site, tags, limit = 10) {
+            async function booruSearch(site, tags, limit = 12) {
                 const posts = await Booru.search('rule34.xxx', image_query, { limit })
 
                 const randomPost = posts[Math.floor(Math.random() * posts.length)];
