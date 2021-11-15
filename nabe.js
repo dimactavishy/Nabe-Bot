@@ -130,15 +130,18 @@ client.on("guildCreate", guild => {
     reason: 'For wibu',
     })
   const channels = guild.channels.cache.filter(channel => channel.type == "text");
-  
-  channels.first().send("Thank you for inviting me to your guild. This one will work as hard as she could to improve master's and his peer's experience on this guild.\n"
-                       + "Added 3 Roles for moderation and commands."
-                       + "`Verified`"
-                       + "`Muted`"
-                       + "`Wibu`"
-                       + "Feel free to change these role's settings, but please do not delete or rename them."
-                       + "My prefix is `nabe` or `n!`. Pleased to be working with you!"
-  ).catch(e => console.log(e));
+  const setupEmbed = new Discord.MessageEmbed()
+  .setTitle('Thank you for inviting me to your guild.')
+  .setDescription("This one will work as hard as she could to improve master's and his peer's experience on this guild.\n"
+                  +"**Added 3 Roles for moderation and commands.**\n"
+                  +"`Verified`"
+                  +"`Muted`"
+                  +"`Wibu`"
+                  + "Feel free to change these role's settings, **but please do not delete or rename them unless you already have an identically named role.**"
+  .setImage('https://cdn.discordapp.com/attachments/898563395807232061/909676455326253076/ysp1y2idard41_1.png')
+  .setFooter("My prefix is `nabe` or `n!`. Pleased to be working with you!")
+  .setTimestamp()
+  channels.first().send(setupEmbed).catch(e => console.log(e));
 });
 
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0
