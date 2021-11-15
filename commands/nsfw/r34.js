@@ -25,13 +25,10 @@ module.exports = {
            .then(posts => {
              if (posts.length === 0) {
              console.log('No images found.')
-           }
-               const postR = [
-                   posts.fileURL
-               ];
-             const random = postR[Math.floor(Math.random() * postR.length)];
+           }  
+             const random = posts[Math.floor(Math.random() * posts.length)];
              for (let post of posts) {
-                message.channel.send(postR[random]);
+                message.channel.send(random.fileURl);
                }
             })
         }
