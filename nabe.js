@@ -107,5 +107,39 @@ client.on('ready', () => {
   client.user.setActivity(`nabe help in ${client.guilds.cache.size} servers`, { type: 'PLAYING' })
 })
 
+client.on("guildCreate", guild => {
+  guild.roles.create({
+    data: {
+      name: 'Verified',
+      color: '#808080',
+    },
+    reason: 'For verification',
+    })
+  guild.roles.create({
+    data: {
+      name: 'Muted',
+      color: '#000000',
+    },
+    reason: 'For mute',
+    })
+  guild.roles.create({
+    data: {
+      name: 'Wibu',
+      color: '#FF1493',
+    },
+    reason: 'For wibu',
+    })
+  const channels = guild.channels.cache.filter(channel => channel.type == "text");
+  
+  channels.first().send("Thank you for inviting me to your guild. This one will work as hard as she could to improve master's and his peer's experience on this guild.\n"
+                       + "Added 3 Roles for moderation and commands."
+                       + "`Verified`"
+                       + "`Muted`"
+                       + "`Wibu`"
+                       + "Feel free to change these role's settings, but please do not delete or rename them."
+                       + "My prefix is `nabe` or `n!`. Pleased to be working with you!"
+  ).catch(e => console.log(e));
+});
+
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0
 client.login(process.env.DISCORD_TOKEN);
