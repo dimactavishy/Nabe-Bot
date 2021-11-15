@@ -39,6 +39,6 @@ module.exports = {
             message.channel.send(helpEmbed)
         }
     }
-
+}
 
 
