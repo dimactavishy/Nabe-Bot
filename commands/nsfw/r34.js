@@ -21,18 +21,17 @@ module.exports = {
                 .setTimestamp();
             if (!message.channel.nsfw) return message.channel.send(hornyEmbed);
 
-            async function booruSearch(site, tags, limit = 12) {
-                const posts = await Booru.search('rule34.xxx', image_query, { limit })
-                if (posts.length === 0) {
-                  console.log('No images found.')
-                }
-
+           Booru.search(site, tags, { limit: 1, random: false })
+           .then(posts => {
+             if (posts.length === 0) {
+             console.log('No images found.')
+           }
                 const randomPost = posts[Math.floor(Math.random() * posts.length)];
-
-                message.channel.send(randomPost[0].fileUrl);
-
-            }
-        }
+               for (let post of posts) {
+                console.log(randomPost.fileUrl);
+               }
+            })
+        
         if (message.content.includes('help')) {
             const helpEmbed = new Discord.MessageEmbed()
                 .addField('Returns an image from gelbooru', '`nabe booru <optional query>`')
