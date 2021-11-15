@@ -8,7 +8,7 @@ module.exports = {
         cooldown: 30,
     },
     async execute(client, message, args, Discord) {
-        const image_query = args.join(' ');
+        const tag_query = args.join(' ');
         if (!message.content.includes('help')) {
             const hornyEmbed = new Discord.MessageEmbed()
                 .setTitle('Potential Lewd Warning')
@@ -21,7 +21,7 @@ module.exports = {
                 .setTimestamp();
             if (!message.channel.nsfw) return message.channel.send(hornyEmbed);
 
-           Booru.search(site, tags, { limit: 15, random: false })
+           Booru.search('rule34.xxx', tag_query, { limit: 15, random: false })
            .then(posts => {
              if (posts.length === 0) {
              console.log('No images found.')
