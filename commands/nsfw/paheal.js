@@ -18,7 +18,7 @@ module.exports = {
             .setTimestamp();
         if (!message.channel.nsfw) return message.channel.send(hornyEmbed)
 
-           Booru.search('rule34.paheal.net', tag_query, { limit: 2, random: true })
+           Booru.search('rule34.paheal.net', tag_query, { limit: 1, random: true })
            .then(posts => {
              if (posts.length === 0) {
              const notfoundEmbed = new Discord.MessageEmbed()
