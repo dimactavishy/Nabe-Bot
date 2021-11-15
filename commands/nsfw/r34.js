@@ -27,7 +27,7 @@ module.exports = {
                             .setFooter("Are you sure you didn't do a typo?")
                         message.channel.send(notfoundEmbed)
                     }
-                    const picNum = post[Math.floor(Math.random() * post.length)];
+                    const picNum = posts[Math.floor(Math.random() * posts.length)];
                     const randomPost = posts.post[picNum].$.file_url;
                     for (let post of posts) {
                         const booruEmbed = new Discord.MessageEmbed()
