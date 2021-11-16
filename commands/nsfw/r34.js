@@ -10,7 +10,8 @@ module.exports = {
     async execute(client, message, args, Discord) {
         const tag_query = args.join(' ');
         
-        if (!message.content.includes(['help', 'narberal_gamma'])) {
+        if (!message.content.includes('help')) {
+            if (!message.content.includes('narberal_gamma')) {
             const hornyEmbed = new Discord.MessageEmbed()
             .setTitle('No lewding here!')
             .setDescription('Not everybody is a pervert like you, please do it in a NSFW channel.')
@@ -51,6 +52,7 @@ module.exports = {
                     .setTimestamp();
                 message.channel.send(helpEmbed)
             }
+        }
         if (message.content.includes('help')) {
             const helpEmbed = new Discord.MessageEmbed()
                 .addField('Returns an image from rule34', '`nabe r34 <optional query>`')
