@@ -22,7 +22,7 @@ module.exports = {
 
            Booru.search('rule34.xxx', tag_query, { limit: 1, random: true })
            .then(posts => {
-             const filtered = posts.blacklist(['gigantic_breasts', '3d', 'narberal_gamma', 'furry', 'huge_cock'])
+             const filtered = posts.blacklist(['furry', 'narberal_gamma', '3d'])
              if (filtered.length === 0) {
              const notfoundEmbed = new Discord.MessageEmbed()
               .setDescription("Sorry, i found no results for what you're looking for.")
