@@ -48,7 +48,7 @@ module.exports = {
                             let imgError = false
 
                             try {
-                                headers = await fetch(filtered.fileUrl, { method: 'HEAD' })
+                                headers = (await fetch(filtered.fileUrl, { method: 'HEAD' })).headers
                             } catch (e) {
                                 imgError = true
                             }
