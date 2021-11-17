@@ -1,4 +1,5 @@
 const fetch = require('node-fetch')
+const path = require('path')
 const Booru = require('booru')
 const Color = `RANDOM`;
 module.exports = {
@@ -30,14 +31,13 @@ module.exports = {
                                 .setFooter("Are you sure you didn't do a typo?")
                             message.channel.send(notfoundEmbed)
                         }
-                        for (let post of posts) {
-
-                            let tags =
-                                img.tags.join(', ').length < 50
-                                    ? Discord.Util.escapeMarkdown(img.tags.join(', '))
-                                    : Discord.Util.escapeMarkdown(img.tags.join(', ').substr(0, 50)) +
+                    
+                    let tags =
+                                filtered.tags.join(', ').length < 50
+                                    ? Discord.Util.escapeMarkdown(filtered.tags.join(', '))
+                                    : Discord.Util.escapeMarkdown(filtered.tags.join(', ').substr(0, 50)) +
                                     `... [See All](https://giraffeduck.com/api/echo/?w=${Discord.Util
-                                        .escapeMarkdown(img.tags.join(',').replace(/(%20)/g, '_'))
+                                        .escapeMarkdown(filtered.tags.join(',').replace(/(%20)/g, '_'))
                                         .replace(/([()])/g, '\\$1')
                                         .substring(0, 1200)})`
 
@@ -46,7 +46,7 @@ module.exports = {
                             let imgError = false
 
                             try {
-                                headers = await fetch(img.file_url, { method: 'HEAD' })
+                                headers = (await fetch(filtered.fileUrl, { method: 'HEAD' })).headers
                             } catch (e) {
                                 imgError = true
                             }
@@ -54,6 +54,8 @@ module.exports = {
                             if (headers) {
                                 tooBig = parseInt(headers.get('content-length'), 10) / 1000000 > 10
                             }
+                    
+                        for (let post of posts) {
 
                             embed_nsfw = new Discord.MessageEmbed()
                                 .setTitle('P-Pervert!')
@@ -62,11 +64,11 @@ module.exports = {
                                 .setDescription(`H-Here's something i found on rule34!`
                                     + `**Provided by:** Rule34.xxx | `,
                                     +`[**Booru Page**](${filtered.postView}) | `
-                                    + `**Rating:** ${img.rating.toUpperCase()} | `
-                                    + `**File:** ${path.extname(img.file_url).toLowerCase()}, ${headers ? fileSizeSI(headers.get('content-length')) : '? kB'}\n`
+                                    + `**Rating:** ${filtered.rating.toUpperCase()} | `
+                                    + `**File:** ${path.extname(filtered.file_url).toLowerCase()}, ${headers ? fileSizeSI(headers.get('content-length')) : '? kB'}\n`
                                     + `**Tags:** ${tags}`
                                     + (!['.jpg', '.jpeg', '.png', '.gif'].includes(
-                                        path.extname(img.file_url).toLowerCase(),  
+                                        path.extname(filtered.fileURL).toLowerCase(),  
                                     )       
                                         ? '`The file will probably not embed.`'
                                         : '')
