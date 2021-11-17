@@ -67,7 +67,7 @@ module.exports = {
                                     + `**Provided by:** Rule34.xxx | `,
                                     +`[**Booru Page**](${filtered.postView}) | `
                                     + `**Rating:** ${filtered.rating}.toUpperCase() | `
-                                    + `**File:** ${path.extname(filtered.file_url)}.toLowerCase(), ${headers ? fileSizeSI(headers.get('content-length')) : '? kB'}\n`
+                                    + `**File:** ${path.extname(filtered.file_url).toLowerCase()}, ${headers ? fileSizeSI(headers.get('content-length')) : '? kB'}\n`
                                     + `**Tags:** ${tags}`
                                     + (!['.jpg', '.jpeg', '.png', '.gif'].includes(
                                         path.extname(filtered.fileURL).toLowerCase(),  
