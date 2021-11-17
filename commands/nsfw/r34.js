@@ -25,7 +25,7 @@ module.exports = {
                 if (!message.channel.nsfw) return message.channel.send(hornyEmbed)
 
                 Booru.search('rule34.xxx', tag_query, { limit: 1, random: true })
-                    .then(posts => {
+                    .then(async posts => {
                         const filtered = posts.blacklist(['furry', 'narberal_gamma', '3d'])
                         if (filtered.length === 0) {
                             const notfoundEmbed = new Discord.MessageEmbed()
