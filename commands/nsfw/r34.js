@@ -1,4 +1,4 @@
-
+const fetch = require('node-fetch')
 const Booru = require('booru')
 const Color = `RANDOM`;
 module.exports = {
@@ -57,6 +57,7 @@ module.exports = {
                             embed_nsfw = new Discord.MessageEmbed()
                                 .setTitle('P-Pervert!')
                                 .setColor('#FFC0CB')
+                                .setAuthor('Provided by Rule34.xxx', 'https://rule34.xxx/favicon.ico', 'https://rule34.xxx')
                                 .setDescription(`H-Here's something i found on rule34!`
                                     + `**Provided by:** Rule34.xxx | `,
                                     +`[**Booru Page**](${filtered.postView}) | `
