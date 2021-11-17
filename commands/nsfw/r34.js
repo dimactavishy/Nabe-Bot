@@ -1,4 +1,5 @@
 const path = require('path')
+const fetch = require('node-fetch')
 const Booru = require('booru')
 const Color = `RANDOM`;
 module.exports = {
@@ -8,7 +9,6 @@ module.exports = {
         cooldown: 30,
     },
     async execute(client, message, args, Discord) {
-        const fetch = require('node-fetch')
         const tag_query = args.join(' ');
 
         if (!message.content.includes('help')) {
@@ -45,7 +45,7 @@ module.exports = {
                             let imgError = false
 
                             try {
-                                headers = (await fetch(filtered.fileUrl, { method: 'HEAD' })).headers
+                                headers = await fetch(filtered.fileUrl, { method: 'HEAD' })
                             } catch (e) {
                                 imgError = true
                             }
