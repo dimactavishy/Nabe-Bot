@@ -1,6 +1,8 @@
-const path = require('path')
 const fetch = require('node-fetch')
 const Booru = require('booru')
+const Discord = require('discord.js')
+const { escapeMarkdown } = Discord.Util
+const path = require('path')
 const Color = `RANDOM`;
 module.exports = {
     info: {
@@ -9,6 +11,7 @@ module.exports = {
         cooldown: 30,
     },
     async execute(client, message, args, Discord) {
+        const fetch = require('node-fetch')
         const tag_query = args.join(' ');
 
         if (!message.content.includes('help')) {
@@ -34,8 +37,8 @@ module.exports = {
                     let tags =
                                 filtered.tags.join(', ').length < 50
                                     ? Discord.Util.escapeMarkdown(filtered.tags.join(', '))
-                                    : Discord.Util.escapeMarkdown(filtered.tags.join(', ').substr(0, 50)) +
-                                    `... [See All](https://giraffeduck.com/api/echo/?w=${Discord.Util
+                                    : Discord.Util.escapeMarkdown(filtered.tags.join(', ').substr(0, 50)) 
+                                    +  `... [See All](https://giraffeduck.com/api/echo/?w=${Discord.Util
                                         .escapeMarkdown(filtered.tags.join(',').replace(/(%20)/g, '_'))
                                         .replace(/([()])/g, '\\$1')
                                         .substring(0, 1200)})`
