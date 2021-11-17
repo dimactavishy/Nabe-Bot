@@ -1,3 +1,4 @@
+const fetch = require('node-fetch')
 const path = require('path')
 const Booru = require('booru')
 const Color = `RANDOM`;
@@ -8,7 +9,6 @@ module.exports = {
         cooldown: 30,
     },
     async execute(client, message, args, Discord) {
-        const fetch = require('node-fetch')
         const tag_query = args.join(' ');
 
         if (!message.content.includes('help')) {
