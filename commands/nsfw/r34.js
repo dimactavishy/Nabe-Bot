@@ -34,12 +34,14 @@ module.exports = {
                             message.channel.send(notfoundEmbed)
                         }
                     
-                    let tags =
-                                posts.tags.join(', ').length < 50
-                                    ? Discord.Util.escapeMarkdown(posts.tags.join(', '))
-                                    : Discord.Util.escapeMarkdown(posts.tags.join(', ').substr(0, 50)) 
-                                    +  `... [See All](https://giraffeduck.com/api/echo/?w=${Discord.Util
-                                        .escapeMarkdown(posts.tags.join(',').replace(/(%20)/g, '_'))
+                        for (let post of posts) {
+                            
+                            let tags =
+                                post.tags.join(', ').length < 50
+                                    ? Discord.Util.escapeMarkdown(post.tags.join(', '))
+                                    : Discord.Util.escapeMarkdown(post.tags.join(', ').substr(0, 50)) +
+                                    `... [See All](https://giraffeduck.com/api/echo/?w=${Discord.Util
+                                        .escapeMarkdown(post.tags.join(',').replace(/(%20)/g, '_'))
                                         .replace(/([()])/g, '\\$1')
                                         .substring(0, 1200)})`
 
@@ -48,7 +50,7 @@ module.exports = {
                             let imgError = false
 
                             try {
-                                headers = (await fetch(posts.fileUrl, { method: 'HEAD' })).headers
+                                headers = (await fetch(post.fileUrl, { method: 'HEAD' })).headers
                             } catch (e) {
                                 imgError = true
                             }
@@ -56,8 +58,6 @@ module.exports = {
                             if (headers) {
                                 tooBig = parseInt(headers.get('content-length'), 10) / 1000000 > 10
                             }
-                    
-                        for (let post of posts) {
 
                             embed_nsfw = new Discord.MessageEmbed()
                                 .setTitle('P-Pervert!')
@@ -66,7 +66,7 @@ module.exports = {
                                 .setDescription(`H-Here's something i found on rule34!\n` +
                                      `**Provided by:** Rule34.xxx | ` +
                                      `[**Booru Page**](${post.postView}) | ` +
-                                     `**Rating:** ${posts.rating}.toUpperCase() | ` +
+                                     `**Rating:** ${post.rating}.toUpperCase() | ` +
                                      `**File:** ${path.extname(post.fileUrl).toLowerCase()}, ${headers ? fileSizeSI(headers.get('content-length')) : '? kB'}\n` +
                                      `**Tags:** ${tags}` +
                                      (!['.jpg', '.jpeg', '.png', '.gif'].includes(
