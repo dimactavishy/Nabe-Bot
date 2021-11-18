@@ -13,12 +13,12 @@ module.exports = {
     if (!serverQueue)return message.reply("you have not ordered me to play anything yet.").then(msg => { msg.delete({ timeout: 5000 }) });
     serverQueue.connection.dispatcher.end("I'll gladly play music for you again, master!");
     message.react("✅")
-  },
-};
-try{
+    
+    try{
         command.execute(message, args, cmd, client, Discord);
     } catch (err){
-        message.reply("There was an error trying to execute this command.");
+        message.reply("I'm sorry, but i think i messed up a little bit...");
         console.log(err);
     }
-
+  },
+};
