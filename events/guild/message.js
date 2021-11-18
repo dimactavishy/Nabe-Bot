@@ -2,7 +2,8 @@ require('dotenv').config();
 const Discord = require('discord.js');
 const cooldowns = new Discord.Collection();
 
-module.exports = async (Discord, client, message) => {
+module.exports = {
+    async execute (Discord, client, message) => {
     if (message.author.bot) return;
   
     const prefix = message.content.includes("nabe ") ? "nabe " : "n!"
@@ -43,9 +44,9 @@ module.exports = async (Discord, client, message) => {
     time_stamps.set(message.author.id, current_time);
     //Delete the user's id once the cooldown is over.
     setTimeout(() => time_stamps.delete(message.author.id), cooldown_amount);
-
+    }
     try{
-        cmd.execute(message, args, cmd, client, Discord);
+        command.execute(message, args, cmd, client, Discord);
     } catch (err){
         message.reply("There was an error trying to execute this command.");
         console.log(err);
