@@ -15,8 +15,11 @@ module.exports = async (Discord, client, message) => {
     const cmd = client.commands.get(command) || client.commands.find(a => a.aliases && a.aliases.includes(cmd));
   
     if(message.channel.type === "dm")return message.channel.send("I am not able to serve you in your private quarters.")
+  
+    if(cmd){
+      cmd.execute(client, message, args, Discord);
+    }else return
 
-    //If cooldowns map doesn't have a command.name key then create one.
     if(!cooldowns.has(command.name)){
         cooldowns.set(command.name, new Discord.Collection());
     }
@@ -40,14 +43,6 @@ module.exports = async (Discord, client, message) => {
     time_stamps.set(message.author.id, current_time);
     //Delete the user's id once the cooldown is over.
     setTimeout(() => time_stamps.delete(message.author.id), cooldown_amount);
-
-  if(cmd){
-    try{
-        cmd.execute(message,args, cmd, client, Discord);
-    } catch (err){
-        message.reply("I'm sorry, but i think i messed up a little bit...");
-        console.log(err);
-    }
-  } else return
+    
 
 }
