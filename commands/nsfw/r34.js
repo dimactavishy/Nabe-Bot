@@ -63,19 +63,19 @@ module.exports = {
                                 .setTitle('P-Pervert!')
                                 .setColor('#FFC0CB')
                                 .setAuthor('Provided by Rule34.xxx', `https://rule34.xxx/favicon.png`, 'https://rule34.xxx')
-                                .setDescription(`H-Here's something i found on rule34!\n`
-                                    + `**Provided by:** Rule34.xxx | `,
-                                    + `[**Booru Page**](${post.postView}) | `,
-                                    + `**Rating:** ${posts.rating}.toUpperCase() | `,
-                                    + `**File:** ${path.extname(post.fileUrl).toLowerCase()}, ${headers ? fileSizeSI(headers.get('content-length')) : '? kB'}\n`,
-                                    + `**Tags:** ${tags}`,
-                                    + (!['.jpg', '.jpeg', '.png', '.gif'].includes(
+                                .setDescription(`H-Here's something i found on rule34!\n` +
+                                     `**Provided by:** Rule34.xxx | ` +
+                                     `[**Booru Page**](${post.postView}) | ` +
+                                     `**Rating:** ${posts.rating}.toUpperCase() | ` +
+                                     `**File:** ${path.extname(post.fileUrl).toLowerCase()}, ${headers ? fileSizeSI(headers.get('content-length')) : '? kB'}\n` +
+                                     `**Tags:** ${tags}` +
+                                     (!['.jpg', '.jpeg', '.png', '.gif'].includes(
                                         path.extname(post.fileUrl).toLowerCase(),  
                                     )       
                                         ? '`The file will probably not embed.`'
-                                        : ''),
-                                        + (tooBig ? '\n`The image is over 10MB and will not embed.`' : ''),
-                                        + (imgError ? '\n`I got an error while trying to get the image.`' : ''),
+                                        : '') +
+                                        + (tooBig ? '\n`The image is over 10MB and will not embed.`' : '') +
+                                         (imgError ? '\n`I got an error while trying to get the image.`' : ''),
                                 )
                                 .setThumbnail('https://media.discordapp.net/attachments/898563395807232061/907183711882199040/sketch-1636359767759.png?width=499&height=499')
                                 .setImage(post.sampleUrl)
