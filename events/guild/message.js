@@ -16,10 +16,6 @@ module.exports = async (Discord, client, message) => {
   
     if(message.channel.type === "dm")return message.channel.send("I am not able to serve you in your private quarters.")
   
-    if(cmd){
-      cmd.execute(client, message, args, Discord);
-    }else return
-
     if(!cooldowns.has(command.name)){
         cooldowns.set(command.name, new Discord.Collection());
     }
@@ -44,5 +40,9 @@ module.exports = async (Discord, client, message) => {
     //Delete the user's id once the cooldown is over.
     setTimeout(() => time_stamps.delete(message.author.id), cooldown_amount);
     
+    if(cmd){
+      cmd.execute(client, message, args, Discord);
+    }else return
+
 
 }
