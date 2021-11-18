@@ -2,7 +2,7 @@ require('dotenv').config();
 const Discord = require('discord.js');
 const cooldowns = new Map();
 
-module.exports.execute = async (Discord, client, message) => {
+module.exports = async (Discord, client, message) => {
     if (message.author.bot) return;
   
     const prefix = message.content.includes("nabe ") ? "nabe " : "n!"
@@ -10,9 +10,10 @@ module.exports.execute = async (Discord, client, message) => {
     if (message.content.indexOf(prefix) !== 0) return;
   
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
-    const command = args.shift().toLowerCase();
+    const cmd = args.shift().toLowerCase();
   
-    const cmd = client.commands.get(command) || client.commands.find(a => a.aliases && a.aliases.includes(cmd));
+    const command = client.commands.get(cmd) || 
+                    client.commands.find(a => a.aliases && a.aliases.includes(cmd));
   
     if(message.channel.type === "dm")return message.channel.send("I am not able to serve you in your private quarters.")
   
@@ -45,7 +46,7 @@ module.exports.execute = async (Discord, client, message) => {
     setTimeout(() => time_stamps.delete(message.author.id), cooldown_amount);
     
      try{
-        command.execute(message, args, cmd, client, Discord);
+        command.execute(client, message, args, cmd, Discord);
     } catch (err){
         message.reply("I'm sorry, but i think i messed up a little bit...");
         console.log(err);
