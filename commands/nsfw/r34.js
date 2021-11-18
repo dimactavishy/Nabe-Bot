@@ -62,7 +62,7 @@ module.exports = {
                             embed_nsfw = new Discord.MessageEmbed()
                                 .setTitle('P-Pervert!')
                                 .setColor('#FFC0CB')
-                                .setAuthor('Provided by Rule34.xxx', `https://www.${siteUrl}/favicon.ico`, 'https://rule34.xxx')
+                                .setAuthor('Provided by Rule34.xxx', `https://rule34.xxx/favicon.png`, 'https://rule34.xxx')
                                 .setDescription(`H-Here's something i found on rule34!\n`
                                     + `**Provided by:** Rule34.xxx | `,
                                     + `[**Booru Page**](${post.postView}) | `,
