@@ -73,7 +73,7 @@ module.exports = {
                                 .setTitle('P-Pervert!')
                                 .setColor('#FFC0CB')
                                 .setDescription(`H-Here's something i found on rule34!\n` +
-                                    `**Site:** Rule34.xxx | ` +
+                                    `**Rule34.xxx** | ` +
                                     `[**Booru Page**](${post.postView}) | ` +
                                     `**Rating:** ${post.rating.toUpperCase()} | ` +
                                     `**File:** ${path.extname(post.fileUrl).toUpperCase()}, ${headers ? fileSizeSI(headers.get('content-length')) : '? kB'}\n` +
