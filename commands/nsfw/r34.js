@@ -97,14 +97,14 @@ module.exports = {
 
                             if (!['.jpg', '.jpeg', '.png', '.gif'].includes(
                                 path.extname(post.fileUrl).toLowerCase())) {
-                                message.channel.send(`**The file is not embeddable, so i posted a link here instead.**/n`
+                                message.channel.send(`**The file is not embeddable, so i posted a link here instead.**\n`
                                 + post.fileUrl
                                )
                             }
 
                             if (tooBig && ['.jpg', '.jpeg', '.png', '.gif'].includes(
                                 path.extname(post.fileUrl).toLowerCase())) {
-                                message.channel.send(`**The file is over 10MB, so i posted the link here instead.**/n`
+                                message.channel.send(`**The file is over 10MB, so i posted the link here instead.**\n`
                                 + post.fileUrl
                                )
                             }
