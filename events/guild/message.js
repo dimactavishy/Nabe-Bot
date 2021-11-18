@@ -45,7 +45,7 @@ module.exports = async (Discord, client, message) => {
     setTimeout(() => time_stamps.delete(message.author.id), cooldown_amount);
 
     try{
-        command.execute(message,args, cmd, client, Discord);
+        cmd.execute(message, args, cmd, client, Discord);
     } catch (err){
         message.reply("There was an error trying to execute this command.");
         console.log(err);
