@@ -84,8 +84,7 @@ module.exports = {
                 + '**nowplaying** - Shows what song is currently playing.\n'
                 + '**pause** - Pause the current song.\n'
                 + '**resume** - Resumes the paused song. (broken)\n'
-                + '**volume** - Adjusts queue volume.\n'
-                + '**leave** - Leaves voice channel.\n\n'
+                + '**volume** - Adjusts queue volume.\n\n'
                 + '**Use `nabe <command> help` for more info.**\n\n'
 
             )
