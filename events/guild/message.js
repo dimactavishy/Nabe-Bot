@@ -1,5 +1,5 @@
 require('dotenv').config();
-
+const Discord = require('discord.js');
 const cooldowns = new Discord.Collection();
 
 module.exports = async (Discord, client, message) => {
