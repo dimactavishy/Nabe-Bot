@@ -77,11 +77,11 @@ module.exports = {
                                     `[**Booru Page**](${post.postView}) | ` +
                                     `**Rating:** ${post.rating.toUpperCase()} | ` +
                                     `**File:** ${path.extname(post.fileUrl).toUpperCase()}, ${headers ? fileSizeSI(headers.get('content-length')) : '? kB'}\n` +
-                                    `**Tags:** ${tags}` +
+                                    `**Tags:** ${tags}\n\n` +
                                     (!['.jpg', '.jpeg', '.png', '.gif'].includes(
                                         path.extname(post.fileUrl).toLowerCase(),
                                     )
-                                        ? '`The file will probably not embed.`'
+                                        ? '**`The file will probably not embed, so i will send a separate message instead.`**'
                                         : '') +
                                     (tooBig ? '\n`The image is over 10MB and will not embed.`' : '') +
                                     (imgError ? '\n`I got an error while trying to get the image.`' : ''),
