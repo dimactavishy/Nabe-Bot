@@ -1,4 +1,5 @@
 const { MessageEmbed } = require("discord.js");
+const Discord = require('discord.js');
 
 module.exports = {
   info: {
@@ -16,12 +17,14 @@ module.exports = {
     serverQueue.songs = [];
     serverQueue.connection.dispatcher.end("I'll gladly play music for you again, master!");
     message.react("✅")
-  }
-};
-try{
+    
+    try{
         command.execute(message, args, cmd, client, Discord);
     } catch (err){
-        message.reply("There was an error trying to execute this command.");
+        message.reply("I'm sorry, but i think i messed up a little bit...");
         console.log(err);
     }
+
+  }
+};
 
