@@ -1,20 +1,20 @@
 require('dotenv').config();
 const Discord = require('discord.js');
 const cooldowns = new Map();
-module.exports = (Discord, client, message) => {
+
+module.exports = async (Discord, client, message) => {
+    if (message.author.bot) return;
   
     const prefix = message.content.includes("nabe ") ? "nabe " : "n!"
   
-    if(!message.content.startsWith(prefix) || message.author.bot) return;
-    
-    if(message.channel.type === "dm") return message.channel.send("I am not able to serve you in your private quarters.")
+    if (message.content.indexOf(prefix) !== 0) return;
   
-    const args = message.content.slice(prefix.length).split(/ +/);
-    const cmd = args.shift().toLowerCase();
-
-    const command = client.commands.get(cmd) || 
-                    client.commands.find(a => a.aliases && a.aliases.includes(cmd));
-
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const command = args.shift().toLowerCase();
+  
+    const cmd = client.commands.get(command) || client.commands.find(a => a.aliases && a.aliases.includes(cmd));
+  
+    if(message.channel.type === "dm")return message.channel.send("I am not able to serve you in your private quarters.")
 
     //If cooldowns map doesn't have a command.name key then create one.
     if(!cooldowns.has(command.name)){
@@ -41,11 +41,13 @@ module.exports = (Discord, client, message) => {
     //Delete the user's id once the cooldown is over.
     setTimeout(() => time_stamps.delete(message.author.id), cooldown_amount);
 
+  if(cmd){
     try{
-        command.execute(message,args, cmd, client, Discord);
+        cmd.execute(message,args, cmd, client, Discord);
     } catch (err){
         message.reply("I'm sorry, but i think i messed up a little bit...");
         console.log(err);
     }
+  } else return
 
 }
