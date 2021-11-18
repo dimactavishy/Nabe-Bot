@@ -18,7 +18,7 @@ module.exports = async (Discord, client, message) => {
     if(message.channel.type === "dm")return message.channel.send("I am not able to serve you in your private quarters.")
   
     if(cmd){
-      cmd.execute(client, message, args, Discord);
+      command.execute(client, message, args, Discord);
     }else return
 
     if(!cooldowns.has(command.name)){
