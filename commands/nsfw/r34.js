@@ -26,8 +26,8 @@ module.exports = {
 
                 Booru.search('rule34.xxx', tag_query, { limit: 1, random: true })
                     .then(async posts => {
-                        const filtered = posts.blacklist(['furry', 'narberal_gamma', '3d'])
-                        if (filtered.length === 0) {
+                        /*const filtered = posts.blacklist(['furry', 'narberal_gamma', '3d'])*/
+                        if (posts.length === 0) {
                             const notfoundEmbed = new Discord.MessageEmbed()
                                 .setDescription("Sorry, i found no results for what you're looking for.")
                                 .setFooter("Are you sure you didn't do a typo?")
@@ -35,11 +35,11 @@ module.exports = {
                         }
                     
                     let tags =
-                                filtered.tags.join(', ').length < 50
-                                    ? Discord.Util.escapeMarkdown(filtered.tags.join(', '))
-                                    : Discord.Util.escapeMarkdown(filtered.tags.join(', ').substr(0, 50)) 
+                                posts.tags.join(', ').length < 50
+                                    ? Discord.Util.escapeMarkdown(posts.tags.join(', '))
+                                    : Discord.Util.escapeMarkdown(posts.tags.join(', ').substr(0, 50)) 
                                     +  `... [See All](https://giraffeduck.com/api/echo/?w=${Discord.Util
-                                        .escapeMarkdown(filtered.tags.join(',').replace(/(%20)/g, '_'))
+                                        .escapeMarkdown(posts.tags.join(',').replace(/(%20)/g, '_'))
                                         .replace(/([()])/g, '\\$1')
                                         .substring(0, 1200)})`
 
@@ -48,7 +48,7 @@ module.exports = {
                             let imgError = false
 
                             try {
-                                headers = (await fetch(filtered.fileUrl, { method: 'HEAD' })).headers
+                                headers = (await fetch(posts.fileUrl, { method: 'HEAD' })).headers
                             } catch (e) {
                                 imgError = true
                             }
@@ -63,18 +63,18 @@ module.exports = {
                                 .setTitle('P-Pervert!')
                                 .setColor('#FFC0CB')
                                 .setAuthor('Provided by Rule34.xxx', 'https://rule34.xxx/favicon.ico', 'https://rule34.xxx')
-                                .setDescription(`H-Here's something i found on rule34!`
+                                .setDescription(`H-Here's something i found on rule34!\n`
                                     + `**Provided by:** Rule34.xxx | `,
-                                    +`[**Booru Page**](${filtered.postView}) | `
-                                    + `**Rating:** ${filtered.rating}.toUpperCase() | `
-                                    + `**File:** ${path.extname(post.fileUrl).toLowerCase()}, ${headers ? fileSizeSI(headers.get('content-length')) : '? kB'}\n`
-                                    + `**Tags:** ${tags}`
+                                    +`[**Booru Page**](${posts.postView}) | `,
+                                    + `**Rating:** ${posts.rating}.toUpperCase() | `,
+                                    + `**File:** ${path.extname(post.fileUrl).toLowerCase()}, ${headers ? fileSizeSI(headers.get('content-length')) : '? kB'}\n`,
+                                    + `**Tags:** ${tags}`,
                                     + (!['.jpg', '.jpeg', '.png', '.gif'].includes(
                                         path.extname(post.fileUrl).toLowerCase(),  
                                     )       
                                         ? '`The file will probably not embed.`'
-                                        : '')
-                                        + (tooBig ? '\n`The image is over 10MB and will not embed.`' : '')
+                                        : ''),
+                                        + (tooBig ? '\n`The image is over 10MB and will not embed.`' : ''),
                                         + (imgError ? '\n`I got an error while trying to get the image.`' : ''),
                                 )
                                 .setThumbnail('https://media.discordapp.net/attachments/898563395807232061/907183711882199040/sketch-1636359767759.png?width=499&height=499')
