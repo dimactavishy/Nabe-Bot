@@ -20,28 +20,35 @@ module.exports = async (Discord, client, message) => {
       cmd.execute(client, message, args, Discord);
     }else return
 
- if (!cooldowns.has(command)) {
-    cooldowns.set(command, new Discord.Collection());
-  }
-
-  const now = Date.now();
-  const timestamps = cooldowns.get(command);
-  const cooldownAmount = 1 * 60 * 1000;
-
-  if (timestamps.has(message.author.id)) {
-    const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
-
-    if (now < expirationTime) {
-      const timeLeft = (expirationTime - now) / 1000;
-      return message.reply(`i am not a perfect maid, so please wait ${timeLeft.toFixed(1)} more second(s) before using the \`${command}\` command again.`).then(msg => { msg.delete({ timeout: 5000 }) });
+    if(!cooldowns.has(command.name)){
+        cooldowns.set(command.name, new Discord.Collection());
     }
-  }
 
-  timestamps.set(message.author.id, now);
-  setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
+    const current_time = Date.now();
+    const time_stamps = cooldowns.get(command.name);
+    const cooldown_amount = (command.cooldown) * 1000;
 
-  switch (command) {
-    default:
-      message.reply(`i'm sorry, but i do not recognize the \`${command}\` command.`);
-  }
-});
+    //If time_stamps has a key with the author's id then check the expiration time to send a message to a user.
+    if(time_stamps.has(message.author.id)){
+        const expiration_time = time_stamps.get(message.author.id) + cooldown_amount;
+
+        if(current_time < expiration_time){
+            const time_left = (expiration_time - current_time) / 1000;
+
+            return message.reply(`I have to admit that i am not a perfect maid. So please, be patience and wait **${time_left.toFixed(1)}** more seconds before telling me to do ${command.name} again.`).then(msg => { msg.delete({ timeout: 7000 }) });
+        }
+    }
+
+    //If the author's id is not in time_stamps then add them with the current time.
+    time_stamps.set(message.author.id, current_time);
+    //Delete the user's id once the cooldown is over.
+    setTimeout(() => time_stamps.delete(message.author.id), cooldown_amount);
+
+    try{
+        command.execute(message,args, cmd, client, Discord);
+    } catch (err){
+        message.reply("There was an error trying to execute this command.");
+        console.log(err);
+    }
+
+}
