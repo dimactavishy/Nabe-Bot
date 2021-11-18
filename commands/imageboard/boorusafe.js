@@ -1,4 +1,5 @@
 const Booru = require('booru')
+const Discord = require('discord.js')
 const Color = `RANDOM`;
 module.exports = {
     info: {
