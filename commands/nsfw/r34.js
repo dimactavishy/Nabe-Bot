@@ -92,7 +92,7 @@ module.exports = {
                                 .setTimestamp();
                             message.channel.send(embed_nsfw);
                             
-                            if(path.extname.includes(['mp4', '.webm'])){
+                            if(!path.extname.includes(['.jpg', '.jpeg', '.png', '.gif'])){
                                 message.channel.send(post.fileUrl)
                             }
                             
