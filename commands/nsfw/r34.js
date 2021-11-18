@@ -72,12 +72,12 @@ module.exports = {
                             embed_nsfw = new Discord.MessageEmbed()
                                 .setTitle('P-Pervert!')
                                 .setColor('#FFC0CB')
-                                .setAuthor('Provided by Rule34.xxx', `https://rule34.xxx/favicon.png`, 'https://rule34.xxx')
                                 .setDescription(`H-Here's something i found on rule34!\n` +
-                                    `**Provided by:** Rule34.xxx | ` +
+                                    `**Site:** Rule34.xxx | ` +
                                     `[**Booru Page**](${post.postView}) | ` +
-                                    `**Rating:** ${post.rating}.toUpperCase() | ` +
-                                    `**File:** ${path.extname(post.fileUrl).toLowerCase()}, ${headers ? fileSizeSI(headers.get('content-length')) : '? kB'}\n` +
+                                    `**Rating:** ${post.rating.toUpperCase()} | ` +
+                                    `**File:** ${path.extname(post.fileUrl).toLowerCase()}` + 
+                                    `**Size:** ${headers ? fileSizeSI(headers.get('content-length')) : '? kB'}\n` +
                                     `**Tags:** ${tags}` +
                                     (!['.jpg', '.jpeg', '.png', '.gif'].includes(
                                         path.extname(post.fileUrl).toLowerCase(),
