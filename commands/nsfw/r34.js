@@ -74,7 +74,7 @@ module.exports = {
                                 .setColor('#FFC0CB')
                                 .setDescription(`H-Here's something i found on rule34!\n` +
                                     `**Rule34.xxx** | ` +
-                                    `[**Booru Page**](${post.postView}) | ` +
+                                    `[𝗕𝗼𝗼𝗿𝘂 𝗣𝗮𝗴𝗲](${post.postView}) | ` +
                                     `**Rating:** ${post.rating.toUpperCase()} | ` +
                                     `**File:** ${path.extname(post.fileUrl).toUpperCase()}, ${headers ? fileSizeSI(headers.get('content-length')) : '? kB'}\n` +
                                     `**Tags:** ${tags}\n\n` +
@@ -86,8 +86,8 @@ module.exports = {
                                     (tooBig && ['.jpg', '.jpeg', '.png', '.gif'].includes(
                                         path.extname(post.fileUrl).toLowerCase(),
                                     )
-                                        ? '\n**`The image is over 10MB and will not be embeddable.`**\n' : '') +
-                                    (imgError ? '\n**`Sorry, but there was an error getting the file.\n`**' : ''),
+                                        ? '**`The image is over 10MB and will not be embeddable.`**\n' : '') +
+                                    (imgError ? '**`Sorry, but there was an error getting the file.\n`**' : ''),
                                 )
                                 .setThumbnail('https://media.discordapp.net/attachments/898563395807232061/907183711882199040/sketch-1636359767759.png?width=499&height=499')
                                 .setImage(post.fileUrl)
@@ -97,14 +97,14 @@ module.exports = {
 
                             if (!['.jpg', '.jpeg', '.png', '.gif'].includes(
                                 path.extname(post.fileUrl).toLowerCase())) {
-                                message.channel.send(`**The file is not embeddable, so i posted a link here instead.**\n`
+                                message.channel.send(`**The file is not embeddable, so here's the link instead:**\n`
                                 + post.fileUrl
                                )
                             }
 
                             if (tooBig && ['.jpg', '.jpeg', '.png', '.gif'].includes(
                                 path.extname(post.fileUrl).toLowerCase())) {
-                                message.channel.send(`**The file is over 10MB, so i posted the link here instead.**\n`
+                                message.channel.send(`**The file is over 10MB, so here's the link instead:**\n`
                                 + post.fileUrl
                                )
                             }
