@@ -92,13 +92,14 @@ module.exports = {
                                 .setTimestamp();
                             message.channel.send(embed_nsfw);
                             
-                            (!['.jpg', '.jpeg', '.png', '.gif'].includes(
-                                        path.extname(post.fileUrl).toLowerCase(),
-                                    )
-                                        ? message.channel.send(post.fileUrl)
-                                        : '') +
-                                    (tooBig ? message.channel.send(post.fileUrl) : '') +
-                                )
+                            if(path.extname.includes(['mp4', '.webm'])){
+                                message.channel.send(post.fileUrl)
+                            }
+                            
+                            if(tooBig){
+                                message.channel.send(post.fileUrl)
+                            }
+                            
                         }
                     })
             }
