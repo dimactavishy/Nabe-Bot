@@ -17,7 +17,6 @@ module.exports = {
     try{
         command.execute(message, args, cmd, client, Discord);
     } catch (err){
-        message.reply("I'm sorry, but i think i messed up a little bit...");
         console.log(err);
     }
   },
