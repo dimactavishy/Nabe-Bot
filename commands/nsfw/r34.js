@@ -67,10 +67,10 @@ module.exports = {
                                     + `**Provided by:** Rule34.xxx | `,
                                     +`[**Booru Page**](${filtered.postView}) | `
                                     + `**Rating:** ${filtered.rating}.toUpperCase() | `
-                                    + `**File:** ${path.extname(filtered.fileUrl).toLowerCase()}, ${headers ? fileSizeSI(headers.get('content-length')) : '? kB'}\n`
+                                    + `**File:** ${path.extname(post.fileUrl).toLowerCase()}, ${headers ? fileSizeSI(headers.get('content-length')) : '? kB'}\n`
                                     + `**Tags:** ${tags}`
                                     + (!['.jpg', '.jpeg', '.png', '.gif'].includes(
-                                        path.extname(filtered.fileUrl).toLowerCase(),  
+                                        path.extname(post.fileUrl).toLowerCase(),  
                                     )       
                                         ? '`The file will probably not embed.`'
                                         : '')
