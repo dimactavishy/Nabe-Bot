@@ -15,3 +15,10 @@ module.exports = {
     message.react("✅")
   },
 };
+try{
+        command.execute(message, args, cmd, client, Discord);
+    } catch (err){
+        message.reply("There was an error trying to execute this command.");
+        console.log(err);
+    }
+
