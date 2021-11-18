@@ -1,5 +1,6 @@
 const client = require('nekos.life');
 const Discord = require('discord.js')
+const { MessageEmbed } = require('discord.js');
 const neko = new client();
 
 module.exports = {
@@ -15,7 +16,7 @@ module.exports = {
 
         let Msg = await message.channel.send(ibloadEmbed);
         neko.sfw.neko().then(neko => {
-            const embed_sfw = new Discord.MessageEmbed()
+            const embed_sfw = new MessageEmbed()
                 .setTitle("Here's an image for you, master.")
                 .setColor('GREEN')
                 .setDescription(`Cats are indeed for petting, and i would love to pet one.`)
@@ -36,7 +37,7 @@ module.exports = {
 
         let Msg2 = await message.channel.send(ibloadEmbed);
         neko.sfw.nekoGif().then(nekoGif => {
-            const embed_sfw2 = new Discord.MessageEmbed()
+            const embed_sfw2 = new MessageEmbed()
                 .setTitle("Here's an image for you, master.")
                 .setColor('GREEN')
                 .setDescription(`Cats are indeed for petting, and i would love to pet one.`)
