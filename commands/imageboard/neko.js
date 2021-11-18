@@ -10,7 +10,7 @@ module.exports = {
 
     async execute(client, message, args, Discord) {
         if (!message.content.includes('gif')) {
-        const ibloadEmbed = new Discord.MessageEmbed()
+        const ibloadEmbed = new MessageEmbed()
             .setDescription(`Generating...`)
             .setTimestamp()
 
