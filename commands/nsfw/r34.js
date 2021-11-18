@@ -80,11 +80,10 @@ module.exports = {
                                     `**Tags:** ${tags}\n\n` +
                                     (!['.jpg', '.jpeg', '.png', '.gif'].includes(
                                         path.extname(post.fileUrl).toLowerCase(),
-                                    )
-                                        ? '**`The file is a video and will probably not embed.`**'
+                                    ) || tooBig
+                                        ? '**`The file is either a video or over 10MB and will probably not embed.`**'
                                         : '') +
-                                    (tooBig ? '\n**`The file is over 10MB and will probably not embed.`**' : '') +
-                                    (imgError ? '\n**`I got an error while trying to get the file.`**' : ''),
+                                    (imgError ? '\n**`Sorry, but there was an error getting the file.`**' : ''),
                                 )
                                 .setThumbnail('https://media.discordapp.net/attachments/898563395807232061/907183711882199040/sketch-1636359767759.png?width=499&height=499')
                                 .setImage(post.fileUrl)
@@ -94,7 +93,9 @@ module.exports = {
 
                             if (!['.jpg', '.jpeg', '.png', '.gif'].includes(
                                 path.extname(post.fileUrl).toLowerCase())) {
-                                message.channel.send(post.fileUrl)
+                                message.channel.send(`**The file is not embeddable, so i posted a link here instead.**`
+                                + post.fileUrl
+                               )
                             }
 
                             if (tooBig && ['.jpg', '.jpeg', '.png', '.gif'].includes(
