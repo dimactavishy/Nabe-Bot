@@ -14,6 +14,16 @@ module.exports = {
         const fetch = require('node-fetch')
         const tag_query = args.join(' ');
 
+        function fileSizeSI(a, b, c, d, e) {
+            return (
+                ((b = Math),
+                    (c = b.log),
+                    (d = 1e3),
+                    (e = (c(a) / c(d)) | 0),
+                    a / b.pow(d, e)).toFixed(0) + (e ? 'kMGTPEZY'[--e] + 'B' : ' Bytes')
+            )
+        }
+
         if (!message.content.includes('help')) {
             if (!message.content.includes('narberal_gamma')) {
                 const hornyEmbed = new Discord.MessageEmbed()
@@ -33,9 +43,9 @@ module.exports = {
                                 .setFooter("Are you sure you didn't do a typo?")
                             message.channel.send(notfoundEmbed)
                         }
-                    
+
                         for (let post of posts) {
-                            
+
                             let tags =
                                 post.tags.join(', ').length < 50
                                     ? Discord.Util.escapeMarkdown(post.tags.join(', '))
@@ -64,18 +74,18 @@ module.exports = {
                                 .setColor('#FFC0CB')
                                 .setAuthor('Provided by Rule34.xxx', `https://rule34.xxx/favicon.png`, 'https://rule34.xxx')
                                 .setDescription(`H-Here's something i found on rule34!\n` +
-                                     `**Provided by:** Rule34.xxx | ` +
-                                     `[**Booru Page**](${post.postView}) | ` +
-                                     `**Rating:** ${post.rating}.toUpperCase() | ` +
-                                     `**File:** ${path.extname(post.fileUrl).toLowerCase()}, ${headers ? fileSizeSI(headers.get('content-length')) : '? kB'}\n` +
-                                     `**Tags:** ${tags}` +
-                                     (!['.jpg', '.jpeg', '.png', '.gif'].includes(
-                                        path.extname(post.fileUrl).toLowerCase(),  
-                                    )       
+                                    `**Provided by:** Rule34.xxx | ` +
+                                    `[**Booru Page**](${post.postView}) | ` +
+                                    `**Rating:** ${post.rating}.toUpperCase() | ` +
+                                    `**File:** ${path.extname(post.fileUrl).toLowerCase()}, ${headers ? fileSizeSI(headers.get('content-length')) : '? kB'}\n` +
+                                    `**Tags:** ${tags}` +
+                                    (!['.jpg', '.jpeg', '.png', '.gif'].includes(
+                                        path.extname(post.fileUrl).toLowerCase(),
+                                    )
                                         ? '`The file will probably not embed.`'
                                         : '') +
-                                        + (tooBig ? '\n`The image is over 10MB and will not embed.`' : '') +
-                                         (imgError ? '\n`I got an error while trying to get the image.`' : ''),
+                                    (tooBig ? '\n`The image is over 10MB and will not embed.`' : '') +
+                                    (imgError ? '\n`I got an error while trying to get the image.`' : ''),
                                 )
                                 .setThumbnail('https://media.discordapp.net/attachments/898563395807232061/907183711882199040/sketch-1636359767759.png?width=499&height=499')
                                 .setImage(post.sampleUrl)
