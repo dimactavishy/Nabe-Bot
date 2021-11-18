@@ -1,5 +1,8 @@
-
+const fetch = require('node-fetch')
 const Booru = require('booru')
+const Discord = require('discord.js')
+const { escapeMarkdown } = Discord.Util
+const path = require('path')
 const Color = `RANDOM`;
 module.exports = {
     info: {
@@ -8,7 +11,19 @@ module.exports = {
         cooldown: 30,
     },
     async execute(client, message, args, Discord) {
+        const fetch = require('node-fetch')
         const tag_query = args.join(' ');
+
+        function fileSizeSI(a, b, c, d, e) {
+            return (
+                ((b = Math),
+                    (c = b.log),
+                    (d = 1e3),
+                    (e = (c(a) / c(d)) | 0),
+                    a / b.pow(d, e)).toFixed(0) + (e ? 'kMGTPEZY'[--e] + 'B' : ' Bytes')
+            )
+        }
+
         if (!message.content.includes('help')) {
             if (!message.content.includes('narberal_gamma')) {
                 const hornyEmbed = new Discord.MessageEmbed()
@@ -20,24 +35,80 @@ module.exports = {
                 if (!message.channel.nsfw) return message.channel.send(hornyEmbed)
 
                 Booru.search('rule34.paheal.net', tag_query, { limit: 1, random: true })
-                    .then(posts => {
+                    .then(async posts => {
+                        /*const filtered = posts.blacklist(['furry', 'narberal_gamma', '3d'])*/
                         if (posts.length === 0) {
                             const notfoundEmbed = new Discord.MessageEmbed()
                                 .setDescription("Sorry, i found no results for what you're looking for.")
                                 .setFooter("Are you sure you didn't do a typo?")
                             message.channel.send(notfoundEmbed)
                         }
+
                         for (let post of posts) {
+
+                            let tags =
+                                post.tags.join(', ').length < 50
+                                    ? Discord.Util.escapeMarkdown(post.tags.join(', '))
+                                    : Discord.Util.escapeMarkdown(post.tags.join(', ').substr(0, 50)) +
+                                    `... [See All](https://giraffeduck.com/api/echo/?w=${Discord.Util
+                                        .escapeMarkdown(post.tags.join(',').replace(/(%20)/g, '_'))
+                                        .replace(/([()])/g, '\\$1')
+                                        .substring(0, 1200)})`
+
+                            let headers
+                            let tooBig = false
+                            let imgError = false
+
+                            try {
+                                headers = (await fetch(post.fileUrl, { method: 'HEAD' })).headers
+                            } catch (e) {
+                                imgError = true
+                            }
+
+                            if (headers) {
+                                tooBig = parseInt(headers.get('content-length'), 10) / 1000000 > 10
+                            }
+
                             embed_nsfw = new Discord.MessageEmbed()
                                 .setTitle('P-Pervert!')
                                 .setColor('#FFC0CB')
-                                .setDescription(`H-Here's something i found on paheal!`)
-                                .addField(`Provided by Rule34.paheal.net`, `[Booru Page](${post.postView})`)
+                                .setDescription(`H-Here's something i found on paheal!\n` +
+                                    `**Rule34.paheal.net** | ` +
+                                    `[**Booru Page**](${post.postView}) | ` +
+                                    `**Rating:** ${post.rating.toUpperCase()} | ` +
+                                    `**File:** ${path.extname(post.fileUrl).toUpperCase()}, ${headers ? fileSizeSI(headers.get('content-length')) : '? kB'}\n` +
+                                    `**Tags:** ${tags}\n\n` +
+                                    (!['.jpg', '.jpeg', '.png', '.gif'].includes(
+                                        path.extname(post.fileUrl).toLowerCase(),
+                                    )
+                                        ? '**`The file is perhaps a video and will not be embeddable.`**\n'
+                                        : '') +
+                                    (tooBig && ['.jpg', '.jpeg', '.png', '.gif'].includes(
+                                        path.extname(post.fileUrl).toLowerCase(),
+                                    )
+                                        ? '\n**`The image is over 10MB and will not be embeddable.`**\n' : '') +
+                                    (imgError ? '\n**`Sorry, but there was an error getting the file.\n`**' : ''),
+                                )
                                 .setThumbnail('https://media.discordapp.net/attachments/898563395807232061/907183711882199040/sketch-1636359767759.png?width=499&height=499')
                                 .setImage(post.fileUrl)
                                 .setFooter('Egg-Shaped Battle Maid', 'https://images-ext-2.discordapp.net/external/l7-PY5Kkvta4_p-sOE0ftwQCmJ9iAe72eMPSTczuWi0/%3Fsize%3D512/https/cdn.discordapp.com/avatars/897674562265817088/e36ef03370367a4b3cd51b864e9df392.png?width=499&height=499')
                                 .setTimestamp();
                             message.channel.send(embed_nsfw);
+
+                            if (!['.jpg', '.jpeg', '.png', '.gif'].includes(
+                                path.extname(post.fileUrl).toLowerCase())) {
+                                message.channel.send(`**The file is not embeddable, so i posted a link here instead.**\n`
+                                + post.fileUrl
+                               )
+                            }
+
+                            if (tooBig && ['.jpg', '.jpeg', '.png', '.gif'].includes(
+                                path.extname(post.fileUrl).toLowerCase())) {
+                                message.channel.send(`**The file is over 10MB, so i posted the link here instead.**\n`
+                                + post.fileUrl
+                               )
+                            }
+
                         }
                     })
             }
@@ -59,5 +130,3 @@ module.exports = {
         }
     }
 }
-
-
