@@ -74,7 +74,7 @@ module.exports = {
                                 .setColor('#FFC0CB')
                                 .setDescription(`H-Here's something i found on paheal!\n` +
                                     `**Rule34.paheal.net** | ` +
-                                    `[𝗕𝗼𝗼𝗿𝘂 𝗣𝗮𝗴𝗲](${post.postView}) | ` +
+                                    `[**Booru Page**](${post.postView}) | ` +
                                     `**Rating:** ${post.rating.toUpperCase()} | ` +
                                     `**File:** ${path.extname(post.fileUrl).toUpperCase()}, ${headers ? fileSizeSI(headers.get('content-length')) : '? kB'}\n` +
                                     `**Tags:** ${tags}\n\n` +
