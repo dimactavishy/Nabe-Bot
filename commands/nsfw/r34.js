@@ -66,7 +66,7 @@ module.exports = {
                             }
 
                             if (headers) {
-                                tooBig = parseInt(headers.get('content-length'), 10) / 1000000 > 10
+                                tooBig = parseInt(headers.get('content-length'), 50) / 1000000 > 10
                             }
 
                             embed_nsfw = new Discord.MessageEmbed()
@@ -86,7 +86,7 @@ module.exports = {
                                     (tooBig && ['.jpg', '.jpeg', '.png', '.gif'].includes(
                                         path.extname(post.fileUrl).toLowerCase(),
                                     )
-                                        ? '**`The image is over 10MB and will not be embeddable.`**\n' : '') +
+                                        ? '**`The image is over 50MB and will not be embeddable.`**\n' : '') +
                                     (imgError ? '**`Sorry, but there was an error getting the file.\n`**' : ''),
                                 )
                                 .setThumbnail('https://media.discordapp.net/attachments/898563395807232061/907183711882199040/sketch-1636359767759.png?width=499&height=499')
