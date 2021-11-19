@@ -74,7 +74,7 @@ module.exports = {
                                 .setColor('#FFC0CB')
                                 .setDescription(`H-Here's something i found on rule34!\n` +
                                     `**Rule34.xxx** | ` +
-                                    `[𝗕𝗼𝗼𝗿𝘂 𝗣𝗮𝗴𝗲](${post.postView}) | ` +
+                                    `[**Booru Page**](${post.postView}) | ` +
                                     `**Rating:** ${post.rating.toUpperCase()} | ` +
                                     `**File:** ${path.extname(post.fileUrl).toUpperCase()}, ${headers ? fileSizeSI(headers.get('content-length')) : '? kB'}\n` +
                                     `**Tags:** ${tags}\n\n` +
