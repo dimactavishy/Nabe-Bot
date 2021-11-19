@@ -107,7 +107,7 @@ module.exports = {
 
                             if (tooBig && ['.jpg', '.jpeg', '.png', '.gif'].includes(
                                 path.extname(post.fileUrl).toLowerCase())) {
-                                message.channel.send(`*The file is over 10MB, so here's the link instead:*\n`
+                                message.channel.send(`*The file is over 50MB, so here's the link instead:*\n`
                                 + post.fileUrl
                                )
                             }
