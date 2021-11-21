@@ -40,13 +40,6 @@ module.exports = async (Discord, client, message) => {
     //Delete the user's id once the cooldown is over.
     setTimeout(() => time_stamps.delete(message.author.id), cooldown_amount);
     
-    try{
-        command.execute(message,args, cmd, client, Discord);
-    } catch (err){
-        message.reply("There was an error trying to execute this command!");
-        console.log(err);
-    }
-    
     if(cmd){
          try{
              cmd.execute(client, message, args, Discord);
