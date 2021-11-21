@@ -14,10 +14,5 @@ module.exports = {
     serverQueue.connection.dispatcher.end("I'll gladly play music for you again, master!");
     message.react("✅")
     
-    try{
-        command.execute(message, args, cmd, client, Discord);
-    } catch (err){
-        console.log(err);
-    }
   },
 };
