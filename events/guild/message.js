@@ -31,10 +31,8 @@ module.exports = async (Discord, client, message) => {
         if(current_time < expiration_time){
             const time_left = (expiration_time - current_time) / 1000;
 
-            const waitEmbed = new Discord.MessageEmbed
-            .setTitle(`I have to admit that i am not a perfect maid.`)
-            .setDescription(`So please, be patient and wait **${time_left.toFixed(1)}** before telling me to do `${cmd.name}` again.`)
-            return message.reply(waitEmbed).then(msg => { msg.delete({ timeout: 10000 }) });
+            return message.reply(`I have to admit that i am not a perfect maid.\n`
+            + `So please, be patient and wait **${time_left.toFixed(1)}** before telling me to do **${cmd.name}** again.`).then(msg => { msg.delete({ timeout: 10000 }) });
         }
     }
 
