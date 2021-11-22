@@ -75,7 +75,7 @@ fs.readdir("./commands/moderation", (err, files) => {
     console.log("Loading Commands: " + commandName)
   });
 });
-fs.readdir("./commands/music", (err, files) => {
+/*fs.readdir("./commands/music", (err, files) => {
   if (err) return console.error(err);
   files.forEach((file) => {
     if (!file.endsWith(".js")) return;
@@ -84,7 +84,7 @@ fs.readdir("./commands/music", (err, files) => {
     client.commands.set(commandName, props);
     console.log("Loading Commands: " + commandName)
   });
-});
+});*/
 fs.readdir("./commands/nsfw", (err, files) => {
   if (err) return console.error(err);
   files.forEach((file) => {
