@@ -8,24 +8,31 @@ client.commands = new Discord.Collection();
 client.events = new Discord.Collection();
 client.queue = new Map()
 
-fs.readdir(__dirname + "./events/", (err, files) => {
+fs.readdir("./events/", (err, files) => {
   if (err) return console.error(err);
   files.forEach((file) => {
-    const event = require(__dirname + `/events/${file}`);
+    const event = require(`/events/${file}`);
     let eventName = file.split(".")[0];
     client.on(eventName, event.bind(null, client));
     console.log("Loading Event: " + eventName)
   });
 });
-
-fs.readdir("./commands/funstuff", (err, files) => {
+fs.readdir("./events/client", (err, files) => {
   if (err) return console.error(err);
   files.forEach((file) => {
-    if (!file.endsWith(".js")) return;
-    let props = require(`./commands/funstuff/${file}`);
-    let commandName = file.split(".")[0];
-    client.commands.set(commandName, props);
-    console.log("Loading Commands: " + commandName)
+    const event = require(`/events/guild/${file}`);
+    let clientName = file.split(".")[0];
+    client.on(clientName, event.bind(null, client));
+    console.log("Loading Client: " + clientName)
+  });
+});
+fs.readdir("./events/guild", (err, files) => {
+  if (err) return console.error(err);
+  files.forEach((file) => {
+    const event = require(`/events/guild/${file}`);
+    let guildName = file.split(".")[0];
+    client.on(guildName, event.bind(null, client));
+    console.log("Loading Guild: " + guildName)
   });
 });
 fs.readdir("./commands/functionalities", (err, files) => {
