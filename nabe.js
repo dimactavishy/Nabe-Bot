@@ -8,7 +8,7 @@ client.commands = new Discord.Collection();
 client.events = new Discord.Collection();
 client.queue = new Map()
 
-fs.readdir("Nabe-Bot/events/", (err, files) => {
+fs.readdir(__dirname + "./events/", (err, files) => {
   if (err) return console.error(err);
   files.forEach((file) => {
     const event = require(__dirname + `/events/${file}`);
@@ -24,6 +24,15 @@ fs.readdir(__dirname + "./events/guild", (err, files) => {
     let guildName = file.split(".")[0];
     client.on(guildName, event.bind(null, client));
     console.log("Loading Event: " + guildName)
+  });
+});
+fs.readdir(__dirname + "./events/client", (err, files) => {
+  if (err) return console.error(err);
+  files.forEach((file) => {
+    const client = require(__dirname + `/events/client/${file}`);
+    let clientName = file.split(".")[0];
+    client.on(guildName, event.bind(null, client));
+    console.log("Loading Event: " + clientName)
   });
 });
 fs.readdir("./commands/funstuff", (err, files) => {
