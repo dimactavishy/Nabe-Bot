@@ -20,7 +20,7 @@ fs.readdir("./events/", (err, files) => {
 fs.readdir("./events/client", (err, files) => {
   if (err) return console.error(err);
   files.forEach((file) => {
-    const event = require(`/events/guild/${file}`);
+    const event = require(`/events/client/${file}`);
     let clientName = file.split(".")[0];
     client.on(clientName, event.bind(null, client));
     console.log("Loading Client: " + clientName)
