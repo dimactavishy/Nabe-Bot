@@ -8,7 +8,7 @@ client.commands = new Discord.Collection();
 client.events = new Discord.Collection();
 client.queue = new Map()
 
-fs.readdir(__dirname + "./events/", (err, files) => {
+fs.readdir(__dirname + "/events/", (err, files) => {
   if (err) return console.error(err);
   files.forEach((file) => {
     const event = require(__dirname + `/events/${file}`);
@@ -17,7 +17,7 @@ fs.readdir(__dirname + "./events/", (err, files) => {
     console.log("Loading Event: " + eventName)
   });
 });
-fs.readdir(__dirname + "./events/guild", (err, files) => {
+fs.readdir(__dirname + "/events/guild", (err, files) => {
   if (err) return console.error(err);
   files.forEach((file) => {
     const guild = require(__dirname + `/events/guild/${file}`);
@@ -26,7 +26,7 @@ fs.readdir(__dirname + "./events/guild", (err, files) => {
     console.log("Loading Event: " + guildName)
   });
 });
-fs.readdir(__dirname + "./events/client", (err, files) => {
+fs.readdir(__dirname + "/events/client", (err, files) => {
   if (err) return console.error(err);
   files.forEach((file) => {
     const client = require(__dirname + `/events/client/${file}`);
