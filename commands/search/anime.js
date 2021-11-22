@@ -23,7 +23,7 @@ module.exports = {
         .setDescription(`Please wait...`)
         .setTimestamp()
 
-      let Msg = await message.channel.send(animeloadEmbed).then(msg => { msg.delete({ timeout: 5000 }) });
+      let Msg = await message.channel.send(animeloadEmbed)
 
       let Replaced = Text.replace(/ +/g, " ");
 
@@ -54,8 +54,10 @@ module.exports = {
 
       } catch (error) {
         return message.channel.send(`Unfortunately, i couldn't find what you're looking for.`).then(msg => { msg.delete({ timeout: 5000 }) });
+        await Msg.delete();
       };
       message.channel.send(Embed);
+       await Msg.delete();
     
     }
 
