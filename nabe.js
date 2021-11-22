@@ -8,7 +8,7 @@ client.commands = new Discord.Collection();
 client.events = new Discord.Collection();
 client.queue = new Map()
 
-fs.readdir(__dirname + "./events/", (err, files) => {
+fs.readdir("Nabe-Bot/events/", (err, files) => {
   if (err) return console.error(err);
   files.forEach((file) => {
     const event = require(__dirname + `/events/${file}`);
