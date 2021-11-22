@@ -84,7 +84,7 @@ fs.readdir("./commands/moderation", (err, files) => {
     client.commands.set(commandName, props);
     console.log("Loading Commands: " + commandName)
   });
-});*/
+});*/ 
 fs.readdir("./commands/nsfw", (err, files) => {
   if (err) return console.error(err);
   files.forEach((file) => {
