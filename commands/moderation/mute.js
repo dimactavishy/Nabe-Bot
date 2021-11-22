@@ -6,7 +6,7 @@ module.exports = {
         
         const target = message.mentions.users.first();
         if (!message.content.includes('help'))
-        if (message.member.hasPermission('KICK_MEMBERS')) {
+        if (message.member.hasPermission('MUTE_MEMBERS')) {
         if (target) {
             let mainRole = message.guild.roles.cache.find(role => role.name === 'Verified');
             let muteRole = message.guild.roles.cache.find(role => role.name === 'Muted');
