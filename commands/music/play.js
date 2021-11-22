@@ -105,7 +105,7 @@ module.exports = {
       channel.guild.voice.setSelfDeaf(true)
       play(queueConstruct.songs[0]);
     } catch (error) {
-      console.error(`Sorry, i was confused there for a moment. ${error}`).then(msg => { msg.delete({ timeout: 5000 }) });
+      console.error(`Sorry, i was confused there for a moment. ${error}`)
       message.client.queue.delete(message.guild.id);
       await channel.leave();
       return message.channel.send(`Sorry, i was confused there for a moment. ${error}`).then(msg => { msg.delete({ timeout: 5000 }) });
