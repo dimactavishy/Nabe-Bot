@@ -53,8 +53,8 @@ module.exports = {
           .setTimestamp();
 
       } catch (error) {
-        return message.channel.send(`Unfortunately, i couldn't find what you're looking for.`).then(msg => { msg.delete({ timeout: 5000 }) });
         await Msg.delete();
+        return message.channel.send(`Unfortunately, i couldn't find what you're looking for.`).then(msg => { msg.delete({ timeout: 5000 }) });
       };
       message.channel.send(Embed);
        await Msg.delete();
