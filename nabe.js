@@ -17,7 +17,7 @@ fs.readdir("./events/", (err, files) => {
     console.log("Loading Event: " + eventName)
   });
 });
-fs.readdir("./events/client", (err, files) => {
+/*fs.readdir("./events/client", (err, files) => {
   if (err) return console.error(err);
   files.forEach((file) => {
     const event = require(`/events/client/${file}`);
@@ -25,7 +25,7 @@ fs.readdir("./events/client", (err, files) => {
     client.on(clientName, event.bind(null, client));
     console.log("Loading Client: " + clientName)
   });
-});
+});*/
 fs.readdir("./events/guild", (err, files) => {
   if (err) return console.error(err);
   files.forEach((file) => {
