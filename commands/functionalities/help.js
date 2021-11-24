@@ -228,13 +228,13 @@ module.exports = {
                 .setColor("YELLOW")
                 .setDescription(`
 Name: 
-**\`\`${command.info.name}\`\`**
+**${command.info.name}**
 Description: 
-\`\`${command.info.description}\`\`
+**${command.info.description}**
 Usage: 
-\`\`${client.config.prefix}${command.info.name} ${command.info.usage}\`\`
+**${client.config.prefix}${command.info.name} ${command.info.usage}**
 Cooldown: 
-\`\`${command.info.cooldown} seconds\`\`
+**${command.info.cooldown} seconds**
 `)
             message.channel.send(commandinfo)
         }
