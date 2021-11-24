@@ -2,10 +2,12 @@ const client = require('nekos.life');
 const neko = new client();
 
 module.exports = {
-    name: 'hsolo',
-    cooldown: 30,
-    description: "bokep solo",
-
+    info: {
+        name: "hsolo",
+        description: `Sends a lewd image with a solo-girl.`,
+        usage: "[optional 'gif']",
+        cooldown: 10,
+    },
     async execute(client, message, args, Discord) {
         if (!message.content.includes('gif')) {
             const hornyEmbed = new Discord.MessageEmbed()

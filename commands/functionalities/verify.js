@@ -1,6 +1,10 @@
 module.exports = {
-    name: 'verify',
-    description: "Verify yourself.",
+    info: {
+        name: "verify",
+        description: "Use this command if you seek to verify yourself.",
+        usage: "",
+        cooldown: 600,
+    },
     execute(client, message, args, Discord) {
 
 

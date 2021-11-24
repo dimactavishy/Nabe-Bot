@@ -2,10 +2,12 @@ const client = require('nekos.life');
 const neko = new client();
 
 module.exports = {
-    name: 'hketa',
-    cooldown: 30,
-    description: "bokep anak-anak",
-
+    info: {
+        name: "gasm",
+        description: "Sends a picture of a gasming face.",
+        usage: "",
+        cooldown: 10,
+    },
     async execute(client, message, args, Discord) {
         const hornyEmbed = new Discord.MessageEmbed()
         .setTitle('No lewding here!')
@@ -20,14 +22,14 @@ module.exports = {
 
         let Msg = await message.channel.send(heloadEmbed);
 
-        neko.nsfw.keta().then(keta => {
+        neko.nsfw.gasm().then(gasm => {
             const embed_nsfw = new Discord.MessageEmbed()
                 .setTitle('P-Pervert!')
                 .setColor('#FFC0CB')
-                .setDescription(`It's a good looking piece.`)
-                .addField(`Provided by Nekos.life`, `[Full-Res Image](${keta.url})`)
+                .setDescription(`Why are they making those faces?`)
+                .addField(`Provided by Nekos.life`, `[Full-Res Image](${gasm.url})`)
                 .setThumbnail('https://media.discordapp.net/attachments/898563395807232061/907183711882199040/sketch-1636359767759.png?width=499&height=499')
-                .setImage(keta.url)
+                .setImage(gasm.url)
                 .setFooter('Egg-Shaped Battle Maid', 'https://images-ext-2.discordapp.net/external/l7-PY5Kkvta4_p-sOE0ftwQCmJ9iAe72eMPSTczuWi0/%3Fsize%3D512/https/cdn.discordapp.com/avatars/897674562265817088/e36ef03370367a4b3cd51b864e9df392.png?width=499&height=499')
                 .setTimestamp();
 

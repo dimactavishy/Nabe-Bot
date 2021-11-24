@@ -1,8 +1,12 @@
 const Discord = require("discord.js")
 
 module.exports = {
-    name: 'help',
-    description: "help embed",
+    info: {
+        name: "help",
+        description: "A help for those who doesn't know.",
+        usage: "[command]",
+        cooldown: 10,
+    },
     async execute(client, message, args, Discord) {
 
         var allcmds = "";
@@ -40,7 +44,7 @@ module.exports = {
                 + '**info** - Sends the information embed.\n'
                 + '**invite** - Sends the bot invite link.\n'
                 + '**verify** - Verifies a user. ("Verified" role needed)\n\n'
-                + '**Use `nabe <command> help` for more info.**\n\n'
+                + '**Use `nabe help <command>` for more info.**\n\n'
 
             )
             .setThumbnail('https://media.discordapp.net/attachments/898563395807232061/898834471518896138/sketch-1634369214306.png?width=499&height=499')
@@ -57,7 +61,7 @@ module.exports = {
                 + '**clear** - Clears a specified amount of messages.\n'
                 + '**mute** - Mutes a user in text channels.\n'
                 + '**unmute** - Unmutes a user in text channels.\n\n'
-                + '**Use `nabe <command> help` for more info.**\n\n'
+                + '**Use `nabe help <command>` for more info.**\n\n'
 
             )
             .setThumbnail('https://media.discordapp.net/attachments/898563395807232061/898834471518896138/sketch-1634369214306.png?width=499&height=499')
@@ -72,7 +76,7 @@ module.exports = {
                 + '**anime** - Returns an anime entry from MyAnimeList\n'
                 + '**mcserver** - Returns an Minecraft server status.\n'
                 + '**pic** - Returns an image based on a query (disabled)\n\n'
-                + '**Use `nabe <command> help` for more info.**\n\n'
+                + '**Use `nabe help <command>` for more info.**\n\n'
 
             )
             .setThumbnail('https://media.discordapp.net/attachments/898563395807232061/898834471518896138/sketch-1634369214306.png?width=499&height=499')
@@ -92,7 +96,7 @@ module.exports = {
                 + '**pause** - Pause the current song.\n'
                 + '**resume** - Resumes the paused song. (broken)\n'
                 + '**volume** - Adjusts queue volume.\n\n'
-                + '**Use `nabe <command> help` for more info.**\n\n'
+                + '**Use `nabe help <command>` for more info.**\n\n'
 
             )
             .setThumbnail('https://media.discordapp.net/attachments/898563395807232061/898834471518896138/sketch-1634369214306.png?width=499&height=499')
@@ -123,7 +127,7 @@ module.exports = {
                 + '**waifu** - Returns a randomly-generated waifu image.\n'
                 + '**pfp** - Returns a random avatar/PFP image. (`lewd` is optional.)\n'
                 + '**wallpaper** - Returns a wallpaper image.\n\n'
-                + '**Use `nabe <command> help` for more info.**\n\n'
+                + '**Use `nabe help <command>` for more info.**\n\n'
 
             )
             .setThumbnail('https://media.discordapp.net/attachments/898563395807232061/898834471518896138/sketch-1634369214306.png?width=499&height=499')
@@ -150,7 +154,7 @@ module.exports = {
                 + '**hyuri** - Returns a an image of two girls doing lewd stuff.\n'
                 + '**hfeet** - Returns a lewd feet image/GIF.\n'
                 + '**hneko** - Returns a lewd catgirl image/GIF.\n\n'
-                + '**Use `nabe <command> help` for more info.**\n\n'
+                + '**Use `nabe help <command>` for more info.**\n\n'
 
             )
             .setThumbnail('https://media.discordapp.net/attachments/898563395807232061/898834471518896138/sketch-1634369214306.png?width=499&height=499')
@@ -166,7 +170,7 @@ module.exports = {
                 + '**ping** - Just a normal "Ping-Pong" command.\n'
                 + '**bobok** - Sleep well. (Command is in ID)\n'
                 + '**wibu** - Gains the "Wibu" role. (Command is in ID)\n\n'
-                + '**Use `nabe <command> help` for more info.**\n\n'
+                + '**Use `nabe help <command>` for more info.**\n\n'
             )
             .setThumbnail('https://media.discordapp.net/attachments/898563395807232061/898834471518896138/sketch-1634369214306.png?width=499&height=499')
             .setFooter('Egg-Shaped Battle Maid', 'https://images-ext-2.discordapp.net/external/l7-PY5Kkvta4_p-sOE0ftwQCmJ9iAe72eMPSTczuWi0/%3Fsize%3D512/https/cdn.discordapp.com/avatars/897674562265817088/e36ef03370367a4b3cd51b864e9df392.png?width=499&height=499')
@@ -226,7 +230,7 @@ module.exports = {
 Name: ${command.info.name}
 Description: ${command.info.description}
 Usage: \`\`${client.config.prefix}${command.info.name} ${command.info.usage}\`\`
-Aliases: ${command.info.aliases.join(", ")}
+Cooldown: \`\`${command.info.cooldown} seconds\`\`
 `)
             message.channel.send(commandinfo)
         }

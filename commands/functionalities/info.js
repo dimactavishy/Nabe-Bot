@@ -1,7 +1,10 @@
 module.exports = {
-    name: 'info',
-    cooldown: 30,
-    description: "info embed",
+    info: {
+        name: "info",
+        description: "Information about me.",
+        usage: "",
+        cooldown: 10,
+    },
     execute(client, message, args, Discord) {
 
         const infoEmbed = new Discord.MessageEmbed()

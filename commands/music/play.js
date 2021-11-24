@@ -5,8 +5,9 @@ const yts = require("yt-search");
 module.exports = {
   info: {
     name: "play",
-    description: "To play songs :D",
-    usage: "<song_name>",
+    description: "To play songs",
+    usage: "[query/song name]",
+    cooldown: 0,
   },
 
   execute: async function (client, message, args, Discord) {

@@ -2,10 +2,12 @@ const client = require('nekos.life');
 const neko = new client();
 
 module.exports = {
-    name: 'hkemono',
-    cooldown: 30,
-    description: "bokep hewan(bukan furry)",
-
+    info: {
+        name: "hkemono",
+        description: `Sends a lewd image of a [Kemono](https://en.wikipedia.org/wiki/Moe_anthropomorphism#Animals) girl.`,
+        usage: "",
+        cooldown: 10,
+    },
     async execute(client, message, args, Discord) {
         const hornyEmbed = new Discord.MessageEmbed()
         .setTitle('No lewding here!')

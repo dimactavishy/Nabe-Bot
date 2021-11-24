@@ -1,6 +1,10 @@
 module.exports = {
-    name: 'invite',
-    description: "invite command.",
+    info: {
+        name: "invite",
+        description: "Invite me to your server.",
+        usage: "",
+        cooldown: 10,
+    },
     execute(client, message, args, Discord) {
 
         const inviteEmbed = new Discord.MessageEmbed()

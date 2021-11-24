@@ -3,10 +3,12 @@ const Discord = require('discord.js')
 const neko = new client();
 
 module.exports = {
-    name: 'kemonomimi',
-    cooldown: 30,
-    description: "",
-
+    info: {
+        name: "kemono",
+        description: `Sends a picture of a [Kemono](https://en.wikipedia.org/wiki/Moe_anthropomorphism#Animals) girl.`,
+        usage: "",
+        cooldown: 10,
+    },
     async execute(client, message, args, Discord) {
         const ibloadEmbed = new Discord.MessageEmbed()
             .setDescription(`Generating...`)

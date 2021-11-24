@@ -5,6 +5,7 @@ module.exports = {
     name: "pause",
     description: "To pause the current music in the server",
     usage: "",
+    cooldown: 0,
   },
 
   execute: async function (client, message, args) {

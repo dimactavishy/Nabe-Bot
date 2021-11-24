@@ -2,10 +2,12 @@ const client = require('nekos.life');
 const neko = new client();
 
 module.exports = {
-    name: 'htrap',
-    cooldown: 30,
-    description: "bokep banci",
-
+    info: {
+        name: "htrap",
+        description: `Sends a lewd image of a [Trap.](https://knowyourmeme.com/memes/trap)`,
+        usage: "",
+        cooldown: 10,
+    },
     async execute(client, message, args, Discord) {
         const hornyEmbed = new Discord.MessageEmbed()
         .setTitle('No lewding here!')

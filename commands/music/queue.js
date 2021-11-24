@@ -5,6 +5,7 @@ module.exports = {
     name: "queue",
     description: "To show the server songs queue",
     usage: "",
+    cooldown: 0,
   },
 
   execute: async function (client, message, args) {

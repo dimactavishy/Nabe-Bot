@@ -1,6 +1,10 @@
 module.exports = {
-    name: 'bobok',
-    description: "command bobok",
+    info: {
+        name: "bobok",
+        description: "An inside joke between my creator's friends. Command is in ID.",
+        usage: "",
+        cooldown: 5,
+    },
     execute(client, message, args, Discord) {
         
         if(message.author.id === '291847323217297418') {

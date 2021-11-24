@@ -5,6 +5,7 @@ module.exports = {
     name: "resume",
     description: "To resume the paused music",
     usage: "",
+    cooldown: 0,
   },
 
   execute: async function (client, message, args) {

@@ -1,11 +1,13 @@
 const util = require('minecraft-server-util');
 
 module.exports = {
-    name: 'mcserver',
-    cooldown: 20,
-    description: 'check mc server',
+    info: {
+        name: "mcserver",
+        description: "I will send the status of a Minecraft server.",
+        usage: "[IP] [port (default it 25565)]",
+        cooldown: 20,
+    },
     execute(client, message, args, Discord) {
-        if (!message.content.includes('help')){
             if (!args[0]) return message.reply('i do not understand. Perhaps you are missing something called "IP"?').then(msg => { msg.delete({ timeout: 5000 }) });
         if (!args[1]) return message.reply('i... think you forgot to specify a port. My creator said the default is 25565?').then(msg => { msg.delete({ timeout: 5000 }) });
 
@@ -31,12 +33,6 @@ module.exports = {
                 message.reply('apologies! I could not find the "Minecraft" server that you are looking for.').then(msg => { msg.delete({ timeout: 5000 }) });
                 throw error;
             })
-        }
-        if (message.content.includes('help')) {
-            const helpEmbed = new Discord.MessageEmbed()
-                .addField('Returns a Minecraft server status.', '`nabe mcserver <ip> <port>`')
-                .setFooter('Example: nabe mcserver nabemc.net 25565')
-            message.channel.send(helpEmbed)
-        }
+        
     }
 }

@@ -6,15 +6,14 @@ const Scraper = require("mal-scraper"); //npm i mal-scraper
 module.exports = {
   info: {
     name: "anime",
-    cooldown: "30",
-    description: "",
-    usage: "",
-  },
+    description: `I will send an information about an anime. Powered by [MAL.](https://myanimelist.net/)`,
+    usage: "[query (separate with spaces)]",
+    cooldown: 20,
+},
 
   execute: async function (client, message, args) {
 
     let Text = args.join(" ");
-    if (!message.content.includes('help')) {
       if (!Text) return message.channel.send(`Please Give Something!`);
 
       if (Text.length > 200) return message.channel.send(`Text Limit - 200`);
@@ -59,13 +58,5 @@ module.exports = {
       message.channel.send(Embed);
        await Msg.delete();
     
-    }
-
-    if (message.content.includes('help')) {
-      const helpEmbed = new Discord.MessageEmbed()
-        .addField('Returns an anime summary from MAL', '`nabe anime <query>`')
-        .setFooter('Example: nabe anime overlord')
-      message.channel.send(helpEmbed)
-    }
   }
 };

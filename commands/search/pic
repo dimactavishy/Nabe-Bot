@@ -12,9 +12,12 @@ const google = new Scraper({
 const Color = `RANDOM`;
 
 module.exports = {
-  name: 'pic',
-  cooldown: 30,
-  description: "image scraper",
+  info: {
+    name: "pic",
+    description: "I will find an image on the web.",
+    usage: "[query]",
+    cooldown: 60,
+},
   async execute(client, message, args, Discord) {
     const image_query = args.join(' ');
     if (!message.content.includes('help')){

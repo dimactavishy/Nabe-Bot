@@ -6,7 +6,7 @@ module.exports = {
     name: "stop",
     description: "To stop the music and clearing the queue",
     usage: "",
-    aliases: [],
+    cooldown: 0,
   },
 
   execute: async function (client, message, args) {
@@ -15,6 +15,7 @@ module.exports = {
     const serverQueue = message.client.queue.get(message.guild.id);
     if (!serverQueue) return message.reply("you have not ordered me to play anything yet.").then(msg => { msg.delete({ timeout: 5000 }) });
     serverQueue.songs = [];
+    
     try {
       serverQueue.connection.dispatcher.end("I'll gladly play music for you again, master!");
       message.react("✅")

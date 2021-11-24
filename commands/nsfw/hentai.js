@@ -1,11 +1,12 @@
 module.exports = {
-    name: 'hentai',
-    cooldown: 30,
-    description: "bokep",
-
+    info: {
+        name: "hentai",
+        description: "Sends a random lewd image/GIF.",
+        usage: "[optional 'gif']",
+        cooldown: 10,
+    },
     async execute(client, message, args, Discord) {
         var superagent = require('superagent');
-        if (!message.content.includes('help')) {
             if (!message.content.includes('gif')) {
                 const hornyEmbed = new Discord.MessageEmbed()
                     .setTitle('No lewding here!')
@@ -67,13 +68,6 @@ module.exports = {
                 });
                 await Msg2.delete();
             }
-        }
-        if (message.content.includes('help')) {
-            const helpEmbed = new Discord.MessageEmbed()
-                .addField('Returns random hentai.', '`nabe hentai`')
-                .addField('Add "gif" at the end of the command to return gifs.', 'Also works on: `hneko` `hfeet` `hsolo`')
-                .setFooter('Example: nabe hentai')
-            message.channel.send(helpEmbed)
-        }
+ 
     }
 }

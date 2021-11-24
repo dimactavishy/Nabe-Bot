@@ -7,8 +7,9 @@ const Color = `RANDOM`;
 module.exports = {
     info: {
         name: "r34",
-        description: "booru image scraper",
-        cooldown: 30,
+        description: "I will send a lewd media that i found on Rule34.xxx.",
+        usage: "[tags (use underscore to join, and use space to separate tags.)]",
+        cooldown: 15,
     },
     async execute(client, message, args, Discord) {
         const fetch = require('node-fetch')
@@ -24,7 +25,6 @@ module.exports = {
             )
         }
 
-        if (!message.content.includes('help')) {
             if (!message.content.includes('narberal_gamma')) {
                 const hornyEmbed = new Discord.MessageEmbed()
                     .setTitle('No lewding here!')
@@ -121,12 +121,6 @@ module.exports = {
                     .setTimestamp();
                 message.channel.send(helpEmbed)
             }
-        }
-        if (message.content.includes('help')) {
-            const helpEmbed = new Discord.MessageEmbed()
-                .addField('Returns an image from rule34', '`nabe r34 <optional query>`')
-                .setFooter('Example: nabe r34 narberal_gamma')
-            message.channel.send(helpEmbed)
-        }
+        
     }
 }

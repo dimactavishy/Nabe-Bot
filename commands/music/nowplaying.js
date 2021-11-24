@@ -5,6 +5,7 @@ module.exports = {
     name: "nowplaying",
     description: "To show the music which is currently playing in this server",
     usage: "",
+    cooldown: 0,
   },
 
   execute: async function (client, message, args) {

@@ -7,8 +7,9 @@ const Color = `RANDOM`;
 module.exports = {
     info: {
         name: "booru",
-        description: "booru image scraper",
-        cooldown: 30,
+        description: "I will send a media that i found on Gelbooru.",
+        usage: "[tags (use underscore to join, and use space to separate tags.)]",
+        cooldown: 10,
     },
     async execute(client, message, args, Discord) {
         const fetch = require('node-fetch')
@@ -24,7 +25,6 @@ module.exports = {
             )
         }
         
-        if (!message.content.includes('help')){
             const hornyEmbed = new Discord.MessageEmbed()
                 .setTitle('Potential Lewd Warning')
                 .setDescription('**The `nabe booru` command has a potential to return a NSFW image.\n**'
@@ -114,12 +114,5 @@ module.exports = {
                         
                     }
                 })
-        }
-        if (message.content.includes('help')) {
-            const helpEmbed = new Discord.MessageEmbed()
-                .addField('Returns an image from gelbooru', '`nabe booru <optional query>`')
-                .setFooter('Example: nabe booru narberal_gamma')
-            message.channel.send(helpEmbed)
-        }
     }
 }

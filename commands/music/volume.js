@@ -5,6 +5,7 @@ module.exports = {
     name: "volume",
     description: "To change the server song queue volume",
     usage: "[volume]",
+    cooldown: 0,
   },
 
   execute: async function (client, message, args) {

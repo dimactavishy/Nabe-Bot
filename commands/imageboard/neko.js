@@ -4,10 +4,12 @@ const { MessageEmbed } = require('discord.js');
 const neko = new client();
 
 module.exports = {
-    name: 'neko',
-    cooldown: 30,
-    description: "",
-
+    info: {
+        name: "neko",
+        description: `Sends a picture of a Cat-eared girl.`,
+        usage: "[optional 'gif']",
+        cooldown: 10,
+    },
     async execute(client, message, args, Discord) {
         if (!message.content.includes('gif')) {
         const ibloadEmbed = new Discord.MessageEmbed()

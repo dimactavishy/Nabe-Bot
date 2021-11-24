@@ -2,10 +2,12 @@ const client = require('nekos.life');
 const neko = new client();
 
 module.exports = {
-    name: 'hyuri',
-    cooldown: 30,
-    description: "bokep yuri",
-
+    info: {
+        name: "hyuri",
+        description: `Sends a lewd image of two [Yuri](https://en.wikipedia.org/wiki/Yuri_(genre)) girls.`,
+        usage: "",
+        cooldown: 10,
+    },
     async execute(client, message, args, Discord) {
         const hornyEmbed = new Discord.MessageEmbed()
         .setTitle('No lewding here!')

@@ -3,10 +3,12 @@ const Discord = require('discord.js')
 const neko = new client();
 
 module.exports = {
-    name: 'pfp',
-    cooldown: 30,
-    description: "",
-
+    info: {
+        name: "pfp",
+        description: `Sends a random anime-oriented profile picture.`,
+        usage: "",
+        cooldown: 10,
+    },
     async execute(client, message, args, Discord) {
         if (!message.content.includes('lewd')) {
             const ibloadEmbed = new Discord.MessageEmbed()

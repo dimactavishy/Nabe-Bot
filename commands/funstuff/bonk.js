@@ -1,7 +1,10 @@
 module.exports = {
-    name: 'bonk',
-    cooldown: 30,
-    description: "bonk embed",
+    info: {
+        name: "bonk",
+        description: "Bonks me. Try it.",
+        usage: "",
+        cooldown: 25,
+    },
     execute(client, message, args, Discord) {
         
         const bonkEmbed = new Discord.MessageEmbed()

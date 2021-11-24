@@ -6,9 +6,10 @@ const path = require('path')
 const Color = `RANDOM`;
 module.exports = {
     info: {
-        name: "boorusafe",
-        description: "booru image scraper",
-        cooldown: 30,
+        name: "booru",
+        description: "I will send a media that i found on Safebooru.",
+        usage: "[tags (use underscore to join, and use space to separate tags.)]",
+        cooldown: 10,
     },
     async execute(client, message, args, Discord) {
         const fetch = require('node-fetch')
@@ -24,7 +25,6 @@ module.exports = {
             )
         }
         
-        if (!message.content.includes('help'))
             Booru.search('safebooru', tag_query, { limit: 1, random: true })
                 .then(async posts => {
                         if (posts.length === 0) {
@@ -103,11 +103,5 @@ module.exports = {
                         
                     }
                 })
-        if (message.content.includes('help')) {
-            const helpEmbed = new Discord.MessageEmbed()
-                .addField('Returns an image from safebooru', '`nabe boorusafe <optional query>`')
-                .setFooter('Example: nabe boorusafe narberal_gamma')
-            message.channel.send(helpEmbed)
-        }
     }
 }

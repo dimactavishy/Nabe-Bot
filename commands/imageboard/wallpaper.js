@@ -3,10 +3,12 @@ const Discord = require('discord.js')
 const neko = new client();
 
 module.exports = {
-    name: 'wallpaper',
-    cooldown: 30,
-    description: "",
-
+    info: {
+        name: "wallpaper",
+        description: "I will give you an anime-oriented wallpaper.",
+        usage: "",
+        cooldown: 20,
+    },
     async execute(client, message, args, Discord) {
         const ibloadEmbed = new Discord.MessageEmbed()
             .setDescription(`Generating...`)

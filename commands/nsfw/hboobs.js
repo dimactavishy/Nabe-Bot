@@ -2,10 +2,12 @@ const client = require('nekos.life');
 const neko = new client();
 
 module.exports = {
-    name: 'hboobs',
-    cooldown: 30,
-    description: "bokep nenen",
-
+    info: {
+        name: "hboobs",
+        description: "Sends a lewd image/GIF of a woman's bosom.",
+        usage: "",
+        cooldown: 10,
+    },
     async execute(client, message, args, Discord) {
         const hornyEmbed = new Discord.MessageEmbed()
         .setTitle('No lewding here!')

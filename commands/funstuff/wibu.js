@@ -1,6 +1,10 @@
 module.exports = {
-    name: 'wibu',
-    description: "jadilah wibu",
+    info: {
+        name: "wibu",
+        description: "An inside joke between my friends. Command is in ID.",
+        usage: "",
+        cooldown: 10,
+    },
     execute(client, message, args, Discord) {
 
         

@@ -3,10 +3,12 @@ const Discord = require('discord.js')
 const neko = new client();
 
 module.exports = {
-    name: 'cuddle',
-    cooldown: 30,
-    description: "",
-
+    info: {
+        name: "cuddle",
+        description: "To give warmth in both body and soul.",
+        usage: "",
+        cooldown: 10,
+    },
     async execute(client, message, args, Discord) {
         const ibloadEmbed = new Discord.MessageEmbed()
             .setDescription(`Generating...`)

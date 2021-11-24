@@ -1,8 +1,12 @@
 const os = require('os');
 
 module.exports = {
-    name: 'status',
-    description: 'Gives you uptime of the bot',
+    info: {
+        name: "status",
+        description: "I will send an embed of my own status.",
+        usage: "",
+        cooldown: 10,
+    },
     async execute(client, message, args, Discord) {
         var cpus;
         var thread;
