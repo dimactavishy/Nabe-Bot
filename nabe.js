@@ -137,6 +137,11 @@ client.on("ready", () => {
 
     client.user.setActivity(newActivity);
   }, 5000);
+  
+  client.guilds.cache.forEach(guild => {
+     console.log(`${guild.name} | ${guild.id}`);
+  })
+  
 });
 
 client.on("guildCreate", guild => {
