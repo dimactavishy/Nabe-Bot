@@ -5,6 +5,13 @@ module.exports = {
     description: "help embed",
     async execute(client, message, args, Discord) {
 
+        var allcmds = "";
+
+        client.commands.forEach(cmd => {
+            let cmdinfo = cmd.info
+            allcmds += "``" + client.config.prefix + cmdinfo.name + " " + cmdinfo.usage + "`` ~ " + cmdinfo.description + "\n"
+        })
+
         const helpEmbed = new Discord.MessageEmbed()
             .setColor('#20124d')
             .setTitle('Seeking Help?')
@@ -128,8 +135,8 @@ module.exports = {
             .setTitle('NSFW Commands')
             .setDescription('These are the commands under the NSFW category that i currently know of.\n\n'
                 + '**Use the commands as `nabe <command>`**\n\n'
-                + '**paheal** - Returns an image from Rule34.paheal. Tags are optional.\n'    
-                + '**r34** - Returns an image from Rule34.xxx. Tags are optional.\n'       
+                + '**paheal** - Returns an image from Rule34.paheal. Tags are optional.\n'
+                + '**r34** - Returns an image from Rule34.xxx. Tags are optional.\n'
                 + '**hentai** - Returns random hentai image.\n'
                 + '**ahegao** - Returns an ahegao image.\n'
                 + '**hkitsune** - Returns a lewd foxgirl image/GIF.\n'
@@ -166,7 +173,7 @@ module.exports = {
             .setTimestamp();
 
 
-        message.channel.send(helpEmbed).then(embedMessage => {
+        if (!args[0]) message.channel.send(helpEmbed).then(embedMessage => {
             embedMessage.delete({ timeout: 60000 });
             const helpFilter = (reaction, user) => {
                 return ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣'].includes(reaction.emoji.name) && user.id === message.author.id;
@@ -207,5 +214,21 @@ module.exports = {
                     })
                 })
         })
+        else {
+            let cmd = args[0]
+            let command = client.commands.get(cmd)
+            if (!command) command = client.commands.find(x => x.info.aliases.includes(cmd))
+            if (!command) return message.channel.send("Unknown Command")
+            let commandinfo = new MessageEmbed()
+                .setTitle("Yes! I will teach you how to use this command.")
+                .setColor("YELLOW")
+                .setDescription(`
+Name: ${command.info.name}
+Description: ${command.info.description}
+Usage: \`\`${client.config.prefix}${command.info.name} ${command.info.usage}\`\`
+Aliases: ${command.info.aliases.join(", ")}
+`)
+            message.channel.send(commandinfo)
+        }
     }
 }
