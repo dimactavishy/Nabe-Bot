@@ -230,7 +230,7 @@ module.exports = {
 Name: 
 **\`\`${command.info.name}\`\`**
 Description: 
-${command.info.description}
+\`\`${command.info.description}\`\`
 Usage: 
 \`\`${client.config.prefix}${command.info.name} ${command.info.usage}\`\`
 Cooldown: 
