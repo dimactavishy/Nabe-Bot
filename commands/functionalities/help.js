@@ -223,7 +223,7 @@ module.exports = {
             let command = client.commands.get(cmd)
             if (!command) command = client.commands.find(x => x.info.aliases.includes(cmd))
             if (!command) return message.channel.send("Unknown Command")
-            let commandinfo = new MessageEmbed()
+            let commandinfo = new Discord.MessageEmbed()
                 .setTitle("Yes! I will teach you how to use this command.")
                 .setColor("YELLOW")
                 .setDescription(`
