@@ -5,7 +5,8 @@ const cooldowns = new Map();
 module.exports = async (Discord, client, message) => {
     if (message.author.bot) return;
   
-    const prefix = message.content.includes("nabe ") ? "nabe " : "n!"
+    const prefixMention = new RegExp(`^<@!?${client.user.id}> `);
+    const prefix = message.content.match(prefixMention) ? message.content.match(prefixMention)[0] : client.config.prefix;
   
     if (message.content.indexOf(prefix) !== 0) return;
   

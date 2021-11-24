@@ -7,6 +7,9 @@ const fs = require('fs');
 client.commands = new Discord.Collection();
 client.events = new Discord.Collection();
 client.queue = new Map()
+client.config = {
+  prefix: "nabe "
+}
 
 fs.readdir(__dirname + "/events/", (err, files) => {
   if (err) return console.error(err);
@@ -122,7 +125,7 @@ fs.readdir("./commands/search", (err, files) => {
 
 client.on("ready", () => {
   const activities = [
-  'My prefix is "nabe" or "n!".',
+  'My prefix is "nabe" or just mention me.',
   "Need help? Please do nabe help.",
   `Serving in ${client.guilds.cache.size} servers.`,
   "Imageboard maid bot.",
