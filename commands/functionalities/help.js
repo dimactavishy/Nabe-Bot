@@ -227,10 +227,14 @@ module.exports = {
                 .setTitle("Yes! I will teach you how to use this command.")
                 .setColor("YELLOW")
                 .setDescription(`
-Name: ${command.info.name}
-Description: ${command.info.description}
-Usage: \`\`${client.config.prefix}${command.info.name} ${command.info.usage}\`\`
-Cooldown: \`\`${command.info.cooldown} seconds\`\`
+Name: 
+**\`\`${command.info.name}\`\`**
+Description: 
+${command.info.description}
+Usage: 
+\`\`${client.config.prefix}${command.info.name} ${command.info.usage}\`\`
+Cooldown: 
+\`\`${command.info.cooldown} seconds\`\`
 `)
             message.channel.send(commandinfo)
         }
