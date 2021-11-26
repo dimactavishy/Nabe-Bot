@@ -30,7 +30,7 @@ module.exports = {
                     .setTitle('No lewding here!')
                     .setDescription('Not everybody is a pervert like you, please do it in a NSFW channel.')
                     .setImage('https://preview.redd.it/es6a4gux9il41.jpg?width=960&crop=smart&auto=webp&s=c8e81dfaa8d9bec7fa9bdd4addd59807d800a541')
-                    .setFooter('Egg-Shaped Battle Maid', 'https://images-ext-2.discordapp.net/external/l7-PY5Kkvta4_p-sOE0ftwQCmJ9iAe72eMPSTczuWi0/%3Fsize%3D512/https/cdn.discordapp.com/avatars/897674562265817088/e36ef03370367a4b3cd51b864e9df392.png?width=499&height=499')
+                    .setFooter('Egg-Shaped Battle Maid', client.user.displayAvatarURL())
                     .setTimestamp();
                 if (!message.channel.nsfw) return message.channel.send(hornyEmbed)
 
@@ -91,7 +91,7 @@ module.exports = {
                                 )
                                 .setThumbnail('https://media.discordapp.net/attachments/898563395807232061/907183711882199040/sketch-1636359767759.png?width=499&height=499')
                                 .setImage(post.fileUrl)
-                                .setFooter('Egg-Shaped Battle Maid', 'https://images-ext-2.discordapp.net/external/l7-PY5Kkvta4_p-sOE0ftwQCmJ9iAe72eMPSTczuWi0/%3Fsize%3D512/https/cdn.discordapp.com/avatars/897674562265817088/e36ef03370367a4b3cd51b864e9df392.png?width=499&height=499')
+                                .setFooter('Egg-Shaped Battle Maid', client.user.displayAvatarURL())
                                 .setTimestamp();
                             message.channel.send(embed_nsfw);
 
@@ -117,7 +117,7 @@ module.exports = {
                     .setTitle('No Lewding Nabe!')
                     .setDescription('I will burn you like a roasted chicken if you still insist on lewding me.')
                     .setImage('https://user-images.githubusercontent.com/79780581/140713738-91db6652-53ab-4be7-b57e-7eb8a1bd5c8e.jpg')
-                    .setFooter('Very Angry Egg-Shaped Battle Maid', 'https://images-ext-2.discordapp.net/external/l7-PY5Kkvta4_p-sOE0ftwQCmJ9iAe72eMPSTczuWi0/%3Fsize%3D512/https/cdn.discordapp.com/avatars/897674562265817088/e36ef03370367a4b3cd51b864e9df392.png?width=499&height=499')
+                    .setFooter('Very Angry Egg-Shaped Battle Maid', client.user.displayAvatarURL())
                     .setTimestamp();
                 message.channel.send(helpEmbed)
             }

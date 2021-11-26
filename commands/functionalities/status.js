@@ -49,7 +49,7 @@ module.exports = {
             .addField('Uptime', `${days} days, ${hours} hours, ${minutes} minutes and ${seconds} seconds`)
             .setThumbnail('https://media.discordapp.net/attachments/898563395807232061/907183712142241792/sketch-1636359819739.png?width=499&height=499')
             .setImage('https://64.media.tumblr.com/c8ee5f809e6d23c08f4e9e2b3253ebe7/tumblr_p6obq1FioC1tubau5o4_1280.jpg')
-            .setFooter('Egg-Shaped Battle Maid', 'https://images-ext-2.discordapp.net/external/l7-PY5Kkvta4_p-sOE0ftwQCmJ9iAe72eMPSTczuWi0/%3Fsize%3D512/https/cdn.discordapp.com/avatars/897674562265817088/e36ef03370367a4b3cd51b864e9df392.png?width=499&height=499')
+            .setFooter('Egg-Shaped Battle Maid', client.user.displayAvatarURL())
             .setTimestamp();
 
         await message.channel.send(statsEmbed);
