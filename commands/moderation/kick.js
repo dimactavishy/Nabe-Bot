@@ -14,11 +14,22 @@ module.exports = {
             let reason = args.slice(1).join(" ");
             if (!reason) reason = 'No reason has been given.';
 
+            let guild = message.guild
+
             if (!member.kickable) return message.reply("sorry, but the person you are trying to kick has a higher authority than me.").then(msg => { msg.delete({ timeout: 5000 }) });
 
+            let kickEmbed = new Discord.MessageEmbed()
+            .setTitle('See you later!')
+            .setColor('YELLOW')
+            .setDescription(`_You have been kicked from **\`${guild.name}\`** for the following reason:_\n`
+            + `**\`\`\`${reason}\`\`\`**`
+            )
+            .setTimestamp()
+            
             try {
-                member.kick(reason)
-                message.reply("done. I have kicked the fool who angered you out of this server.");
+                member.kick()
+                message.reply("done. I have kicked the fool who angered you out of this server.")
+                member.send(kickEmbed)
             } catch (err) {
                 message.channel.send("I'm sorry, i think i made a mistake there...");
                 console.log(err);
