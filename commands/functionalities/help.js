@@ -215,7 +215,6 @@ module.exports = {
                             message.author.send({ embed: funstuffEmbed })
                         }
                         else return
-
                     })
                 })
         })
