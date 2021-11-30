@@ -9,13 +9,6 @@ module.exports = {
     },
     async execute(client, message, args, Discord) {
 
-        var allcmds = "";
-
-        client.commands.forEach(cmd => {
-            let cmdinfo = cmd.info
-            allcmds += "``" + client.config.prefix + cmdinfo.name + " " + cmdinfo.usage + "`` ~ " + cmdinfo.description + "\n"
-        })
-
         const helpEmbed = new Discord.MessageEmbed()
             .setColor('#20124d')
             .setTitle('Seeking Help?')
@@ -219,6 +212,13 @@ module.exports = {
                 })
         })
         else {
+            var allcmds = "";
+
+            client.commands.forEach(cmd => {
+                let cmdinfo = cmd.info
+                allcmds += "``" + client.config.prefix + cmdinfo.name + " " + cmdinfo.usage + "`` ~ " + cmdinfo.description + "\n"
+            })
+
             let cmd = args[0]
             let command = client.commands.get(cmd)
             if (!command) command = client.commands.find(x => x.info.aliases.includes(cmd))
