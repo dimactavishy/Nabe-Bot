@@ -196,24 +196,25 @@ module.exports = {
                         if (reaction.emoji.name === '1️⃣') {
                             message.author.send({ embed: functionalityEmbed })
                         }
-                        if (reaction.emoji.name === '2️⃣') {
+                        else if (reaction.emoji.name === '2️⃣') {
                             message.author.send({ embed: moderationEmbed })
                         }
-                        if (reaction.emoji.name === '3️⃣') {
+                        else if (reaction.emoji.name === '3️⃣') {
                             message.author.send({ embed: searchEmbed })
                         }
-                        if (reaction.emoji.name === '4️⃣') {
+                        else if (reaction.emoji.name === '4️⃣') {
                             message.author.send({ embed: musicEmbed })
                         }
-                        if (reaction.emoji.name === '5️⃣') {
+                        else if (reaction.emoji.name === '5️⃣') {
                             message.author.send({ embed: imageboardEmbed })
                         }
-                        if (reaction.emoji.name === '6️⃣') {
+                        else if (reaction.emoji.name === '6️⃣') {
                             message.author.send({ embed: nsfwEmbed })
                         }
-                        if (reaction.emoji.name === '7️⃣') {
+                        else if (reaction.emoji.name === '7️⃣') {
                             message.author.send({ embed: funstuffEmbed })
                         }
+                        else return
 
                     })
                 })
