@@ -9,6 +9,13 @@ module.exports = {
     },
     async execute(client, message, args, Discord) {
 
+        var allcmds = "";
+
+        client.commands.forEach(cmd => {
+            let cmdinfo = cmd.info
+            allcmds += "``" + client.config.prefix + cmdinfo.name + " " + cmdinfo.usage + "`` ~ " + cmdinfo.description + "\n"
+        })
+
         const helpEmbed = new Discord.MessageEmbed()
             .setColor('#20124d')
             .setTitle('Seeking Help?')
@@ -186,39 +193,32 @@ module.exports = {
                     embedMessage.awaitReactions(helpFilter, { max: 1, time: 120000 }).then(collected => {
                         const reaction = collected.first();
 
-                        if (reaction.emoji.name === '1️⃣') {
+                        if (reaction && reaction.emoji && reaction.emoji.name === '1️⃣') {
                             message.author.send({ embed: functionalityEmbed })
                         }
-                        else if (reaction.emoji.name === '2️⃣') {
+                        if (reaction && reaction.emoji && reaction.emoji.name === '2️⃣') {
                             message.author.send({ embed: moderationEmbed })
                         }
-                        else if (reaction.emoji.name === '3️⃣') {
+                        if (reaction && reaction.emoji && reaction.emoji.name === '3️⃣') {
                             message.author.send({ embed: searchEmbed })
                         }
-                        else if (reaction.emoji.name === '4️⃣') {
+                        if (reaction && reaction.emoji && reaction.emoji.name === '4️⃣') {
                             message.author.send({ embed: musicEmbed })
                         }
-                        else if (reaction.emoji.name === '5️⃣') {
+                        if (reaction && reaction.emoji && reaction.emoji.name === '5️⃣') {
                             message.author.send({ embed: imageboardEmbed })
                         }
-                        else if (reaction.emoji.name === '6️⃣') {
+                        if (reaction && reaction.emoji && reaction.emoji.name === '6️⃣') {
                             message.author.send({ embed: nsfwEmbed })
                         }
-                        else if (reaction.emoji.name === '7️⃣') {
+                        if (reaction && reaction.emoji && reaction.emoji.name === '7️⃣') {
                             message.author.send({ embed: funstuffEmbed })
                         }
-                        else return
+
                     })
                 })
         })
         else {
-            var allcmds = "";
-
-            client.commands.forEach(cmd => {
-                let cmdinfo = cmd.info
-                allcmds += "``" + client.config.prefix + cmdinfo.name + " " + cmdinfo.usage + "`` ~ " + cmdinfo.description + "\n"
-            })
-
             let cmd = args[0]
             let command = client.commands.get(cmd)
             if (!command) command = client.commands.find(x => x.info.aliases.includes(cmd))
@@ -227,14 +227,14 @@ module.exports = {
                 .setTitle("Yes! I will teach you how to use this command.")
                 .setColor("YELLOW")
                 .setDescription(`
-Name: 
-**${command.info.name}**
-Description: 
-**${command.info.description}**
-Usage: 
-**${client.config.prefix}${command.info.name} ${command.info.usage}**
-Cooldown: 
-**${command.info.cooldown} seconds**
+                **Name: ** 
+**\`\`\`${command.info.name}\`\`\`**
+**Description: **
+**\`\`\`${command.info.description}\`\`\`**
+**Usage: **
+**\`\`\`${client.config.prefix}${command.info.name} ${command.info.usage}\`\`\`**
+**Cooldown: **
+**\`\`\`${command.info.cooldown} seconds\`\`\`**
 `)
             message.channel.send(commandinfo)
         }
