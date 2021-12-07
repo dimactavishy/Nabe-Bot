@@ -14,9 +14,9 @@ module.exports = {
         .setThumbnail('https://media.discordapp.net/attachments/898563395807232061/898837312291610645/sketch-1634369891230.png?width=499&height=499')
         .addFields(
             {name: 'Nabe is not a character of mine.', value: 'Nabe is a member of the Pleiades Maids from "Overlord". I do not own any rights to her, i simply base this bot off of her because i liked her as a character.' },
-            {name: 'About the display picture.', value: "For this time being, her display picture is an edit of So-Bin's art. I'm looking for a more custom art, so feel free to submit your own submission." },
+            {name: 'About the display picture.', value: "Nabe's current display picture is Padoru Nabe, made by me. If you have any submissions for the display picture you can contact me." },
             {name: 'Best regards,', value:'Joko Sukino A.K.A Dimac.', inline: true},
-            {name: 'Display picture:', value: '[Link to full size image](https://cdn.discordapp.com/attachments/898563395807232061/898860751035449344/narberal.png)', inline: true}
+            {name: 'Display picture:', value: '[Link to full size image](https://cdn.discordapp.com/avatars/291847323217297418/3019b8b9a44a2fbee3352612a67f951a.png?size=512)', inline: true}
 
         )
         .setFooter('Egg-Shaped Battle Maid', client.user.displayAvatarURL())
