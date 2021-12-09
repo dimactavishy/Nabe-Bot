@@ -33,7 +33,7 @@ module.exports = {
             try {
                 member.ban()
                 message.reply("Even insects smell good when roasted.");
-                member.send(kickEmbed)
+                member.send(banEmbed)
             } catch (err) {
                 message.channel.send("I'm sorry, i think i made a mistake there...");
                 console.log(err);
