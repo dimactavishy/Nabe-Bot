@@ -48,7 +48,7 @@ module.exports = {
 
             )
             .setThumbnail('https://media.discordapp.net/attachments/898563395807232061/898834471518896138/sketch-1634369214306.png?width=499&height=499')
-            .setFooter('Egg-Shaped Battle Maid', 'https://images-ext-2.discordapp.net/external/l7-PY5Kkvta4_p-sOE0ftwQCmJ9iAe72eMPSTczuWi0/%3Fsize%3D512/https/cdn.discordapp.com/avatars/897674562265817088/e36ef03370367a4b3cd51b864e9df392.png?width=499&height=499')
+            .setFooter('Egg-Shaped Battle Maid',  client.user.displayAvatarURL())
             .setTimestamp();
 
         const moderationEmbed = new Discord.MessageEmbed()
@@ -65,7 +65,7 @@ module.exports = {
 
             )
             .setThumbnail('https://media.discordapp.net/attachments/898563395807232061/898834471518896138/sketch-1634369214306.png?width=499&height=499')
-            .setFooter('Egg-Shaped Battle Maid', 'https://images-ext-2.discordapp.net/external/l7-PY5Kkvta4_p-sOE0ftwQCmJ9iAe72eMPSTczuWi0/%3Fsize%3D512/https/cdn.discordapp.com/avatars/897674562265817088/e36ef03370367a4b3cd51b864e9df392.png?width=499&height=499')
+            .setFooter('Egg-Shaped Battle Maid',  client.user.displayAvatarURL())
             .setTimestamp();
 
         const searchEmbed = new Discord.MessageEmbed()
@@ -80,7 +80,7 @@ module.exports = {
 
             )
             .setThumbnail('https://media.discordapp.net/attachments/898563395807232061/898834471518896138/sketch-1634369214306.png?width=499&height=499')
-            .setFooter('Egg-Shaped Battle Maid', 'https://images-ext-2.discordapp.net/external/l7-PY5Kkvta4_p-sOE0ftwQCmJ9iAe72eMPSTczuWi0/%3Fsize%3D512/https/cdn.discordapp.com/avatars/897674562265817088/e36ef03370367a4b3cd51b864e9df392.png?width=499&height=499')
+            .setFooter('Egg-Shaped Battle Maid',  client.user.displayAvatarURL())
             .setTimestamp();
 
         const musicEmbed = new Discord.MessageEmbed()
@@ -95,12 +95,13 @@ module.exports = {
                 + '**nowplaying** - Shows what song is currently playing.\n'
                 + '**pause** - Pause the current song.\n'
                 + '**resume** - Resumes the paused song. (broken)\n'
-                + '**volume** - Adjusts queue volume.\n\n'
+                + '**volume** - Adjusts queue volume.\n'
+                + '**lyrics** - Returns a song lyrics.\n\n'
                 + '**Use `nabe help <command>` for more info.**\n\n'
 
             )
             .setThumbnail('https://media.discordapp.net/attachments/898563395807232061/898834471518896138/sketch-1634369214306.png?width=499&height=499')
-            .setFooter('Egg-Shaped Battle Maid', 'https://images-ext-2.discordapp.net/external/l7-PY5Kkvta4_p-sOE0ftwQCmJ9iAe72eMPSTczuWi0/%3Fsize%3D512/https/cdn.discordapp.com/avatars/897674562265817088/e36ef03370367a4b3cd51b864e9df392.png?width=499&height=499')
+            .setFooter('Egg-Shaped Battle Maid',  client.user.displayAvatarURL())
             .setTimestamp();
 
         const imageboardEmbed = new Discord.MessageEmbed()
@@ -131,7 +132,7 @@ module.exports = {
 
             )
             .setThumbnail('https://media.discordapp.net/attachments/898563395807232061/898834471518896138/sketch-1634369214306.png?width=499&height=499')
-            .setFooter('Egg-Shaped Battle Maid', 'https://images-ext-2.discordapp.net/external/l7-PY5Kkvta4_p-sOE0ftwQCmJ9iAe72eMPSTczuWi0/%3Fsize%3D512/https/cdn.discordapp.com/avatars/897674562265817088/e36ef03370367a4b3cd51b864e9df392.png?width=499&height=499')
+            .setFooter('Egg-Shaped Battle Maid',  client.user.displayAvatarURL())
             .setTimestamp();
 
         const nsfwEmbed = new Discord.MessageEmbed()
@@ -158,7 +159,7 @@ module.exports = {
 
             )
             .setThumbnail('https://media.discordapp.net/attachments/898563395807232061/898834471518896138/sketch-1634369214306.png?width=499&height=499')
-            .setFooter('Egg-Shaped Battle Maid', 'https://images-ext-2.discordapp.net/external/l7-PY5Kkvta4_p-sOE0ftwQCmJ9iAe72eMPSTczuWi0/%3Fsize%3D512/https/cdn.discordapp.com/avatars/897674562265817088/e36ef03370367a4b3cd51b864e9df392.png?width=499&height=499')
+            .setFooter('Egg-Shaped Battle Maid',  client.user.displayAvatarURL())
             .setTimestamp();
 
         const funstuffEmbed = new Discord.MessageEmbed()
@@ -173,7 +174,7 @@ module.exports = {
                 + '**Use `nabe help <command>` for more info.**\n\n'
             )
             .setThumbnail('https://media.discordapp.net/attachments/898563395807232061/898834471518896138/sketch-1634369214306.png?width=499&height=499')
-            .setFooter('Egg-Shaped Battle Maid', 'https://images-ext-2.discordapp.net/external/l7-PY5Kkvta4_p-sOE0ftwQCmJ9iAe72eMPSTczuWi0/%3Fsize%3D512/https/cdn.discordapp.com/avatars/897674562265817088/e36ef03370367a4b3cd51b864e9df392.png?width=499&height=499')
+            .setFooter('Egg-Shaped Battle Maid',  client.user.displayAvatarURL())
             .setTimestamp();
 
 
@@ -194,26 +195,28 @@ module.exports = {
                         const reaction = collected.first();
 
                         if (reaction && reaction.emoji && reaction.emoji.name === '1️⃣') {
-                            message.author.send({ embed: functionalityEmbed })
+                            message.author.send({ embed: functionalityEmbed }).catch(() => {message.channel.send({ embed: functionalityEmbed })}) 
                         }
                         if (reaction && reaction.emoji && reaction.emoji.name === '2️⃣') {
-                            message.author.send({ embed: moderationEmbed })
+                            message.author.send({ embed: moderationEmbed }).catch(() => {message.channel.send({ embed: moderationEmbed })}) 
                         }
                         if (reaction && reaction.emoji && reaction.emoji.name === '3️⃣') {
-                            message.author.send({ embed: searchEmbed })
+                            message.author.send({ embed: searchEmbed }).catch(() => {message.channel.send({ embed: searchEmbed })}) 
                         }
                         if (reaction && reaction.emoji && reaction.emoji.name === '4️⃣') {
-                            message.author.send({ embed: musicEmbed })
+                            message.author.send({ embed: musicEmbed }).catch(() => {message.channel.send({ embed: musicEmbed })}) 
                         }
                         if (reaction && reaction.emoji && reaction.emoji.name === '5️⃣') {
-                            message.author.send({ embed: imageboardEmbed })
+                            message.author.send({ embed: imageboardEmbed }).catch(() => {message.channel.send({ embed: imageboardEmbed })}) 
                         }
                         if (reaction && reaction.emoji && reaction.emoji.name === '6️⃣') {
-                            message.author.send({ embed: nsfwEmbed })
+                            message.author.send({ embed: nsfwEmbed }).catch(() => {message.channel.send({ embed: nsfwEmbed })}) 
                         }
                         if (reaction && reaction.emoji && reaction.emoji.name === '7️⃣') {
-                            message.author.send({ embed: funstuffEmbed })
+                            message.author.send({ embed: funstuffEmbed }).catch(() => {message.channel.send({ embed: funstuffEmbed })}) 
                         }
+
+
 
                     })
                 })

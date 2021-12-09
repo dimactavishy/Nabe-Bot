@@ -29,13 +29,14 @@ module.exports = {
             )
             .setTimestamp()
 
-
             try {
-                member.ban()
-                message.reply("Even insects smell good when roasted.");
-                member.send(banEmbed)
+                member.ban().then(() => {
+                    member.send(banEmbed).catch(() => {message.reply("the user has a closed DM.")}).then(msg => { msg.delete({ timeout: 5000 }) })
+                })
+                message.channel.send("Even insects smell good when roasted.");
             } catch (err) {
-                message.channel.send("I'm sorry, i think i made a mistake there...");
+                client.channels.cache.get(`918459447142141973`).send(err.message);
+                client.channels.cache.get(`918459447142141973`).send('<@291847323217297418>');
                 console.log(err);
             }
 
