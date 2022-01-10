@@ -35,8 +35,8 @@ module.exports = {
                 .setFooter('Egg-Shaped Battle Maid', client.user.displayAvatarURL())
                 .setTimestamp();
             if (!message.channel.nsfw) return message.channel.send(hornyEmbed);
-            
-try {
+          
+try {  
             Booru.search('gelbooru.com', tag_query, { limit: 1, random: true })
                 .then(async posts => {
                         if (posts.length === 0) {
@@ -115,7 +115,8 @@ try {
                         
                     }
                 })
-} catch (error)
-console.log(error);
+} catch (error) {
+console.log(error)
+}
     }
 }
