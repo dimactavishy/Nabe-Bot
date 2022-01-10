@@ -36,6 +36,7 @@ module.exports = {
                 .setTimestamp();
             if (!message.channel.nsfw) return message.channel.send(hornyEmbed);
             
+try {
             Booru.search('gelbooru.com', tag_query, { limit: 1, random: true })
                 .then(async posts => {
                         if (posts.length === 0) {
@@ -114,5 +115,7 @@ module.exports = {
                         
                     }
                 })
+} catch (error)
+console.log(error);
     }
 }
