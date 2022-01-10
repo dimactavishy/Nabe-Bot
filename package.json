@@ -1,6 +1,6 @@
 {
   "name": "nabe-bot",
-  "version": "1.5.0",
+  "version": "1.6.1",
   "engines": {
     "node": "16.13.0",
     "npm": "8.1.0"
