@@ -14,7 +14,7 @@ module.exports = {
         .setThumbnail('https://media.discordapp.net/attachments/898563395807232061/898837312291610645/sketch-1634369891230.png?width=499&height=499')
         .addFields(
             {name: 'Nabe is not a character of mine.', value: 'Nabe is a member of the Pleiades Maids from "Overlord". I do not own any rights to her, i simply base this bot off of her because i liked her as a character.' },
-            {name: 'About the display picture.', value: "Nabe's current display picture is from a panel of ["The Undead Oh!"](https://overlordmaruyama.fandom.com/wiki/Overlord:_The_Undead_Oh!). If you have any submissions for the display picture you can contact me." },
+            {name: 'About the display picture.', value: `Nabe's current display picture is from a panel of ["The Undead Oh!"](https://overlordmaruyama.fandom.com/wiki/Overlord:_The_Undead_Oh!). If you have any submissions for the display picture you can contact me.`},
             {name: 'Best regards,', value:'Joko Sukino A.K.A Dimac.', inline: true},
             {name: 'Display picture:', value: '[Link to full image](blob:https://mangadex.org/940dee02-7274-4c2e-a39f-d901d72762b2)', inline: true}
 
