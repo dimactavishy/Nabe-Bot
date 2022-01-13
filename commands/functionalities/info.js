@@ -16,7 +16,7 @@ module.exports = {
             {name: 'Nabe is not a character of mine.', value: 'Nabe is a member of the Pleiades Maids from "Overlord". I do not own any rights to her, i simply base this bot off of her because i liked her as a character.' },
             {name: 'About the display picture.', value: `Nabe's current display picture is from a panel of ["The Undead Oh!"](https://overlordmaruyama.fandom.com/wiki/Overlord:_The_Undead_Oh!). If you have any submissions for the display picture you can contact me.`},
             {name: 'Best regards,', value:'Joko Sukino A.K.A Dimac.', inline: true},
-            {name: 'Display picture:', value: '[Link to full image](blob:https://mangadex.org/940dee02-7274-4c2e-a39f-d901d72762b2)', inline: true}
+            {name: 'Display picture:', value: `[Link to full image](https://mangadex.org/chapter/940d9931-3e7d-4361-8862-35bb262fc8c3/15)`, inline: true}
 
         )
         .setFooter('Egg-Shaped Battle Maid', client.user.displayAvatarURL())
