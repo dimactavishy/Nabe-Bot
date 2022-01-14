@@ -1,4 +1,6 @@
+const Discord = require('discord.js')
 const sagiri = require("sagiri");
+
 
 module.exports = {
     info: {
@@ -19,7 +21,7 @@ module.exports = {
                 mySauce(imageurl, { results: 10 })
                     .then(response => {
 
-            const sauceEmbed = new MessageEmbed()
+            const sauceEmbed = new Discord.MessageEmbed()
             .setColor('#ADD8E6')
             .setTitle('Looking For Sauce?')
             .setURL(response[0].url)
@@ -33,6 +35,7 @@ module.exports = {
             .setFooter('Egg-Shaped Battle Maid | Sauce provided by SauceNAO.com', client.user.displayAvatarURL())
             .setTimestamp()
                         console.log(response);
+                        message.channel.send(sauceEmbed)
                         if (response.length < 1) return message.channel.send("No image was found!");
                     });
             });
