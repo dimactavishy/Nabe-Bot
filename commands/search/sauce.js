@@ -19,11 +19,7 @@ module.exports = {
                 mySauce(imageurl, { results: 10 })
                     .then(response => {
                         console.log(response);
-                        message.channel.send(`${response[0].url}/n`
-                            + `${response[0].authorName}/n`
-                            + `${response[0].authorUrl}/n`
-                            + `${response[0].site}/n`
-                            + `${response[0].similarity}`
+                        message.channel.send(`${response[0].url}/n ${response[0].authorName}/n ${response[0].authorUrl}/n ${response[0].site}/n ${response[0].similarity}`
                         )
                         if (response.length < 1) return message.channel.send("No image was found!");
                     });
