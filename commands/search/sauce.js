@@ -30,7 +30,7 @@ module.exports = {
                 `**By [${response[0].authorName}](${response[0].authorUrl})**\n`
                 + `**Site:** ${response[0].site} | `
                 + `**Similarity:** ${response[0].similarity}\n`
-                + `[**${response[0].site} Page**](${response[0].url})`
+                + `[${response[0].site} Page](${response[0].url})`
             )
             .setFooter('Egg-Shaped Battle Maid | Sauce provided by SauceNAO.com', client.user.displayAvatarURL())
             .setTimestamp()
