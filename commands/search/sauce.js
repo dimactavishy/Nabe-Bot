@@ -18,9 +18,21 @@ module.exports = {
                 let imageurl = attachment.url;
                 mySauce(imageurl, { results: 10 })
                     .then(response => {
+
+            const sauceEmbed = new MessageEmbed()
+            .setColor('#ADD8E6')
+            .setTitle(Looking For Sauce?)
+            .setURL(response[0].url)
+            .setThumbnail(response[0].thumbnail)
+            .setDescription(
+                `**By [${response[0].authorName}](${response[0].authorUrl})**\n`
+                + `**Site: ${response[0].site | `
+                + `**${response[0].similarity}**\n`
+                + `**[${response[0].site} Page](${response[0].url})`
+            )
+            .setFooter('Egg-Shaped Battle Maid | Sauce provided by SauceNAO.com', client.user.displayAvatarURL())
+            .setTimestamp()
                         console.log(response);
-                        message.channel.send(`${response[0].url}/n ${response[0].authorName}/n ${response[0].authorUrl}/n ${response[0].site}/n ${response[0].similarity}`
-                        )
                         if (response.length < 1) return message.channel.send("No image was found!");
                     });
             });
