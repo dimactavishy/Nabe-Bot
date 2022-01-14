@@ -17,12 +17,22 @@ module.exports = {
             message.attachments.forEach(attachment => {
                 let imageurl = attachment.url;
                 mySauce(imageurl, { results: 10 })
-                .then(response => {
-                    console.log(response);
-                    if (response.length < 1) return message.channel.send("No image was found!");
-                });
-              });
+                    .then(response => {
+                        console.log(response);
+                        message.channel.send(`${response[0].url}/n`
+                            + `${response[0].authorName}/n`
+                            + `${response[0].authorUrl}/n`
+                            + `${response[0].site}/n`
+                            + `${response[0].similarity}`
+                        )
+                        if (response.length < 1) return message.channel.send("No image was found!");
+                    });
+            });
 
+        }
+
+        if (!message.attachments.size > 0) {
+            message.reply("please provide an image!")
         }
         //const results = await client("http://i.imgur.com/5yFTeRV.png");
 
