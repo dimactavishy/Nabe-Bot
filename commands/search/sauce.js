@@ -1,5 +1,4 @@
-/*const SauceNAO = require('saucenao')
-let mySauce = new SauceNAO('05d0753bbec2836f3709bef097fda361857a8a62')*/
+const sagiri = require("sagiri");
 
 module.exports = {
     info: {
@@ -11,17 +10,14 @@ module.exports = {
 
     execute: async function (client, message, args) {
     
-        message.channel.send('eek luh kawaki');
+        let mySauce = sagiri("05d0753bbec2836f3709bef097fda361857a8a62");
 
-        /*let sauce = (await SauceNAO('https://safebooru.org//images/2814/c4ca50c9077041b1de0408d349ba52e23e5bf503.jpg')).json
-
-        mySauce(imageDataBuffer).then((response) => {
-            console.log('Request successful')
-            console.dir(response.json)
-        }, (error) => {
-            console.error('Request encountered an error')
-            console.dir(error.request)
-        })*/
+        mySauce("https://safebooru.org//images/2814/c4ca50c9077041b1de0408d349ba52e23e5bf503.jpg", { results: 10})
+        .then(response => {
+            console.log('request sucessful');
+            if (response.length < 1) return message.channel.send("No image was found!");
+        });
+        //const results = await client("http://i.imgur.com/5yFTeRV.png");
 
     }
 }
