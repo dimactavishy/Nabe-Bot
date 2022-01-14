@@ -21,7 +21,7 @@ module.exports = {
 
             const sauceEmbed = new MessageEmbed()
             .setColor('#ADD8E6')
-            .setTitle(Looking For Sauce?)
+            .setTitle('Looking For Sauce?')
             .setURL(response[0].url)
             .setThumbnail(response[0].thumbnail)
             .setDescription(
