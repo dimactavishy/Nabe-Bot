@@ -26,7 +26,7 @@ module.exports = {
             .setThumbnail(response[0].thumbnail)
             .setDescription(
                 `**By [${response[0].authorName}](${response[0].authorUrl})**\n`
-                + `**Site: ${response[0].site | `
+                + `**Site: ${response[0].site} | `
                 + `**${response[0].similarity}**\n`
                 + `**[${response[0].site} Page](${response[0].url})`
             )
