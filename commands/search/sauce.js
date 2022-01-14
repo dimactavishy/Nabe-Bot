@@ -14,7 +14,7 @@ module.exports = {
 
         mySauce("https://safebooru.org//images/2814/c4ca50c9077041b1de0408d349ba52e23e5bf503.jpg", { results: 10})
         .then(response => {
-            console.log('request sucessful');
+            console.log(response);
             if (response.length < 1) return message.channel.send("No image was found!");
         });
         //const results = await client("http://i.imgur.com/5yFTeRV.png");
