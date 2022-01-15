@@ -35,7 +35,7 @@ module.exports = {
                         if (response[0].authorName == null) {
                             sauceEmbed.setDescription(
                                 `**Result 1**\n`
-                                + `**Site Does Not Provide Author**\n`
+                                + `**Author Not Provided**\n`
                                 + `**Site:** ${response[0].site} | `
                                 + `**Similarity:** ${response[0].similarity}\n`
                                 + `[${response[0].site} Page](${response[0].url})`
@@ -55,7 +55,7 @@ module.exports = {
                         if (response[1].authorName == null) {
                             sauceEmbed2.setDescription(
                                 `**Result 2**\n`
-                                + `**Site Does Not Provide Author**\n`
+                                + `**Author Not Provided**\n`
                                 + `**Site:** ${response[1].site} | `
                                 + `**Similarity:** ${response[1].similarity}\n`
                                 + `[${response[1].site} Page](${response[1].url})`
@@ -77,11 +77,11 @@ module.exports = {
                         if (response[2].authorName == null) {
                             sauceEmbed3.setDescription(
                                 `**Result 3**\n`
-                                + `**Site Does Not Provide Author**\n`
+                                + `**Author Not Provided**\n`
                                 + `**Site:** ${response[2].site} | `
                                 + `**Similarity:** ${response[2].similarity}\n`
                                 + `[${response[2].site} Page](${response[2].url})\n\n`
-                                + `***Sauce provided by [SauceNAO.com](https://saucenao.com)`
+                                + `***Sauce provided by [SauceNAO.com](https://saucenao.com)***`
                             )
                         }
 
