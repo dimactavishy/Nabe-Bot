@@ -84,10 +84,9 @@ module.exports = {
                         console.log(response);
 
                         async function validateForm() {
-                            var similarity = response[0].similarity;
-                            var simrequirement = 85;
+                            const similarity = response[0].similarity.valueOf();
 
-                            if (Number(similarity) > Number(simrequirement)) {
+                            if (similarity > 85) {
                                 message.channel.send(sauceEmbed)
                                 await message.channel.send(sauceEmbed2)
                                 await message.channel.send(sauceEmbed3)
@@ -104,7 +103,5 @@ module.exports = {
         if (!message.attachments.size > 0) {
             message.reply("please provide an image!")
         }
-        //const results = await client("http://i.imgur.com/5yFTeRV.png");
-
     }
 }
