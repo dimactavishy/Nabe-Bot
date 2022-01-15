@@ -10,7 +10,7 @@ module.exports = {
         cooldown: 20,
     },
 
-    execute: async function (client, message, args) {
+    async execute(client, message, args, Discord) {
 
         let mySauce = sagiri("05d0753bbec2836f3709bef097fda361857a8a62");
 
@@ -83,7 +83,7 @@ module.exports = {
 
                         console.log(response);
 
-                        function validateForm() {
+                        async function validateForm() {
                             var similarity = response[0].similarity;
                             var simrequirement = 85;
 
