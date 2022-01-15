@@ -30,7 +30,7 @@ module.exports = {
             .setTimestamp()
 
             try {
-                member.send(banEmbed).catch(() => {message.reply("the user has a closed DM.")})
+                member.send(banEmbed).catch((err) => {console.log(err)})
                 await member.ban()
                 message.channel.send("Even insects smell good when roasted.");
             } catch (err) {
