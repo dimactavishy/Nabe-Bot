@@ -30,7 +30,7 @@ module.exports = {
             .setTimestamp()
 
             try {
-                member.send(banEmbed).catch(() => {message.reply("the user has a closed DM.")}).then(msg => { msg.delete({ timeout: 5000 }) })
+                member.send(banEmbed).catch(() => {message.reply("the user has a closed DM.")})
                 .then(() => {member.ban()})
                 message.channel.send("Even insects smell good when roasted.");
             } catch (err) {
