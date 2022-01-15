@@ -83,17 +83,14 @@ module.exports = {
 
                         console.log(response);
 
-                        async function validateForm() {
-                            const similarity = response[0].similarity.valueOf();
-
-                            if (similarity > 85) {
-                                message.channel.send(sauceEmbed)
-                                await message.channel.send(sauceEmbed2)
-                                await message.channel.send(sauceEmbed3)
-                            } else {
-                                message.reply("Sorry, i couldn't find any similar image.")
-                            }
+                        if (response[0].similarity > 85) {
+                            message.channel.send(sauceEmbed)
+                            await message.channel.send(sauceEmbed2)
+                            await message.channel.send(sauceEmbed3)
+                        } else {
+                            message.reply("Sorry, i couldn't find any similar image.")
                         }
+
                         if (response.length < 1) return message.reply("Sorry, i couldn't find any similar image.");
                     });
             });
