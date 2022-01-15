@@ -102,7 +102,7 @@ module.exports = {
         }
 
         if (!message.attachments.size > 0) {
-            message.reply("please provide an image!")
+            message.reply("Reading minds is not my specialty. Please provide an image.")
         }
     }
 }
