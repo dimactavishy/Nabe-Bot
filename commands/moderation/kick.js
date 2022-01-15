@@ -27,9 +27,8 @@ module.exports = {
                 .setTimestamp()
 
             try {
-                member.kick().then(() => {
-                    member.send(kickEmbed).catch(() => {message.reply("the user has a closed DM.")}).then(msg => { msg.delete({ timeout: 5000 }) })
-                })
+                member.send(kickEmbed).catch(() => {message.reply("the user has a closed DM.")}).then(msg => { msg.delete({ timeout: 5000 }) })
+                .then(() => {member.kick()})
                 message.channel.send("Done. I have kicked the fool who angered you out of this server.");
             } catch (err) {
                 client.channels.cache.get(`918459447142141973`).send(err.message);

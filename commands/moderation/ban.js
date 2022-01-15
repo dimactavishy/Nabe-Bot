@@ -7,7 +7,7 @@ module.exports = {
         usage: "[usermention] [optional reason]",
         cooldown: 0,
     },
-    execute(client, message, args, Discord) {
+    async execute(client, message, args, Discord) {
 
         if (message.member.hasPermission('BAN_MEMBERS')) {
 
@@ -30,9 +30,8 @@ module.exports = {
             .setTimestamp()
 
             try {
-                member.ban().then(() => {
-                    member.send(banEmbed).catch(() => {message.reply("the user has a closed DM.")}).then(msg => { msg.delete({ timeout: 5000 }) })
-                })
+                member.send(banEmbed).catch(() => {message.reply("the user has a closed DM.")}).then(msg => { msg.delete({ timeout: 5000 }) })
+                .then(() => {member.ban()})
                 message.channel.send("Even insects smell good when roasted.");
             } catch (err) {
                 client.channels.cache.get(`918459447142141973`).send(err.message);
