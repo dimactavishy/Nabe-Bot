@@ -19,7 +19,7 @@ module.exports = {
             message.attachments.forEach(attachment => {
                 let imageurl = attachment.url;
                 mySauce(imageurl, { results: 10 })
-                    .then(response => {
+                    .then(async response => {
 
                         const sauceEmbed = new Discord.MessageEmbed()
                             .setColor('#ADD8E6')
