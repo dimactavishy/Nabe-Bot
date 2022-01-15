@@ -5,7 +5,7 @@ module.exports = {
         usage: "[usermention] [optional reason]",
         cooldown: 0,
     },
-    execute(client, message, args, Discord) {
+    async execute(client, message, args, Discord) {
 
         if (message.member.hasPermission('KICK_MEMBERS')) {
             let member = message.mentions.members.first();
@@ -28,7 +28,7 @@ module.exports = {
 
             try {
                 member.send(kickEmbed).catch(() => {message.reply("the user has a closed DM.")})
-                .then(() => {member.kick()})
+                await member.kick()
                 message.channel.send("Done. I have kicked the fool who angered you out of this server.");
             } catch (err) {
                 client.channels.cache.get(`918459447142141973`).send(err.message);

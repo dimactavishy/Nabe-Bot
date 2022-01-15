@@ -31,7 +31,7 @@ module.exports = {
 
             try {
                 member.send(banEmbed).catch(() => {message.reply("the user has a closed DM.")})
-                .then(() => {member.ban()})
+                await member.ban()
                 message.channel.send("Even insects smell good when roasted.");
             } catch (err) {
                 client.channels.cache.get(`918459447142141973`).send(err.message);
