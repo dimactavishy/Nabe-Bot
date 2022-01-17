@@ -73,7 +73,8 @@ module.exports = {
             .setTitle('Search Commands')
             .setDescription('These are the commands under the search category that i currently know of.\n\n'
                 + '**Use the commands as `nabe <command>`**\n\n'
-                + '**anime** - Returns an anime entry from MyAnimeList\n'
+                + '**sauce** - Search for a sauce for hentai/anime picture.\n'
+                + '**anime** - Returns an anime entry from MyAnimeList.\n'
                 + '**mcserver** - Returns an Minecraft server status.\n'
                 + '**pic** - Returns an image based on a query (disabled)\n\n'
                 + '**Use `nabe help <command>` for more info.**\n\n'
