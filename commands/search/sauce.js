@@ -18,18 +18,18 @@ module.exports = {
             message.attachments.forEach(attachment => {
                 let imageurl = attachment.url;
 
-                //let amount = args.join( );
+                let amount = args.join( );
 
-                if (!args[0]) return message.reply('need number')
-                if (args[0] > 7) return message.reply("I'm sorry, but the maximum number of sauce results is 7 to avoid channel flooding.").then(msg => { msg.delete({ timeout: 5000 }) });
-                if (args[0] < 0) return message.reply("Forgive me, but specifying a number smaller than one would induce a paradox. So please, specify a greater number.").then(msg => { msg.delete({ timeout: 5000 }) });
-                if (isNaN(args[0])) return message.reply("Please only enter a number between 1 to 7 or none at all.").then(msg => { msg.delete({ timeout: 5000 }) });
+                if (!amount) amount = 3;
+                if (amount > 7) return message.reply("I'm sorry, but the maximum number of sauce results is 7 to avoid channel flooding.").then(msg => { msg.delete({ timeout: 5000 }) });
+                if (amount < 0) return message.reply("Forgive me, but specifying a number smaller than one would induce a paradox. So please, specify a greater number.").then(msg => { msg.delete({ timeout: 5000 }) });
+                if (isNaN(amount)) return message.reply("Please only enter a number between 1 to 7 or none at all.").then(msg => { msg.delete({ timeout: 5000 }) });
 
-                mySauce(imageurl, { results: args[0] })
+                mySauce(imageurl, { results: 2 })
                     .then(async response => {
 
                         console.log(response);
-                        console.log(args[0]);
+                        console.log(amount);
 
                         if (response[0].similarity > 85) {
 
@@ -39,7 +39,7 @@ module.exports = {
                             message.channel.send(titleEmbed)
 
                             //embed 1
-                            if (args[0] = [1, 2, 3, 4, 5, 6, 7]) {
+                            if (amount = [1, 2, 3, 4, 5, 6, 7]) {
                                 const sauceEmbed = new Discord.MessageEmbed()
                                     .setColor('#ADD8E6')
                                     .setThumbnail(response[0].thumbnail)
@@ -63,7 +63,7 @@ module.exports = {
                             }
 
                             //embed 2
-                            if (args[0] = [2, 3, 4, 5, 6, 7]) {
+                            if (amount = [2, 3, 4, 5, 6, 7]) {
                                 const sauceEmbed2 = new Discord.MessageEmbed()
                                     .setColor('#ADD8E6')
                                     .setThumbnail(response[1].thumbnail)
@@ -87,7 +87,7 @@ module.exports = {
                             }
 
                             //embed 3
-                            if (args[0] = [3, 4, 5, 6, 7]) {
+                            if (amount = [3, 4, 5, 6, 7]) {
                                 const sauceEmbed3 = new Discord.MessageEmbed()
                                     .setColor('#ADD8E6')
                                     .setThumbnail(response[2].thumbnail)
@@ -111,7 +111,7 @@ module.exports = {
                             }
 
                             //embed 4
-                            if (args[0] = [4, 5, 6, 7]) {
+                            if (amount = [4, 5, 6, 7]) {
                                 const sauceEmbed4 = new Discord.MessageEmbed()
                                     .setColor('#ADD8E6')
                                     .setThumbnail(response[3].thumbnail)
@@ -135,7 +135,7 @@ module.exports = {
                             }
 
                             //embed 5
-                            if (args[0] = [5, 6, 7]) {
+                            if (amount = [5, 6, 7]) {
                                 const sauceEmbed5 = new Discord.MessageEmbed()
                                     .setColor('#ADD8E6')
                                     .setThumbnail(response[4].thumbnail)
@@ -159,7 +159,7 @@ module.exports = {
                             }
 
                             //embed 6
-                            /*if (args[0] = [6, 7]) {
+                            if (amount = [6, 7]) {
                                 const sauceEmbed6 = new Discord.MessageEmbed()
                                     .setColor('#ADD8E6')
                                     .setThumbnail(response[5].thumbnail)
@@ -183,7 +183,7 @@ module.exports = {
                             }
     
                             //embed 7
-                            if (args[0] = [7]) {
+                            if (amount = [7]) {
                                 const sauceEmbed7 = new Discord.MessageEmbed()
                                     .setColor('#ADD8E6')
                                     .setThumbnail(response[6].thumbnail)
@@ -204,7 +204,7 @@ module.exports = {
                                     )
                                 }
                                 await message.channel.send(sauceEmbed7)
-                            }*/
+                            }
 
                             const footEmbed = new Discord.MessageEmbed()
                                 .setColor('#ADD8E6')
