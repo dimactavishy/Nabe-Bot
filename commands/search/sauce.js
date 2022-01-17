@@ -148,7 +148,7 @@ module.exports = {
                         }
 
                         //embed 6
-                        if (amount = [6, 7]) {
+                        /*if (amount = [6, 7]) {
                             const sauceEmbed6 = new Discord.MessageEmbed()
                                 .setColor('#ADD8E6')
                                 .setThumbnail(response[5].thumbnail)
@@ -191,7 +191,7 @@ module.exports = {
                                     + `**[${response[6].site} Page](${response[6].url})**`
                                 )
                             }
-                        }
+                        }*/
 
                         const footEmbed = new Discord.MessageEmbed()
                             .setDescription(`***Sauce provided by [SauceNAO.com](https://saucenao.com)***`)
@@ -219,12 +219,12 @@ module.exports = {
                             if (amount = [5, 6, 7]) {
                                 await message.channel.send(sauceEmbed5)
                             }
-                            if (amount = [6, 7]) {
+                            /*if (amount = [6, 7]) {
                                 await message.channel.send(sauceEmbed6)
                             }
                             if (amount = [7]) {
                                 await message.channel.send(sauceEmbed7)
-                            }
+                            }*/
                             await message.channel.send(footEmbed)
 
                         } else {
