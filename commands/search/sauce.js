@@ -1,7 +1,6 @@
 const Discord = require('discord.js')
 const sagiri = require("sagiri");
 
-
 module.exports = {
     info: {
         name: "sauce",
@@ -102,7 +101,7 @@ module.exports = {
         }
 
         if (!message.attachments.size > 0) {
-            message.reply("please provide an image!")
+            message.reply("Please provide an image, i can't read your mind.")
         }
     }
 }
