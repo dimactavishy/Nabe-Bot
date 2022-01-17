@@ -194,12 +194,11 @@ module.exports = {
                                 .setTimestamp()
 
                             message.channel.send(titleEmbed)
-
                             if (amount = 1) {
                                 await message.channel.send(sauceEmbed)
                             }
                             if (amount = 2) {
-                                await message.channel.send(sauceEmbed) 
+                                await message.channel.send(sauceEmbed)
                                 await message.channel.send(sauceEmbed2)
                             }
                             if (amount = 3) {
@@ -220,7 +219,6 @@ module.exports = {
                                 await message.channel.send(sauceEmbed4)
                                 await message.channel.send(sauceEmbed5)
                             }
-
                             await message.channel.send(footEmbed)
 
                         } else {
