@@ -194,25 +194,25 @@ module.exports = {
                                 .setTimestamp()
 
                             message.channel.send(titleEmbed)
-                            if (amount = 1) {
+                            if (amount == 1) {
                                 await message.channel.send(sauceEmbed)
                             }
-                            if (amount = 2) {
+                            if (amount == 2) {
                                 await message.channel.send(sauceEmbed)
                                 await message.channel.send(sauceEmbed2)
                             }
-                            if (amount = 3) {
+                            if (amount == 3) {
                                 await message.channel.send(sauceEmbed)
                                 await message.channel.send(sauceEmbed2)
                                 await message.channel.send(sauceEmbed3)
                             }
-                            if (amount = 4) {
+                            if (amount == 4) {
                                 await message.channel.send(sauceEmbed)
                                 await message.channel.send(sauceEmbed2)
                                 await message.channel.send(sauceEmbed3)
                                 await message.channel.send(sauceEmbed4)
                             }
-                            if (amount = 5) {
+                            if (amount == 5) {
                                 await message.channel.send(sauceEmbed)
                                 await message.channel.send(sauceEmbed2)
                                 await message.channel.send(sauceEmbed3)
