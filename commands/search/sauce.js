@@ -28,9 +28,15 @@ module.exports = {
                 mySauce(imageurl, { results: amount })
                     .then(async response => {
 
+                        console.log(response);
+                        console.log(amount);
+
+                        if (response[0].similarity > 85) {
+
                         const titleEmbed = new Discord.MessageEmbed()
                             .setColor('#ADD8E6')
                             .setTitle('Looking For Sauce?')
+                            message.channel.send(titleEmbed)
 
                         //embed 1
                         if (amount = [1, 2, 3, 4, 5, 6, 7]) {
@@ -53,6 +59,7 @@ module.exports = {
                                     + `**[${response[0].site} Page](${response[0].url})**`
                                 )
                             }
+                                await message.channel.send(sauceEmbed)
                         }
 
                         //embed 2
@@ -76,6 +83,7 @@ module.exports = {
                                     + `**[${response[1].site} Page](${response[1].url})**`
                                 )
                             }
+                            await message.channel.send(sauceEmbed2)
                         }
 
                         //embed 3
@@ -99,6 +107,7 @@ module.exports = {
                                     + `**[${response[2].site} Page](${response[2].url})**`
                                 )
                             }
+                            await message.channel.send(sauceEmbed3)
                         }
 
                         //embed 4
@@ -122,6 +131,7 @@ module.exports = {
                                     + `**[${response[3].site} Page](${response[3].url})**`
                                 )
                             }
+                            await message.channel.send(sauceEmbed4)
                         }
 
                         //embed 5
@@ -145,6 +155,7 @@ module.exports = {
                                     + `**[${response[4].site} Page](${response[4].url})**`
                                 )
                             }
+                            await message.channel.send(sauceEmbed5)
                         }
 
                         //embed 6
@@ -168,6 +179,7 @@ module.exports = {
                                     + `**[${response[5].site} Page](${response[5].url})**`
                                 )
                             }
+                            await message.channel.send(sauceEmbed6)
                         }
 
                         //embed 7
@@ -191,40 +203,13 @@ module.exports = {
                                     + `**[${response[6].site} Page](${response[6].url})**`
                                 )
                             }
+                            await message.channel.send(sauceEmbed7)
                         }*/
 
                         const footEmbed = new Discord.MessageEmbed()
                             .setDescription(`***Sauce provided by [SauceNAO.com](https://saucenao.com)***`)
                             .setFooter('Egg-Shaped Battle Maid', client.user.displayAvatarURL())
                             .setTimestamp()
-
-                        console.log(response);
-                        console.log(amount);
-
-                        if (response[0].similarity > 85) {
-                            message.channel.send(titleEmbed)
-
-                            if (amount = [1, 2, 3, 4, 5, 6, 7]) {
-                                await message.channel.send(sauceEmbed)
-                            }
-                            if (amount = [2, 3, 4, 5, 6, 7]) {
-                                await message.channel.send(sauceEmbed2)
-                            }
-                            if (amount = [3, 4, 5, 6, 7]) {
-                                await message.channel.send(sauceEmbed3)
-                            }
-                            if (amount = [4, 5, 6, 7]) {
-                                await message.channel.send(sauceEmbed4)
-                            }
-                            if (amount = [5, 6, 7]) {
-                                await message.channel.send(sauceEmbed5)
-                            }
-                            /*if (amount = [6, 7]) {
-                                await message.channel.send(sauceEmbed6)
-                            }
-                            if (amount = [7]) {
-                                await message.channel.send(sauceEmbed7)
-                            }*/
                             await message.channel.send(footEmbed)
 
                         } else {
