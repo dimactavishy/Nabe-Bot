@@ -25,7 +25,7 @@ module.exports = {
                 if (amount < 0) return message.reply("Forgive me, but specifying a number smaller than one would induce a paradox. So please, specify a greater number.").then(msg => { msg.delete({ timeout: 5000 }) });
                 if (isNaN(amount)) amount = "3";
 
-                mySauce(imageurl, { results: 10 })
+                mySauce(imageurl, { results: amount })
                     .then(async response => {
 
                         const titleEmbed = new Discord.MessageEmbed()
@@ -34,7 +34,7 @@ module.exports = {
 
                         //embed 1
 
-                        const sauceEmbed = new Discord.MessageEmbed()
+                        /*const sauceEmbed = new Discord.MessageEmbed()
                             .setColor('#ADD8E6')
                             .setThumbnail(response[0].thumbnail)
                             .setDescription(
@@ -184,7 +184,7 @@ module.exports = {
                                 + `**Similarity:** ${response[6].similarity}\n`
                                 + `**[${response[6].site} Page](${response[6].url})**`
                             )
-                        }
+                        }*/
 
                         const footEmbed = new Discord.MessageEmbed()
                             .setDescription(`***Sauce provided by [SauceNAO.com](https://saucenao.com)***`)
@@ -193,7 +193,7 @@ module.exports = {
 
                         console.log(response);
 
-                        if (response[0].similarity > 85) {
+                        /*if (response[0].similarity > 85) {
                             message.channel.send(titleEmbed)
 
                             if (amount = [1, 2, 3, 4, 5, 6, 7]) {
@@ -221,7 +221,7 @@ module.exports = {
 
                         } else {
                             message.reply("Sorry, i couldn't find any similar image.")
-                        }
+                        }*/
 
                         if (response.length < 1) return message.reply("Sorry, i couldn't find any similar image.");
                     });
