@@ -23,7 +23,7 @@ module.exports = {
                 if (!amount) amount = "3";
                 if (amount > 7) return message.reply("I'm sorry, but the maximum number of sauce results is 7 to avoid channel flooding.").then(msg => { msg.delete({ timeout: 5000 }) });
                 if (amount < 0) return message.reply("Forgive me, but specifying a number smaller than one would induce a paradox. So please, specify a greater number.").then(msg => { msg.delete({ timeout: 5000 }) });
-                if (isNaN(amount)) amount = "3";
+                if (isNaN(amount)) return message.reply("Please only enter a number between 1 to 7 or none at all.").then(msg => { msg.delete({ timeout: 5000 }) });
 
                 mySauce(imageurl, { results: amount })
                     .then(async response => {
@@ -33,8 +33,8 @@ module.exports = {
                             .setTitle('Looking For Sauce?')
 
                         //embed 1
-
-                        /*const sauceEmbed = new Discord.MessageEmbed()
+                        if (amount = [1, 2, 3, 4, 5, 6, 7]) {
+                        const sauceEmbed = new Discord.MessageEmbed()
                             .setColor('#ADD8E6')
                             .setThumbnail(response[0].thumbnail)
                             .setDescription(
@@ -53,9 +53,10 @@ module.exports = {
                                 + `**[${response[0].site} Page](${response[0].url})**`
                             )
                         }
+                    }
 
                         //embed 2
-
+                        if (amount = [2, 3, 4, 5, 6, 7]) {
                         const sauceEmbed2 = new Discord.MessageEmbed()
                             .setColor('#ADD8E6')
                             .setThumbnail(response[1].thumbnail)
@@ -75,9 +76,10 @@ module.exports = {
                                 + `**[${response[1].site} Page](${response[1].url})**`
                             )
                         }
+                    }
 
                         //embed 3
-
+                        if (amount = [3, 4, 5, 6, 7]) {
                         const sauceEmbed3 = new Discord.MessageEmbed()
                             .setColor('#ADD8E6')
                             .setThumbnail(response[2].thumbnail)
@@ -97,9 +99,10 @@ module.exports = {
                                 + `**[${response[2].site} Page](${response[2].url})**`
                             )
                         }
-
+                    }
+                        
                         //embed 4
-
+                        if (amount = [4, 5, 6, 7]) {
                         const sauceEmbed4 = new Discord.MessageEmbed()
                             .setColor('#ADD8E6')
                             .setThumbnail(response[3].thumbnail)
@@ -119,9 +122,10 @@ module.exports = {
                                 + `**[${response[3].site} Page](${response[3].url})**`
                             )
                         }
+                    }
 
                         //embed 5
-
+                        if (amount = [5, 6, 7]) {
                         const sauceEmbed5 = new Discord.MessageEmbed()
                             .setColor('#ADD8E6')
                             .setThumbnail(response[4].thumbnail)
@@ -141,9 +145,10 @@ module.exports = {
                                 + `**[${response[4].site} Page](${response[4].url})**`
                             )
                         }
+                    }
 
                         //embed 6
-
+                        if (amount = [6, 7]) {
                         const sauceEmbed6 = new Discord.MessageEmbed()
                             .setColor('#ADD8E6')
                             .setThumbnail(response[5].thumbnail)
@@ -163,9 +168,10 @@ module.exports = {
                                 + `**[${response[5].site} Page](${response[5].url})**`
                             )
                         }
+                    }
 
                         //embed 7
-
+                        if (amount = [7]) {
                         const sauceEmbed7 = new Discord.MessageEmbed()
                             .setColor('#ADD8E6')
                             .setThumbnail(response[6].thumbnail)
@@ -184,7 +190,8 @@ module.exports = {
                                 + `**Similarity:** ${response[6].similarity}\n`
                                 + `**[${response[6].site} Page](${response[6].url})**`
                             )
-                        }*/
+                        }
+                    }
 
                         const footEmbed = new Discord.MessageEmbed()
                             .setDescription(`***Sauce provided by [SauceNAO.com](https://saucenao.com)***`)
@@ -192,8 +199,9 @@ module.exports = {
                             .setTimestamp()
 
                         console.log(response);
+                        console.log(amount);
 
-                        /*if (response[0].similarity > 85) {
+                        if (response[0].similarity > 85) {
                             message.channel.send(titleEmbed)
 
                             if (amount = [1, 2, 3, 4, 5, 6, 7]) {
@@ -221,7 +229,7 @@ module.exports = {
 
                         } else {
                             message.reply("Sorry, i couldn't find any similar image.")
-                        }*/
+                        }
 
                         if (response.length < 1) return message.reply("Sorry, i couldn't find any similar image.");
                     });
