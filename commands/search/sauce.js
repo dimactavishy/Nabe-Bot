@@ -20,7 +20,7 @@ module.exports = {
 
                 let amount = args.join( );
 
-                if (!amount) amount = 3;
+                if (!amount) amount = 10;
                 if (amount > 7) return message.reply("I'm sorry, but the maximum number of sauce results is 7 to avoid channel flooding.").then(msg => { msg.delete({ timeout: 5000 }) });
                 if (amount < 0) return message.reply("Forgive me, but specifying a number smaller than one would induce a paradox. So please, specify a greater number.").then(msg => { msg.delete({ timeout: 5000 }) });
                 if (isNaN(amount)) return message.reply("Please only enter a number between 1 to 7 or none at all.").then(msg => { msg.delete({ timeout: 5000 }) });
@@ -159,7 +159,7 @@ module.exports = {
                             }
 
                             //embed 6
-                            if (amount = [6, 7]) {
+                            /*if (amount = [6, 7]) {
                                 const sauceEmbed6 = new Discord.MessageEmbed()
                                     .setColor('#ADD8E6')
                                     .setThumbnail(response[5].thumbnail)
@@ -204,7 +204,7 @@ module.exports = {
                                     )
                                 }
                                 await message.channel.send(sauceEmbed7)
-                            }
+                            }*/
 
                             const footEmbed = new Discord.MessageEmbed()
                                 .setColor('#ADD8E6')
