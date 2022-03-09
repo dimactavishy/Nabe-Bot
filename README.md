@@ -10,7 +10,7 @@ DiscordJS v12.5.3
 Dependencies and packages used:
 see [package.json](https://github.com/dimactavishy/Nabe-Bot/blob/main/package.json)
 
-Music functions is NOT included.
+Music functions is NOT included in this repository.
             
 ![ESw3omcWsAI77s4](https://user-images.githubusercontent.com/79780581/140713738-91db6652-53ab-4be7-b57e-7eb8a1bd5c8e.jpg)
           
