@@ -4,8 +4,8 @@ const sagiri = require("sagiri");
 module.exports = {
     info: {
         name: "sauce",
-        description: `I will try to find the source of your desired image. Powered by [SauceNao](https://saucenao.com/)`,
-        usage: "[optional amount]",
+        description: `I will try to find the source of your desired image. Powered by SauceNao.com`,
+        usage: "[optional media link] [optional amount]",
         cooldown: 20,
     },
 

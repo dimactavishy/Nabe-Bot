@@ -14,7 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "@discordjs/opus": "^0.5.3",
-    "booru": "^2.5.6",
+    "booru": "^2.5.3",
     "canvas": "^2.8.0",
     "cheerio": "^1.0.0-rc.10",
     "discord.js": "^12.5.3",
@@ -27,7 +27,7 @@
     "nekos.life": "^2.0.9",
     "node-fetch": "^2.6.7",
     "sagiri": "^3.1.1",
-    "superagent": "^6.1.0",
+    "superagent": "^7.0.2",
     "yt-search": "^2.10.2",
     "ytdl-core": "^4.9.1"
   }
