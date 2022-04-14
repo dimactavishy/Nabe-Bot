@@ -13,8 +13,8 @@ module.exports = {
     },
     async execute(client, message, args, Discord) {
         const fetch = require('node-fetch')
-        const tag_query = args.join(' ');
-        
+        var tag_query = args.join(' ');
+
         function fileSizeSI(a, b, c, d, e) {
             return (
                 ((b = Math),
@@ -24,99 +24,108 @@ module.exports = {
                     a / b.pow(d, e)).toFixed(0) + (e ? 'kMGTPEZY'[--e] + 'B' : ' Bytes')
             )
         }
-        
-            const hornyEmbed = new Discord.MessageEmbed()
-                .setTitle('Potential Lewd Warning')
-                .setDescription('**The `nabe booru` command has a potential to return a NSFW image.\n**'
-                               + 'Please use this command in a NSFW channel just to be safe.\n\n'
-                               + '_If you really want to use booru on a SFW channel, use `nabe boorusafe` instead._'
-                               )
-                .setImage('https://static.wikia.nocookie.net/isekai-quartet/images/9/9c/Narberal_Gamma.png/revision/latest?cb=20200313155041')
-                .setFooter('Egg-Shaped Battle Maid', client.user.displayAvatarURL())
-                .setTimestamp();
-            if (!message.channel.nsfw) return message.channel.send(hornyEmbed);
-          
-try {  
-            Booru.search('gelbooru.com', tag_query, { limit: 1, random: true })
+
+        const hornyEmbed = new Discord.MessageEmbed()
+            .setTitle('Potential Lewd Warning')
+            .setDescription('**The `nabe booru` command has a potential to return a NSFW image.\n**'
+                + 'Please use this command in a NSFW channel just to be safe.\n\n'
+                + '_If you really want to use booru on a SFW channel, use `nabe boorusafe` instead._'
+            )
+            .setImage('https://static.wikia.nocookie.net/isekai-quartet/images/9/9c/Narberal_Gamma.png/revision/latest?cb=20200313155041')
+            .setFooter('Egg-Shaped Battle Maid', client.user.displayAvatarURL())
+            .setTimestamp();
+        if (!message.channel.nsfw) return message.channel.send(hornyEmbed);
+
+        var split = tag_query.split(' ');
+        var limit_amount = split.pop();
+        if (!isNaN(limit_amount)) {
+            var lastIndex = tag_query.lastIndexOf(" ");
+            tag_query = tag_query.substring(0, lastIndex);
+        }
+        if (isNaN(limit_amount)) limit_amount = 1;
+        if (limit_amount < 1) return message.channel.send(`_You told me to return 0 results so here's 0 results..._`);
+
+        try {
+            Booru.search('gelbooru.com', tag_query, { limit: limit_amount, random: true })
                 .then(async posts => {
-                        if (posts.length === 0) {
-                            const notfoundEmbed = new Discord.MessageEmbed()
-                                .setDescription("Sorry, i found no results for what you're looking for.")
-                                .setFooter("Are you sure you didn't do a typo?")
-                            message.channel.send(notfoundEmbed)
-                        }
+                    if (posts.length === 0) {
+                        const notfoundEmbed = new Discord.MessageEmbed()
+                            .setDescription("Sorry, i found no results for what you're looking for.")
+                            .setFooter("Are you sure you didn't do a typo?")
+                        message.channel.send(notfoundEmbed)
+                    }
 
                     for (let post of posts) {
-                        
+
                         let tags =
-                                post.tags.join(', ').length < 50
-                                    ? Discord.Util.escapeMarkdown(post.tags.join(', '))
-                                    : Discord.Util.escapeMarkdown(post.tags.join(', ').substr(0, 50)) +
-                                    `... [See All](https://giraffeduck.com/api/echo/?w=${Discord.Util
-                                        .escapeMarkdown(post.tags.join(',').replace(/(%20)/g, '_'))
-                                        .replace(/([()])/g, '\\$1')
-                                        .substring(0, 1200)})`
+                            post.tags.join(', ').length < 50
+                                ? Discord.Util.escapeMarkdown(post.tags.join(', '))
+                                : Discord.Util.escapeMarkdown(post.tags.join(', ').substr(0, 50)) +
+                                `... [See All](https://giraffeduck.com/api/echo/?w=${Discord.Util
+                                    .escapeMarkdown(post.tags.join(',').replace(/(%20)/g, '_'))
+                                    .replace(/([()])/g, '\\$1')
+                                    .substring(0, 1200)})`
 
-                            let headers
-                            let tooBig = false
-                            let imgError = false
+                        let headers
+                        let tooBig = false
+                        let imgError = false
 
-                            try {
-                                headers = (await fetch(post.fileUrl, { method: 'HEAD' })).headers
-                            } catch (e) {
-                                imgError = true
-                            }
+                        try {
+                            headers = (await fetch(post.fileUrl, { method: 'HEAD' })).headers
+                        } catch (e) {
+                            imgError = true
+                        }
 
-                            if (headers) {
-                                tooBig = parseInt(headers.get('content-length'), 50) / 1000000 > 10
-                            }
-                        
+                        if (headers) {
+                            tooBig = parseInt(headers.get('content-length'), 50) / 1000000 > 10
+                        }
+
                         const booruEmbed = new Discord.MessageEmbed()
                             .setColor('YELLOW')
                             .setTitle("Here's an image for you, master.")
                             .setDescription(`I hope this result satisfies you.\n` +
-                                    `**Gelbooru.com** | ` +
-                                    `**[Booru Page](${post.postView})** | ` +
-                                    `**Rating:** ${post.rating.toUpperCase()} | ` +
-                                    `**File:** ${path.extname(post.fileUrl).toUpperCase()}, ${headers ? fileSizeSI(headers.get('content-length')) : '? kB'}\n` +
-                                    `**Tags:** ${tags}\n\n` +
-                                    (!['.jpg', '.jpeg', '.png', '.gif'].includes(
-                                        path.extname(post.fileUrl).toLowerCase(),
-                                    )
-                                        ? '**`The file is perhaps a video and will not be embeddable.`**\n'
-                                        : '') +
-                                    (tooBig && ['.jpg', '.jpeg', '.png', '.gif'].includes(
-                                        path.extname(post.fileUrl).toLowerCase(),
-                                    )
-                                        ? '**`The image is over 50MB and will not be embeddable.`**\n' : '') +
-                                    (imgError ? '**`Sorry, but there was an error getting the file.\n`**' : ''),
-                                           
-                                           )
+                                `**Gelbooru.com** | ` +
+                                `**[Booru Page](${post.postView})** | ` +
+                                `**Rating:** ${post.rating.toUpperCase()} | ` +
+                                `**File:** ${path.extname(post.fileUrl).toUpperCase()}, ${headers ? fileSizeSI(headers.get('content-length')) : '? kB'}\n` +
+                                `**Tags:** ${tags}\n\n` +
+                                (!['.jpg', '.jpeg', '.png', '.gif'].includes(
+                                    path.extname(post.fileUrl).toLowerCase(),
+                                )
+                                    ? '**`The file is perhaps a video and will not be embeddable.`**\n'
+                                    : '') +
+                                (tooBig && ['.jpg', '.jpeg', '.png', '.gif'].includes(
+                                    path.extname(post.fileUrl).toLowerCase(),
+                                )
+                                    ? '**`The image is over 50MB and will not be embeddable.`**\n' : '') +
+                                (imgError ? '**`Sorry, but there was an error getting the file.\n`**' : ''),
+
+                            )
                             .setThumbnail('https://media.discordapp.net/attachments/898563395807232061/899534056356724756/sketch-1634535999710.png?width=499&height=499')
                             .setImage(post.fileUrl)
                             .setFooter('Egg-Shaped Battle Maid', client.user.displayAvatarURL())
                             .setTimestamp();
 
                         message.channel.send(booruEmbed);
-                        
-                        if (!['.jpg', '.jpeg', '.png', '.gif'].includes(
-                                path.extname(post.fileUrl).toLowerCase())) {
-                                message.channel.send(`*The file is not embeddable, so here's the link instead:*\n`
-                                + post.fileUrl
-                               )
-                            }
 
-                            if (tooBig && ['.jpg', '.jpeg', '.png', '.gif'].includes(
-                                path.extname(post.fileUrl).toLowerCase())) {
-                                message.channel.send(`*The file is over 50MB, so here's the link instead:*\n`
+                        if (!['.jpg', '.jpeg', '.png', '.gif'].includes(
+                            path.extname(post.fileUrl).toLowerCase())) {
+                            message.channel.send(`*The file is not embeddable, so here's the link instead:*\n`
                                 + post.fileUrl
-                               )
-                            }
-                        
+                            )
+                        }
+
+                        if (tooBig && ['.jpg', '.jpeg', '.png', '.gif'].includes(
+                            path.extname(post.fileUrl).toLowerCase())) {
+                            message.channel.send(`*The file is over 50MB, so here's the link instead:*\n`
+                                + post.fileUrl
+                            )
+                        }
+
                     }
                 })
-} catch (error) {
-console.log(error)
-}
+        } catch (error) {
+            console.log(error)
+        }
     }
 }
