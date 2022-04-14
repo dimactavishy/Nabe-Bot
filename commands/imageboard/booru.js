@@ -76,7 +76,7 @@ try {
                             .setTitle("Here's an image for you, master.")
                             .setDescription(`I hope this result satisfies you.\n` +
                                     `**Gelbooru.com** | ` +
-                                    `[**Booru Page**](${post.postView}) | ` +
+                                    `**[Booru Page](${post.postView})** | ` +
                                     `**Rating:** ${post.rating.toUpperCase()} | ` +
                                     `**File:** ${path.extname(post.fileUrl).toUpperCase()}, ${headers ? fileSizeSI(headers.get('content-length')) : '? kB'}\n` +
                                     `**Tags:** ${tags}\n\n` +

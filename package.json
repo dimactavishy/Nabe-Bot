@@ -1,6 +1,6 @@
 {
   "name": "nabe-bot",
-  "version": "1.6.1",
+  "version": "1.6.5",
   "engines": {
     "node": "16.13.0",
     "npm": "8.1.0"
@@ -14,18 +14,18 @@
   "license": "ISC",
   "dependencies": {
     "@discordjs/opus": "^0.5.3",
-    "booru": "^2.5.3",
+    "booru": "^2.5.6",
     "canvas": "^2.8.0",
     "cheerio": "^1.0.0-rc.10",
     "discord.js": "^12.5.3",
     "dotenv": "^10.0.0",
     "fast-xml-parser": "^3.20.3",
     "fs": "^0.0.1-security",
-    "mal-scraper": "^2.11.3",
+    "mal-scraper": "^2.11.4",
     "minecraft-server-util": "^3.6.1",
     "ms": "^2.1.3",
-    "nekos.life": "^2.0.7",
-    "node-fetch": "^2.6.1",
+    "nekos.life": "^2.0.9",
+    "node-fetch": "^2.6.7",
     "sagiri": "^3.1.1",
     "superagent": "^6.1.0",
     "yt-search": "^2.10.2",
