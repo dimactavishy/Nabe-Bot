@@ -109,19 +109,19 @@ module.exports = {
                         const nabeImage = 'https://user-images.githubusercontent.com/79780581/140713738-91db6652-53ab-4be7-b57e-7eb8a1bd5c8e.jpg'
 
                         if (post.tags.includes('narberal_gamma')) {
-                            booruEmbed.setImage(nabeImage)
+                            embed_nsfw.setImage(nabeImage)
                             gambarNotEmbed = nabeImage
                         }
                         if (post.tags.includes('tanya_degurechaff')) {
-                            booruEmbed.setImage(tanyaImage)
+                            embed_nsfw.setImage(tanyaImage)
                             gambarNotEmbed = tanyaImage
                         }
                         if (post.tags.includes('cz2128_delta')) {
-                            booruEmbed.setImage(shizuImage)
+                            embed_nsfw.setImage(shizuImage)
                             gambarNotEmbed = shizuImage
                         }
                         if (post.tags.includes('furry')) {
-                            booruEmbed.setImage(tanyaImage)
+                            embed_nsfw.setImage(tanyaImage)
                             gambarNotEmbed = tanyaImage
                         }
 
