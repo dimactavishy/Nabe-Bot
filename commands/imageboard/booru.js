@@ -106,19 +106,42 @@ module.exports = {
                             .setFooter('Egg-Shaped Battle Maid', client.user.displayAvatarURL())
                             .setTimestamp();
 
+                        var gambarNotEmbed = post.fileUrl
+
+                        const tanyaImage = 'https://cdn.discordapp.com/attachments/898563395807232061/964952354136936448/saga_feat.jpg'
+                        const shizuImage = 'https://cdn.discordapp.com/attachments/898563395807232061/964956328156090480/48dc1ae6a3936e64ae748729d72c4655.jpg'
+                        const nabeImage = 'https://user-images.githubusercontent.com/79780581/140713738-91db6652-53ab-4be7-b57e-7eb8a1bd5c8e.jpg'
+
+                        if (post.tags.includes('narberal_gamma') && post.rating.includes('e')) {
+                            booruEmbed.setImage(nabeImage)
+                            gambarNotEmbed = nabeImage
+                        }
+                        if (post.tags.includes('tanya_degurechaff') && post.rating.includes('e')) {
+                            booruEmbed.setImage(tanyaImage)
+                            gambarNotEmbed = tanyaImage
+                        }
+                        if (post.tags.includes('cz2128_delta') && post.rating.includes('e')) {
+                            booruEmbed.setImage(shizuImage)
+                            gambarNotEmbed = shizuImage
+                        }
+                        if (post.tags.includes('furry')) {
+                            booruEmbed.setImage(tanyaImage)
+                            gambarNotEmbed = tanyaImage
+                        }
+
                         message.channel.send(booruEmbed);
 
                         if (!['.jpg', '.jpeg', '.png', '.gif'].includes(
                             path.extname(post.fileUrl).toLowerCase())) {
                             message.channel.send(`*The file is not embeddable, so here's the link instead:*\n`
-                                + post.fileUrl
+                                + gambarNotEmbed
                             )
                         }
 
                         if (tooBig && ['.jpg', '.jpeg', '.png', '.gif'].includes(
                             path.extname(post.fileUrl).toLowerCase())) {
                             message.channel.send(`*The file is over 50MB, so here's the link instead:*\n`
-                                + post.fileUrl
+                                + gambarNotEmbed
                             )
                         }
 

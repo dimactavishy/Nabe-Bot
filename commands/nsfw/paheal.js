@@ -25,7 +25,7 @@ module.exports = {
             )
         }
 
-        if (!message.content.includes['narberal_gamma', 'cz2128_delta', 'tanya_degurechaff']) {
+        if (!message.content.includes('narberal_gamma')) {
             const hornyEmbed = new Discord.MessageEmbed()
                 .setTitle('No lewding here!')
                 .setDescription('Not everybody is a pervert like you, please do it in a NSFW channel.')
@@ -101,19 +101,43 @@ module.exports = {
                             .setImage(post.fileUrl)
                             .setFooter('Egg-Shaped Battle Maid', client.user.displayAvatarURL())
                             .setTimestamp();
+
+                        var gambarNotEmbed = post.fileUrl
+
+                        const tanyaImage = 'https://cdn.discordapp.com/attachments/898563395807232061/964952354136936448/saga_feat.jpg'
+                        const shizuImage = 'https://cdn.discordapp.com/attachments/898563395807232061/964956328156090480/48dc1ae6a3936e64ae748729d72c4655.jpg'
+                        const nabeImage = 'https://user-images.githubusercontent.com/79780581/140713738-91db6652-53ab-4be7-b57e-7eb8a1bd5c8e.jpg'
+
+                        if (post.tags.includes('narberal_gamma')) {
+                            booruEmbed.setImage(nabeImage)
+                            gambarNotEmbed = nabeImage
+                        }
+                        if (post.tags.includes('tanya_degurechaff')) {
+                            booruEmbed.setImage(tanyaImage)
+                            gambarNotEmbed = tanyaImage
+                        }
+                        if (post.tags.includes('cz2128_delta')) {
+                            booruEmbed.setImage(shizuImage)
+                            gambarNotEmbed = shizuImage
+                        }
+                        if (post.tags.includes('furry')) {
+                            booruEmbed.setImage(tanyaImage)
+                            gambarNotEmbed = tanyaImage
+                        }
+
                         message.channel.send(embed_nsfw);
 
                         if (!['.jpg', '.jpeg', '.png', '.gif'].includes(
                             path.extname(post.fileUrl).toLowerCase())) {
                             message.channel.send(`*The file is not embeddable, so here's the link instead:*\n`
-                                + post.fileUrl
+                                + gambarNotEmbed
                             )
                         }
 
                         if (tooBig && ['.jpg', '.jpeg', '.png', '.gif'].includes(
                             path.extname(post.fileUrl).toLowerCase())) {
                             message.channel.send(`*The file is over 50MB, so here's the link instead:*\n`
-                                + post.fileUrl
+                                + gambarNotEmbed
                             )
                         }
 

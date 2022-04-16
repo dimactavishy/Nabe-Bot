@@ -94,19 +94,21 @@ module.exports = {
                         .setFooter('Egg-Shaped Battle Maid', client.user.displayAvatarURL())
                         .setTimestamp();
 
+                    var gambarNotEmbed = post.fileUrl
+
                     message.channel.send(booruEmbed);
 
                     if (!['.jpg', '.jpeg', '.png', '.gif'].includes(
                         path.extname(post.fileUrl).toLowerCase())) {
                         message.channel.send(`*The file is not embeddable, so here's the link instead:*\n`
-                            + post.fileUrl
+                            + gambarNotEmbed
                         )
                     }
 
                     if (tooBig && ['.jpg', '.jpeg', '.png', '.gif'].includes(
                         path.extname(post.fileUrl).toLowerCase())) {
                         message.channel.send(`*The file is over 50MB, so here's the link instead:*\n`
-                            + post.fileUrl
+                            + gambarNotEmbed
                         )
                     }
 
