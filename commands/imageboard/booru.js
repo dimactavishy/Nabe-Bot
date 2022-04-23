@@ -25,17 +25,6 @@ module.exports = {
             )
         }
 
-        const hornyEmbed = new Discord.MessageEmbed()
-            .setTitle('Potential Lewd Warning')
-            .setDescription('**The `nabe booru` command has a potential to return a NSFW image.\n**'
-                + 'Please use this command in a NSFW channel just to be safe.\n\n'
-                + '_If you really want to use booru on a SFW channel, use `nabe boorusafe` instead._'
-            )
-            .setImage('https://static.wikia.nocookie.net/isekai-quartet/images/9/9c/Narberal_Gamma.png/revision/latest?cb=20200313155041')
-            .setFooter('Egg-Shaped Battle Maid', client.user.displayAvatarURL())
-            .setTimestamp();
-        if (!message.channel.nsfw) return message.channel.send(hornyEmbed);
-
         var split = tag_query.split(' ');
         var limit_amount = split.pop();
         if (!isNaN(limit_amount)) {
@@ -98,8 +87,8 @@ module.exports = {
                                     path.extname(post.fileUrl).toLowerCase(),
                                 )
                                     ? '**`The image is over 50MB and will not be embeddable.`**\n' : '') +
-                                (imgError ? '**`Sorry, but there was an error getting the file.\n`**' : ''),
-
+                                (imgError ? '**`Sorry, but there was an error getting the file.\n`**' : '') +
+                                (post.rating.includes('e') && !message.channel.nsfw ? '**`I cannot display a NSFW post in a SFW channel. Please use this command in a NSFW channel to display explicit posts.\n`**' : ''),
                             )
                             .setThumbnail('https://media.discordapp.net/attachments/898563395807232061/899534056356724756/sketch-1634535999710.png?width=499&height=499')
                             .setImage(post.fileUrl)
@@ -127,6 +116,10 @@ module.exports = {
                         if (post.tags.includes('furry')) {
                             booruEmbed.setImage(tanyaImage)
                             gambarNotEmbed = tanyaImage
+                        }
+
+                        if (!message.channel.nsfw && post.rating.includes('e')) {
+                            booruEmbed.setImage(null)
                         }
 
                         message.channel.send(booruEmbed);

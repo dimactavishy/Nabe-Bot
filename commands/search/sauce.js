@@ -209,7 +209,7 @@ module.exports = {
                             console.log(response);
                             console.log(amount);
 
-                            if (response[0].similarity > 65) {
+                            if (response[0].similarity > 30) {
 
                                 const titleEmbed = new Discord.MessageEmbed()
                                     .setColor('#ADD8E6')
