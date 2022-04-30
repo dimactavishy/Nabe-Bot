@@ -82,7 +82,7 @@ module.exports = {
                             .setColor('#FFC0CB')
                             .setDescription(
                                 `**[Rule34 Page](${post.postView})** | ` +
-                                `**Rating:** E | ` +
+                                `**Rating:** E | \n` +
                                 `**Tags:** ${tags}`
                             )
                             .setThumbnail('https://media.discordapp.net/attachments/898563395807232061/907183711882199040/sketch-1636359767759.png?width=499&height=499')

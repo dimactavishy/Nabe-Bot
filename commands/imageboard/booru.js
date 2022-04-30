@@ -73,7 +73,7 @@ module.exports = {
                         .setTitle("Here's an image for you, master.")
                         .setDescription(
                             `**[Gelbooru Page](${post.postView})** | ` +
-                            `**Rating:** ${post.rating.toUpperCase()} | ` +
+                            `**Rating:** ${post.rating.toUpperCase()} | \n` +
                             `**Tags:** ${tags}`
                         )
                         .setThumbnail('https://media.discordapp.net/attachments/898563395807232061/899534056356724756/sketch-1634535999710.png?width=499&height=499')
