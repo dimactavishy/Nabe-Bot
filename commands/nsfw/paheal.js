@@ -43,7 +43,7 @@ module.exports = {
             if (isNaN(limit_amount)) limit_amount = 1;
             if (limit_amount < 1) return message.channel.send(`_You told me to return 0 results so here's 0 results..._`);
 
-            Booru.search('rule34.paheal.net', tag_query, { limit: limit_amount, random: true })
+            await Booru.search('rule34.paheal.net', tag_query, { limit: limit_amount, random: true })
                 .then(async posts => {
                     if (posts.length === 0) {
                         const notfoundEmbed = new Discord.MessageEmbed()
@@ -80,69 +80,51 @@ module.exports = {
                         embed_nsfw = new Discord.MessageEmbed()
                             .setTitle('P-Pervert!')
                             .setColor('#FFC0CB')
-                            .setDescription(`H-Here's something i found on paheal!\n` +
-                                `**Rule34.paheal.net** | ` +
+                            .setDescription(
                                 `**[Rule34 Page](${post.postView})** | ` +
-                                `**Rating:** ${post.rating.toUpperCase()} | ` +
-                                `**File:** ${path.extname(post.fileUrl).toUpperCase()}, ${headers ? fileSizeSI(headers.get('content-length')) : '? kB'}\n` +
-                                `**Tags:** ${tags}\n\n` +
-                                (!['.jpg', '.jpeg', '.png', '.gif'].includes(
-                                    path.extname(post.fileUrl).toLowerCase(),
-                                )
-                                    ? '**`The file is perhaps a video and will not be embeddable.`**\n'
-                                    : '') +
-                                (tooBig && ['.jpg', '.jpeg', '.png', '.gif'].includes(
-                                    path.extname(post.fileUrl).toLowerCase(),
-                                )
-                                    ? '**`The image is over 50MB and will not be embeddable.`**\n' : '') +
-                                (imgError ? '**`Sorry, but there was an error getting the file.\n`**' : ''),
+                                `**Rating:** E | ` +
+                                `**Tags:** ${tags}`
                             )
                             .setThumbnail('https://media.discordapp.net/attachments/898563395807232061/907183711882199040/sketch-1636359767759.png?width=499&height=499')
-                            .setImage(post.fileUrl)
-                            .setFooter('Egg-Shaped Battle Maid', client.user.displayAvatarURL())
-                            .setTimestamp();
 
-                        var gambarNotEmbed = post.fileUrl
+                        var booruPost = post.fileUrl
 
                         const tanyaImage = 'https://cdn.discordapp.com/attachments/898563395807232061/964952354136936448/saga_feat.jpg'
                         const shizuImage = 'https://cdn.discordapp.com/attachments/898563395807232061/964956328156090480/48dc1ae6a3936e64ae748729d72c4655.jpg'
                         const nabeImage = 'https://user-images.githubusercontent.com/79780581/140713738-91db6652-53ab-4be7-b57e-7eb8a1bd5c8e.jpg'
 
                         if (post.tags.includes('narberal_gamma')) {
-                            embed_nsfw.setImage(nabeImage)
-                            gambarNotEmbed = nabeImage
+                            booruPost = nabeImage
                         }
                         if (post.tags.includes('tanya_degurechaff')) {
-                            embed_nsfw.setImage(tanyaImage)
-                            gambarNotEmbed = tanyaImage
+                            booruPost = tanyaImage
                         }
                         if (post.tags.includes('cz2128_delta')) {
-                            embed_nsfw.setImage(shizuImage)
-                            gambarNotEmbed = shizuImage
+                            booruPost = shizuImage
                         }
                         if (post.tags.includes('furry')) {
-                            embed_nsfw.setImage(tanyaImage)
-                            gambarNotEmbed = tanyaImage
+                            booruPost = tanyaImage
                         }
 
-                        message.channel.send(embed_nsfw);
-
-                        if (!['.jpg', '.jpeg', '.png', '.gif'].includes(
-                            path.extname(post.fileUrl).toLowerCase())) {
-                            message.channel.send(`*The file is not embeddable, so here's the link instead:*\n`
-                                + gambarNotEmbed
-                            )
+                        if (tooBig) {
+                            message.channel.send(embed_nsfw);
+                            message.channel.send('**`The file is over 50MB and will not be embeddable.`**')
                         }
-
-                        if (tooBig && ['.jpg', '.jpeg', '.png', '.gif'].includes(
-                            path.extname(post.fileUrl).toLowerCase())) {
-                            message.channel.send(`*The file is over 50MB, so here's the link instead:*\n`
-                                + gambarNotEmbed
-                            )
+                        if (imgError) {
+                            message.channel.send(embed_nsfw)
+                            message.channel.send('**`Sorry, but there was an error getting the file.`**')
                         }
-
+                        if (!tooBig && !imgError) {
+                            message.channel.send(embed_nsfw);
+                            message.channel.send(booruPost)
+                        }
                     }
                 })
+            const footerEmbed = new Discord.MessageEmbed()
+                .setColor('#FFC0CB')
+                .setFooter('Egg-Shaped Battle Maid', client.user.displayAvatarURL())
+                .setTimestamp();
+            await message.channel.send(footerEmbed)
         }
         if (message.content.includes('narberal_gamma')) {
             const helpEmbed = new Discord.MessageEmbed()

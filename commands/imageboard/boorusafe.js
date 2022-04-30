@@ -34,7 +34,7 @@ module.exports = {
         if (isNaN(limit_amount)) limit_amount = 1;
         if (limit_amount < 1) return message.channel.send(`_You told me to return 0 results so here's 0 results..._`);
 
-        Booru.search('safebooru', tag_query, { limit: limit_amount, random: true })
+        await Booru.search('safebooru', tag_query, { limit: limit_amount, random: true })
             .then(async posts => {
                 if (posts.length === 0) {
                     const notfoundEmbed = new Discord.MessageEmbed()
@@ -71,48 +71,33 @@ module.exports = {
                     const booruEmbed = new Discord.MessageEmbed()
                         .setColor('GREEN')
                         .setTitle("Here's an image for you, master.")
-                        .setDescription(`I hope this result satisfies you.\n` +
-                            `**Safebooru.org** | ` +
-                            `**[Booru Page](${post.postView})** | ` +
+                        .setDescription(
+                            `**[Safebooru Page](${post.postView})** | ` +
                             `**Rating:** ${post.rating.toUpperCase()} | ` +
-                            `**File:** ${path.extname(post.fileUrl).toUpperCase()}, ${headers ? fileSizeSI(headers.get('content-length')) : '? kB'}\n` +
-                            `**Tags:** ${tags}\n\n` +
-                            (!['.jpg', '.jpeg', '.png', '.gif'].includes(
-                                path.extname(post.fileUrl).toLowerCase(),
-                            )
-                                ? '**`The file is perhaps a video and will not be embeddable.`**\n'
-                                : '') +
-                            (tooBig && ['.jpg', '.jpeg', '.png', '.gif'].includes(
-                                path.extname(post.fileUrl).toLowerCase(),
-                            )
-                                ? '**`The image is over 50MB and will not be embeddable.`**\n' : '') +
-                            (imgError ? '**`Sorry, but there was an error getting the file.\n`**' : ''),
-
+                            `**Tags:** ${tags}`
                         )
                         .setThumbnail('https://media.discordapp.net/attachments/898563395807232061/899534056356724756/sketch-1634535999710.png?width=499&height=499')
-                        .setImage(post.fileUrl)
-                        .setFooter('Egg-Shaped Battle Maid', client.user.displayAvatarURL())
-                        .setTimestamp();
 
-                    var gambarNotEmbed = post.fileUrl
+                    var booruPost = post.fileUrl
 
-                    message.channel.send(booruEmbed);
-
-                    if (!['.jpg', '.jpeg', '.png', '.gif'].includes(
-                        path.extname(post.fileUrl).toLowerCase())) {
-                        message.channel.send(`*The file is not embeddable, so here's the link instead:*\n`
-                            + gambarNotEmbed
-                        )
+                    if (tooBig) {
+                        message.channel.send(booruEmbed);
+                        message.channel.send('**`The file is over 50MB and will not be embeddable.`**')
                     }
-
-                    if (tooBig && ['.jpg', '.jpeg', '.png', '.gif'].includes(
-                        path.extname(post.fileUrl).toLowerCase())) {
-                        message.channel.send(`*The file is over 50MB, so here's the link instead:*\n`
-                            + gambarNotEmbed
-                        )
+                    if (imgError) {
+                        message.channel.send(booruEmbed)
+                        message.channel.send('**`Sorry, but there was an error getting the file.`**')
                     }
-
+                    if (!tooBig && !imgError) {
+                        message.channel.send(booruEmbed);
+                        message.channel.send(booruPost)
+                    }
                 }
             })
+        const footerEmbed = new Discord.MessageEmbed()
+            .setColor('GREEN')
+            .setFooter('Egg-Shaped Battle Maid', client.user.displayAvatarURL())
+            .setTimestamp();
+        await message.channel.send(footerEmbed)
     }
 }
